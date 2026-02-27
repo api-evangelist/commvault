@@ -1,0 +1,80 @@
+name: Commvault
+description: Commvault is a data protection and information management platform that provides backup, recovery, and data management solutions for enterprises.
+image: https://www.commvault.com/wp-content/themes/commvault/assets/images/commvault-logo.svg
+tags:
+- backup
+- data protection
+- disaster recovery
+- data management
+- cloud storage
+- enterprise software
+created: '2025-01-20'
+modified: '2025-01-20'
+specificationVersion: '0.18'
+apis:
+- name: Commvault REST API
+  description: The Commvault REST API provides programmatic access to Commvault operations including backup, restore, storage management, and reporting capabilities.
+  image: https://www.commvault.com/wp-content/themes/commvault/assets/images/commvault-logo.svg
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - REST API
+  - backup
+  - restore
+  - data management
+  properties:
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: OpenAPI
+    url: https://api.commvault.com/swagger/
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: Postman Collection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+- name: Commvault Command Center API
+  description: APIs for managing Commvault Command Center operations, providing centralized management and monitoring capabilities.
+  humanURL: https://documentation.commvault.com/2024/essential/command_center_overview.html
+  baseURL: https://commandcenter.commvault.com/commandcenter/api
+  tags:
+  - command center
+  - management
+  - monitoring
+  properties:
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: API Reference
+    url: https://api.commvault.com/
+- name: Commvault Automation API
+  description: API for automating Commvault workflows, job scheduling, and policy management.
+  humanURL: https://documentation.commvault.com/v11/essential/automation_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - automation
+  - workflows
+  - scheduling
+  properties:
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+common:
+- type: Portal
+  url: https://cloud.commvault.com/
+- type: Documentation
+  url: https://documentation.commvault.com/
+- type: Support
+  url: https://www.commvault.com/support
+- type: Login
+  url: https://login.commvault.com/
+- type: Status
+  url: https://status.commvault.com/
+- type: Blog
+  url: https://www.commvault.com/blogs
+- type: Contact
+  url: https://www.commvault.com/contact-us
+- type: Privacy Policy
+  url: https://www.commvault.com/privacy-policy
+- type: Terms of Service
+  url: https://www.commvault.com/terms-of-use
+maintainers:
+- FN: Commvault Systems
+  email: support@commvault.com
+  url: https://www.commvault.com
