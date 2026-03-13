@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.commvault.com/schemas/commvault/client.json",
+  "title": "Commvault Client",
+  "description": "Represents a client (server, workstation, virtual machine, or laptop) registered with the Commvault CommServe for data protection. Clients host agents that perform backup and restore operations.",
+  "type": "object",
+  "required": ["clientId", "clientName"],
+  "properties": {
+    "clientId": {
+      "type": "integer",
+      "description": "Unique identifier for the client"
+    },
+    "clientName": {
+      "type": "string",
+      "description": "Display name of the client",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "hostName": {
+      "type": "string",
+      "description": "Network hostname or FQDN of the client"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "User-friendly display name"
+    },
+    "osType": {
+      "type": "string",
+      "description": "Operating system type of the client",
+      "enum": ["Windows", "Linux", "Unix", "macOS", "FreeBSD"]
+    },
+    "osVersion": {
+      "type": "string",
+      "description": "Detailed operating system version string"
+    },
+    "commCellId": {
+      "type": "integer",
+      "description": "CommCell ID the client belongs to"
+    },
+    "clientType": {
+      "type": "string",
+      "description": "Type of client",
+      "enum": [
+        "Server",
+        "Workstation",
+        "Laptop",
+        "VirtualMachine",
+        "MediaAgent",
+        "ProxyServer",
+        "NASClient"
+      ]
+    },
+    "activityControl": {
+      "type": "object",
+      "description": "Controls which operations are enabled on this client",
+      "properties": {
+        "enableBackup": {
+          "type": "boolean",
+          "description": "Whether backup operations are enabled"
+        },
+        "enableRestore": {
+          "type": "boolean",
+          "description": "Whether restore operations are enabled"
+        },
+        "enableDataAging": {
+          "type": "boolean",
+          "description": "Whether data aging operations are enabled"
+        }
+      }
+    },
+    "agents": {
+      "type": "array",
+      "description": "List of installed agents (iDataAgents) on this client",
+      "items": {
+        "$ref": "#/$defs/Agent"
+      }
+    },
+    "installDirectory": {
+      "type": "string",
+      "description": "Path to the Commvault software installation directory"
+    },
+    "lastBackupTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last successful backup on this client"
+    },
+    "planName": {
+      "type": "string",
+      "description": "Name of the server plan associated with this client"
+    }
+  },
+  "$defs": {
+    "Agent": {
+      "type": "object",
+      "description": "An iDataAgent installed on a client that handles backup and restore for a specific application type",
+      "properties": {
+        "applicationId": {
+          "type": "integer",
+          "description": "Unique application type identifier"
+        },
+        "applicationName": {
+          "type": "string",
+          "description": "Name of the agent (e.g., File System, SQL Server, Exchange)"
+        },
+        "installed": {
+          "type": "boolean",
+          "description": "Whether the agent is currently installed"
+        },
+        "version": {
+          "type": "string",
+          "description": "Agent software version"
+        }
+      }
+    }
+  }
+}

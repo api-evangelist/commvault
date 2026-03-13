@@ -1,0 +1,801 @@
+openapi: 3.1.0
+info:
+  title: Commvault Command Center API
+  description: >-
+    APIs for managing Commvault Command Center operations, providing
+    centralized management and monitoring capabilities for data protection
+    infrastructure. The Command Center API enables dashboard access,
+    server group management, virtual machine operations, and compliance
+    monitoring across the Commvault environment.
+  version: v4
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+externalDocs:
+  description: Commvault Command Center API Documentation
+  url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+servers:
+  - url: https://{commandcenter}/commandcenter/api
+    description: Commvault Command Center
+    variables:
+      commandcenter:
+        default: commandcenter.example.com
+        description: Hostname of the Commvault Command Center
+tags:
+  - name: Dashboard
+    description: Dashboard summary and health monitoring
+  - name: Server Groups
+    description: Manage server groups for organizing protected infrastructure
+  - name: Virtual Machines
+    description: Manage virtual machine backup and recovery
+  - name: Laptops
+    description: Manage laptop backup operations
+  - name: File Servers
+    description: Manage file server protection
+  - name: Databases
+    description: Manage database protection
+  - name: SLA
+    description: Service Level Agreement compliance monitoring
+  - name: Storage
+    description: Storage pool and library management
+  - name: Reports
+    description: Reporting and analytics
+security:
+  - authToken: []
+paths:
+  /Dashboard:
+    get:
+      operationId: getDashboard
+      summary: Get dashboard summary
+      description: >-
+        Retrieves the Command Center dashboard summary, including total
+        protected data, SLA compliance percentages, job statistics,
+        storage usage, and infrastructure health across all managed
+        environments.
+      tags:
+        - Dashboard
+      responses:
+        '200':
+          description: Dashboard summary data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardSummary'
+        '401':
+          description: Unauthorized
+  /V4/ServerGroup:
+    get:
+      operationId: listServerGroups
+      summary: List server groups
+      description: >-
+        Retrieves a list of all server groups. Server groups organize
+        clients into logical collections for bulk management,
+        policy assignment, and reporting.
+      tags:
+        - Server Groups
+      responses:
+        '200':
+          description: List of server groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  serverGroups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServerGroup'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createServerGroup
+      summary: Create a server group
+      description: >-
+        Creates a new server group for organizing clients.
+      tags:
+        - Server Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServerGroupRequest'
+      responses:
+        '200':
+          description: Server group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /V4/ServerGroup/{serverGroupId}:
+    get:
+      operationId: getServerGroup
+      summary: Get server group details
+      description: >-
+        Retrieves detailed information about a server group, including
+        associated clients and applied policies.
+      tags:
+        - Server Groups
+      parameters:
+        - $ref: '#/components/parameters/serverGroupId'
+      responses:
+        '200':
+          description: Server group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerGroup'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+    put:
+      operationId: updateServerGroup
+      summary: Update a server group
+      description: >-
+        Updates an existing server group configuration, including
+        associated clients and policies.
+      tags:
+        - Server Groups
+      parameters:
+        - $ref: '#/components/parameters/serverGroupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServerGroupRequest'
+      responses:
+        '200':
+          description: Server group updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+    delete:
+      operationId: deleteServerGroup
+      summary: Delete a server group
+      description: Deletes a server group by its unique identifier.
+      tags:
+        - Server Groups
+      parameters:
+        - $ref: '#/components/parameters/serverGroupId'
+      responses:
+        '200':
+          description: Server group deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+  /VM:
+    get:
+      operationId: listVirtualMachines
+      summary: List virtual machines
+      description: >-
+        Retrieves a list of all virtual machines registered for
+        protection, including their backup status, hypervisor
+        association, and SLA compliance.
+      tags:
+        - Virtual Machines
+      parameters:
+        - name: status
+          in: query
+          required: false
+          description: Filter by protection status
+          schema:
+            type: string
+            enum:
+              - Protected
+              - NotProtected
+              - NeverBackedUp
+              - Pending
+        - name: hypervisorId
+          in: query
+          required: false
+          description: Filter by hypervisor client ID
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: List of virtual machines
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vmStatusInfoList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VirtualMachine'
+        '401':
+          description: Unauthorized
+  /VM/{vmUUID}:
+    get:
+      operationId: getVirtualMachine
+      summary: Get virtual machine details
+      description: >-
+        Retrieves detailed information about a specific virtual machine,
+        including backup history, recovery points, and configuration.
+      tags:
+        - Virtual Machines
+      parameters:
+        - $ref: '#/components/parameters/vmUUID'
+      responses:
+        '200':
+          description: Virtual machine details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualMachine'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Virtual machine not found
+  /Laptop:
+    get:
+      operationId: listLaptops
+      summary: List laptop clients
+      description: >-
+        Retrieves a list of all laptop clients enrolled for endpoint
+        backup, including their protection status, last backup time,
+        and data usage.
+      tags:
+        - Laptops
+      responses:
+        '200':
+          description: List of laptop clients
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  laptopList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LaptopClient'
+        '401':
+          description: Unauthorized
+  /V4/FileServers:
+    get:
+      operationId: listFileServers
+      summary: List file servers
+      description: >-
+        Retrieves a list of all file servers configured for protection,
+        including NAS devices, Windows file servers, and Linux file
+        servers.
+      tags:
+        - File Servers
+      responses:
+        '200':
+          description: List of file servers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fileServers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FileServer'
+        '401':
+          description: Unauthorized
+  /V4/DatabaseServers:
+    get:
+      operationId: listDatabaseServers
+      summary: List database servers
+      description: >-
+        Retrieves a list of all database servers configured for backup,
+        including SQL Server, Oracle, SAP HANA, and other database
+        platforms.
+      tags:
+        - Databases
+      responses:
+        '200':
+          description: List of database servers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  databaseServers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DatabaseServer'
+        '401':
+          description: Unauthorized
+  /SLASummary:
+    get:
+      operationId: getSLASummary
+      summary: Get SLA compliance summary
+      description: >-
+        Retrieves the SLA compliance summary across all protected
+        workloads, showing the percentage of clients meeting their
+        defined service level agreements for backup and recovery.
+      tags:
+        - SLA
+      parameters:
+        - name: timeRange
+          in: query
+          required: false
+          description: Time range for SLA calculation
+          schema:
+            type: string
+            enum:
+              - Last24Hours
+              - Last7Days
+              - Last30Days
+      responses:
+        '200':
+          description: SLA compliance summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLASummary'
+        '401':
+          description: Unauthorized
+  /V4/Storage:
+    get:
+      operationId: listStoragePools
+      summary: List storage pools
+      description: >-
+        Retrieves a list of all storage pools, including cloud storage,
+        disk libraries, and tape libraries, with capacity and usage
+        information.
+      tags:
+        - Storage
+      responses:
+        '200':
+          description: List of storage pools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  storagePools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoragePool'
+        '401':
+          description: Unauthorized
+  /V4/Storage/{storagePoolId}:
+    get:
+      operationId: getStoragePool
+      summary: Get storage pool details
+      description: >-
+        Retrieves detailed information about a specific storage pool,
+        including configuration, capacity metrics, and associated
+        media agents.
+      tags:
+        - Storage
+      parameters:
+        - $ref: '#/components/parameters/storagePoolId'
+      responses:
+        '200':
+          description: Storage pool details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoragePool'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Storage pool not found
+  /Reports:
+    get:
+      operationId: listReports
+      summary: List available reports
+      description: >-
+        Retrieves a list of all available reports, including built-in
+        and custom reports for backup, storage, compliance, and
+        operational analytics.
+      tags:
+        - Reports
+      responses:
+        '200':
+          description: List of reports
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reports:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Report'
+        '401':
+          description: Unauthorized
+  /Reports/{reportId}:
+    get:
+      operationId: getReport
+      summary: Get report data
+      description: >-
+        Executes a specific report and returns the report data,
+        including charts, tables, and summary statistics.
+      tags:
+        - Reports
+      parameters:
+        - $ref: '#/components/parameters/reportId'
+        - name: timeRange
+          in: query
+          required: false
+          description: Time range for the report
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Report data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Report not found
+components:
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: >-
+        QSDK authentication token obtained from the Login endpoint.
+  parameters:
+    serverGroupId:
+      name: serverGroupId
+      in: path
+      required: true
+      description: Unique identifier for the server group
+      schema:
+        type: integer
+    vmUUID:
+      name: vmUUID
+      in: path
+      required: true
+      description: UUID of the virtual machine
+      schema:
+        type: string
+    storagePoolId:
+      name: storagePoolId
+      in: path
+      required: true
+      description: Unique identifier for the storage pool
+      schema:
+        type: integer
+    reportId:
+      name: reportId
+      in: path
+      required: true
+      description: Unique identifier for the report
+      schema:
+        type: integer
+  schemas:
+    DashboardSummary:
+      type: object
+      properties:
+        sla:
+          type: object
+          properties:
+            percentCompliant:
+              type: number
+              format: float
+              description: Overall SLA compliance percentage
+            totalProtected:
+              type: integer
+              description: Total number of protected entities
+            totalNotProtected:
+              type: integer
+              description: Total number of unprotected entities
+        jobs:
+          type: object
+          properties:
+            running:
+              type: integer
+              description: Number of currently running jobs
+            completed:
+              type: integer
+              description: Number of completed jobs
+            failed:
+              type: integer
+              description: Number of failed jobs
+            pending:
+              type: integer
+              description: Number of pending jobs
+        storage:
+          type: object
+          properties:
+            totalCapacityGB:
+              type: number
+              format: float
+              description: Total storage capacity in GB
+            usedCapacityGB:
+              type: number
+              format: float
+              description: Used storage capacity in GB
+            freeCapacityGB:
+              type: number
+              format: float
+              description: Free storage capacity in GB
+            deduplicationRatio:
+              type: number
+              format: float
+              description: Overall deduplication savings ratio
+    ServerGroup:
+      type: object
+      properties:
+        serverGroupId:
+          type: integer
+          description: Unique server group identifier
+        serverGroupName:
+          type: string
+          description: Name of the server group
+        description:
+          type: string
+          description: Description of the server group
+        associatedClients:
+          type: array
+          items:
+            type: object
+            properties:
+              clientId:
+                type: integer
+              clientName:
+                type: string
+        planName:
+          type: string
+          description: Associated server plan name
+    CreateServerGroupRequest:
+      type: object
+      required:
+        - serverGroupName
+      properties:
+        serverGroupName:
+          type: string
+          description: Name for the server group
+        description:
+          type: string
+          description: Description of the server group
+        clientIds:
+          type: array
+          items:
+            type: integer
+          description: Client IDs to include in the group
+    VirtualMachine:
+      type: object
+      properties:
+        vmUUID:
+          type: string
+          description: Unique UUID of the virtual machine
+        vmName:
+          type: string
+          description: Name of the virtual machine
+        vmStatus:
+          type: string
+          description: Protection status
+          enum:
+            - Protected
+            - NotProtected
+            - NeverBackedUp
+            - Pending
+        hypervisor:
+          type: object
+          properties:
+            clientId:
+              type: integer
+            clientName:
+              type: string
+              description: Hypervisor name (vCenter, Hyper-V host, etc.)
+        vmSize:
+          type: integer
+          description: Total VM size in bytes
+        lastBackupTime:
+          type: integer
+          description: Unix timestamp of last successful backup
+        lastBackupJobId:
+          type: integer
+          description: Job ID of the last backup
+        planName:
+          type: string
+          description: Associated protection plan name
+    LaptopClient:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          description: Unique client identifier
+        clientName:
+          type: string
+          description: Laptop hostname
+        userName:
+          type: string
+          description: Laptop owner username
+        osType:
+          type: string
+          description: Operating system type
+          enum:
+            - Windows
+            - macOS
+            - Linux
+        backupStatus:
+          type: string
+          description: Current backup status
+        lastBackupTime:
+          type: integer
+          description: Unix timestamp of last successful backup
+        dataBackedUpGB:
+          type: number
+          format: float
+          description: Total data backed up in GB
+    FileServer:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          description: Unique client identifier
+        clientName:
+          type: string
+          description: File server name
+        serverType:
+          type: string
+          description: Type of file server
+          enum:
+            - WindowsFileServer
+            - LinuxFileServer
+            - NAS
+            - NetApp
+            - Isilon
+        protectionStatus:
+          type: string
+          description: Protection status
+        planName:
+          type: string
+          description: Associated protection plan name
+    DatabaseServer:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          description: Unique client identifier
+        clientName:
+          type: string
+          description: Database server name
+        databaseType:
+          type: string
+          description: Database platform type
+          enum:
+            - SQLServer
+            - Oracle
+            - SAP_HANA
+            - MySQL
+            - PostgreSQL
+            - DB2
+            - Informix
+        instanceName:
+          type: string
+          description: Database instance name
+        protectionStatus:
+          type: string
+          description: Protection status
+        lastBackupTime:
+          type: integer
+          description: Unix timestamp of last successful backup
+    SLASummary:
+      type: object
+      properties:
+        overallCompliance:
+          type: number
+          format: float
+          description: Overall SLA compliance percentage
+        totalEntities:
+          type: integer
+          description: Total number of entities tracked
+        metSLA:
+          type: integer
+          description: Number of entities meeting SLA
+        missedSLA:
+          type: integer
+          description: Number of entities missing SLA
+        excluded:
+          type: integer
+          description: Number of entities excluded from SLA
+        breakdownByType:
+          type: array
+          items:
+            type: object
+            properties:
+              workloadType:
+                type: string
+                description: Workload type (VM, File Server, Database, etc.)
+              compliance:
+                type: number
+                format: float
+              total:
+                type: integer
+              met:
+                type: integer
+              missed:
+                type: integer
+    StoragePool:
+      type: object
+      properties:
+        storagePoolId:
+          type: integer
+          description: Unique storage pool identifier
+        storagePoolName:
+          type: string
+          description: Name of the storage pool
+        storageType:
+          type: string
+          description: Type of storage
+          enum:
+            - Cloud
+            - DiskLibrary
+            - TapeLibrary
+            - DeduplicationStore
+        totalCapacityGB:
+          type: number
+          format: float
+          description: Total capacity in GB
+        usedCapacityGB:
+          type: number
+          format: float
+          description: Used capacity in GB
+        freeCapacityGB:
+          type: number
+          format: float
+          description: Free capacity in GB
+        mediaAgents:
+          type: array
+          items:
+            type: object
+            properties:
+              mediaAgentId:
+                type: integer
+              mediaAgentName:
+                type: string
+    Report:
+      type: object
+      properties:
+        reportId:
+          type: integer
+          description: Unique report identifier
+        reportName:
+          type: string
+          description: Name of the report
+        reportCategory:
+          type: string
+          description: Category of the report
+          enum:
+            - Backup
+            - Storage
+            - SLA
+            - Compliance
+            - Operational
+            - Custom
+        description:
+          type: string
+          description: Description of the report
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message

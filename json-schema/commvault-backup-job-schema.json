@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.commvault.com/schemas/commvault/backup-job.json",
+  "title": "Commvault Backup Job",
+  "description": "Represents a backup job in Commvault, tracking the execution of a data protection operation including its status, progress, data transfer metrics, and associated client and subclient information.",
+  "type": "object",
+  "required": ["jobId", "jobType", "status"],
+  "properties": {
+    "jobId": {
+      "type": "integer",
+      "description": "Unique identifier for the backup job"
+    },
+    "jobType": {
+      "type": "string",
+      "description": "Type of job operation",
+      "enum": ["Backup", "Restore", "Auxiliary Copy", "Data Aging", "Synthetic Full"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the job",
+      "enum": [
+        "Running",
+        "Waiting",
+        "Pending",
+        "Completed",
+        "Completed w/ one or more errors",
+        "Completed w/ one or more warnings",
+        "Failed",
+        "Killed",
+        "Suspended"
+      ]
+    },
+    "backupLevel": {
+      "type": "string",
+      "description": "Backup level for backup jobs",
+      "enum": ["Full", "Incremental", "Differential", "Synthetic Full", "Transaction Log"]
+    },
+    "subclient": {
+      "type": "object",
+      "description": "The subclient associated with this job",
+      "properties": {
+        "subclientId": {
+          "type": "integer",
+          "description": "Unique subclient identifier"
+        },
+        "subclientName": {
+          "type": "string",
+          "description": "Name of the subclient"
+        },
+        "clientName": {
+          "type": "string",
+          "description": "Name of the parent client"
+        },
+        "appName": {
+          "type": "string",
+          "description": "Agent or application name"
+        }
+      }
+    },
+    "percentComplete": {
+      "type": "integer",
+      "description": "Job completion percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the job started"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the job completed"
+    },
+    "elapsedTimeSeconds": {
+      "type": "integer",
+      "description": "Total elapsed time of the job in seconds",
+      "minimum": 0
+    },
+    "sizeOfBackupBytes": {
+      "type": "integer",
+      "description": "Total size of application data processed in bytes",
+      "minimum": 0
+    },
+    "sizeOfMediaOnDiskBytes": {
+      "type": "integer",
+      "description": "Total size of data written to storage media in bytes",
+      "minimum": 0
+    },
+    "numOfFiles": {
+      "type": "integer",
+      "description": "Number of files processed during the job",
+      "minimum": 0
+    },
+    "failureReason": {
+      "type": "string",
+      "description": "Reason for job failure if the job did not complete successfully"
+    },
+    "storagePolicyName": {
+      "type": "string",
+      "description": "Name of the storage policy used for data placement"
+    },
+    "mediaAgent": {
+      "type": "string",
+      "description": "Name of the media agent that processed the job"
+    },
+    "isAged": {
+      "type": "boolean",
+      "description": "Whether the job data has been aged out (pruned by retention policy)"
+    }
+  }
+}

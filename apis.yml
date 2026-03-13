@@ -9,7 +9,7 @@ tags:
 - cloud storage
 - enterprise software
 created: '2025-01-20'
-modified: '2025-01-20'
+modified: '2026-03-04'
 specificationVersion: '0.18'
 apis:
 - name: Commvault REST API
@@ -31,6 +31,8 @@ apis:
     url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
   - type: Postman Collection
     url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: OpenAPI
+    url: openapi/commvault-rest-openapi.yml
 - name: Commvault Command Center API
   description: APIs for managing Commvault Command Center operations, providing centralized management and monitoring capabilities.
   humanURL: https://documentation.commvault.com/2024/essential/command_center_overview.html
@@ -44,6 +46,8 @@ apis:
     url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
   - type: API Reference
     url: https://api.commvault.com/
+  - type: OpenAPI
+    url: openapi/commvault-command-center-openapi.yml
 - name: Commvault Automation API
   description: API for automating Commvault workflows, job scheduling, and policy management.
   humanURL: https://documentation.commvault.com/v11/essential/automation_overview.html
@@ -55,6 +59,8 @@ apis:
   properties:
   - type: Documentation
     url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+  - type: OpenAPI
+    url: openapi/commvault-automation-openapi.yml
 common:
 - type: Portal
   url: https://cloud.commvault.com/
@@ -74,7 +80,12 @@ common:
   url: https://www.commvault.com/privacy-policy
 - type: Terms of Service
   url: https://www.commvault.com/terms-of-use
+- type: JSON-LD
+  url: json-ld/commvault-context.jsonld
+- type: JSONSchema
+  url: json-schema/commvault-backup-job-schema.json
+- type: JSONSchema
+  url: json-schema/commvault-client-schema.json
 maintainers:
-- FN: Commvault Systems
-  email: support@commvault.com
-  url: https://www.commvault.com
+- FN: Kin Lane
+  email: kin@apievangelist.com

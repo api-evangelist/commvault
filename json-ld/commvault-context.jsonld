@@ -1,0 +1,168 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "commvault": "https://api.commvault.com/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Client": {
+      "@id": "commvault:Client",
+      "@context": {
+        "clientName": "schema:name",
+        "hostName": "commvault:hostName",
+        "displayName": "schema:alternateName",
+        "osType": "commvault:osType",
+        "clientType": "commvault:clientType",
+        "enableBackup": {
+          "@id": "commvault:enableBackup",
+          "@type": "xsd:boolean"
+        },
+        "enableRestore": {
+          "@id": "commvault:enableRestore",
+          "@type": "xsd:boolean"
+        }
+      }
+    },
+
+    "BackupJob": {
+      "@id": "commvault:BackupJob",
+      "@context": {
+        "jobType": "commvault:jobType",
+        "status": "commvault:jobStatus",
+        "backupLevel": "commvault:backupLevel",
+        "percentComplete": {
+          "@id": "commvault:percentComplete",
+          "@type": "xsd:integer"
+        },
+        "startTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "endTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "sizeOfBackupBytes": {
+          "@id": "commvault:sizeOfBackup",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Subclient": {
+      "@id": "commvault:Subclient",
+      "@context": {
+        "subclientName": "schema:name",
+        "clientName": "commvault:clientName",
+        "appName": "commvault:appName",
+        "storagePolicyName": "commvault:storagePolicyName"
+      }
+    },
+
+    "StoragePolicy": {
+      "@id": "commvault:StoragePolicy",
+      "@context": {
+        "storagePolicyName": "schema:name",
+        "retainBackupDataForDays": {
+          "@id": "commvault:retainBackupDataForDays",
+          "@type": "xsd:integer"
+        },
+        "retainBackupDataForCycles": {
+          "@id": "commvault:retainBackupDataForCycles",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Plan": {
+      "@id": "commvault:Plan",
+      "@context": {
+        "planName": "schema:name",
+        "rpoInMinutes": {
+          "@id": "commvault:rpoInMinutes",
+          "@type": "xsd:integer"
+        },
+        "retainBackupDataForDays": {
+          "@id": "commvault:retainBackupDataForDays",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "VirtualMachine": {
+      "@id": "commvault:VirtualMachine",
+      "@context": {
+        "vmName": "schema:name",
+        "vmUUID": "schema:identifier",
+        "vmStatus": "commvault:vmStatus",
+        "lastBackupTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "vmSize": {
+          "@id": "commvault:vmSize",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "Workflow": {
+      "@id": "commvault:Workflow",
+      "@context": {
+        "workflowName": "schema:name",
+        "description": "schema:description",
+        "enabled": {
+          "@id": "commvault:enabled",
+          "@type": "xsd:boolean"
+        },
+        "workflowType": "commvault:workflowType"
+      }
+    },
+
+    "StoragePool": {
+      "@id": "commvault:StoragePool",
+      "@context": {
+        "storagePoolName": "schema:name",
+        "storageType": "commvault:storageType",
+        "totalCapacityGB": {
+          "@id": "commvault:totalCapacityGB",
+          "@type": "xsd:float"
+        },
+        "usedCapacityGB": {
+          "@id": "commvault:usedCapacityGB",
+          "@type": "xsd:float"
+        },
+        "freeCapacityGB": {
+          "@id": "commvault:freeCapacityGB",
+          "@type": "xsd:float"
+        }
+      }
+    },
+
+    "Alert": {
+      "@id": "commvault:Alert",
+      "@context": {
+        "name": "schema:name",
+        "severity": "commvault:severity",
+        "alertType": {
+          "@id": "commvault:alertType",
+          "@type": "xsd:integer"
+        }
+      }
+    },
+
+    "User": {
+      "@id": "commvault:User",
+      "@context": {
+        "userName": "schema:name",
+        "email": "schema:email",
+        "description": "schema:description",
+        "enabled": {
+          "@id": "commvault:enabled",
+          "@type": "xsd:boolean"
+        }
+      }
+    }
+  }
+}
