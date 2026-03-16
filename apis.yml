@@ -1,6 +1,9 @@
+aid: commvault
 name: Commvault
 description: Commvault is a data protection and information management platform that provides backup, recovery, and data management solutions for enterprises.
-image: https://www.commvault.com/wp-content/themes/commvault/assets/images/commvault-logo.svg
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/commvault/refs/heads/main/apis.yml
 tags:
 - backup
 - data protection
@@ -9,8 +12,8 @@ tags:
 - cloud storage
 - enterprise software
 created: '2025-01-20'
-modified: '2026-03-04'
-specificationVersion: '0.18'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 apis:
 - name: Commvault REST API
   description: The Commvault REST API provides programmatic access to Commvault operations including backup, restore, storage management, and reporting capabilities.
@@ -87,5 +90,5 @@ common:
 - type: JSONSchema
   url: json-schema/commvault-client-schema.json
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
