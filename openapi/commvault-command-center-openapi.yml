@@ -25,22 +25,22 @@ servers:
 tags:
   - name: Dashboard
     description: Dashboard summary and health monitoring
-  - name: Server Groups
-    description: Manage server groups for organizing protected infrastructure
-  - name: Virtual Machines
-    description: Manage virtual machine backup and recovery
-  - name: Laptops
-    description: Manage laptop backup operations
-  - name: File Servers
-    description: Manage file server protection
   - name: Databases
     description: Manage database protection
+  - name: File Servers
+    description: Manage file server protection
+  - name: Laptops
+    description: Manage laptop backup operations
+  - name: Reports
+    description: Reporting and analytics
+  - name: Server Groups
+    description: Manage server groups for organizing protected infrastructure
   - name: SLA
     description: Service Level Agreement compliance monitoring
   - name: Storage
     description: Storage pool and library management
-  - name: Reports
-    description: Reporting and analytics
+  - name: Virtual Machines
+    description: Manage virtual machine backup and recovery
 security:
   - authToken: []
 paths:

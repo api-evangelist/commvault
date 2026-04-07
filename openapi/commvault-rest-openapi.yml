@@ -24,26 +24,26 @@ servers:
         default: webconsole.example.com
         description: Hostname of the Commvault Web Server
 tags:
+  - name: Agents
+    description: Manage backup agents installed on clients
+  - name: Alerts
+    description: Manage alerts and notification configurations
   - name: Authentication
     description: Login and token management operations
   - name: Clients
     description: Manage clients (servers, workstations, virtual machines)
-  - name: Agents
-    description: Manage backup agents installed on clients
-  - name: Subclients
-    description: Manage subclients that define backup content
   - name: Jobs
     description: View and manage backup, restore, and administrative jobs
-  - name: Storage Policies
-    description: Manage storage policies and copies
-  - name: Schedule Policies
-    description: Manage schedule policies for automated operations
-  - name: Alerts
-    description: Manage alerts and notification configurations
-  - name: Users
-    description: Manage Commvault users and user groups
   - name: Plans
     description: Manage server plans for data protection
+  - name: Schedule Policies
+    description: Manage schedule policies for automated operations
+  - name: Storage Policies
+    description: Manage storage policies and copies
+  - name: Subclients
+    description: Manage subclients that define backup content
+  - name: Users
+    description: Manage Commvault users and user groups
 security:
   - authToken: []
 paths:

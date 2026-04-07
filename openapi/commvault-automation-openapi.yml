@@ -22,16 +22,16 @@ servers:
         default: webconsole.example.com
         description: Hostname of the Commvault Web Server
 tags:
-  - name: Workflows
-    description: Create, manage, and execute automation workflows
-  - name: Schedules
-    description: Manage job schedules and schedule policies
-  - name: Policies
-    description: Manage data protection policies
   - name: Operations
     description: Trigger and monitor automated operations
+  - name: Policies
+    description: Manage data protection policies
+  - name: Schedules
+    description: Manage job schedules and schedule policies
   - name: Scripts
     description: Manage and execute automation scripts
+  - name: Workflows
+    description: Create, manage, and execute automation workflows
 security:
   - authToken: []
 paths:
