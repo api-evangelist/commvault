@@ -47,7 +47,7 @@ paths:
   /Dashboard:
     get:
       operationId: getDashboard
-      summary: Get dashboard summary
+      summary: Commvault Get dashboard summary
       description: >-
         Retrieves the Command Center dashboard summary, including total
         protected data, SLA compliance percentages, job statistics,
@@ -67,7 +67,7 @@ paths:
   /V4/ServerGroup:
     get:
       operationId: listServerGroups
-      summary: List server groups
+      summary: Commvault List server groups
       description: >-
         Retrieves a list of all server groups. Server groups organize
         clients into logical collections for bulk management,
@@ -90,7 +90,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createServerGroup
-      summary: Create a server group
+      summary: Commvault Create a server group
       description: >-
         Creates a new server group for organizing clients.
       tags:
@@ -115,7 +115,7 @@ paths:
   /V4/ServerGroup/{serverGroupId}:
     get:
       operationId: getServerGroup
-      summary: Get server group details
+      summary: Commvault Get server group details
       description: >-
         Retrieves detailed information about a server group, including
         associated clients and applied policies.
@@ -136,7 +136,7 @@ paths:
           description: Server group not found
     put:
       operationId: updateServerGroup
-      summary: Update a server group
+      summary: Commvault Update a server group
       description: >-
         Updates an existing server group configuration, including
         associated clients and policies.
@@ -165,7 +165,7 @@ paths:
           description: Server group not found
     delete:
       operationId: deleteServerGroup
-      summary: Delete a server group
+      summary: Commvault Delete a server group
       description: Deletes a server group by its unique identifier.
       tags:
         - Server Groups
@@ -185,7 +185,7 @@ paths:
   /VM:
     get:
       operationId: listVirtualMachines
-      summary: List virtual machines
+      summary: Commvault List virtual machines
       description: >-
         Retrieves a list of all virtual machines registered for
         protection, including their backup status, hypervisor
@@ -227,7 +227,7 @@ paths:
   /VM/{vmUUID}:
     get:
       operationId: getVirtualMachine
-      summary: Get virtual machine details
+      summary: Commvault Get virtual machine details
       description: >-
         Retrieves detailed information about a specific virtual machine,
         including backup history, recovery points, and configuration.
@@ -249,7 +249,7 @@ paths:
   /Laptop:
     get:
       operationId: listLaptops
-      summary: List laptop clients
+      summary: Commvault List laptop clients
       description: >-
         Retrieves a list of all laptop clients enrolled for endpoint
         backup, including their protection status, last backup time,
@@ -273,7 +273,7 @@ paths:
   /V4/FileServers:
     get:
       operationId: listFileServers
-      summary: List file servers
+      summary: Commvault List file servers
       description: >-
         Retrieves a list of all file servers configured for protection,
         including NAS devices, Windows file servers, and Linux file
@@ -297,7 +297,7 @@ paths:
   /V4/DatabaseServers:
     get:
       operationId: listDatabaseServers
-      summary: List database servers
+      summary: Commvault List database servers
       description: >-
         Retrieves a list of all database servers configured for backup,
         including SQL Server, Oracle, SAP HANA, and other database
@@ -321,7 +321,7 @@ paths:
   /SLASummary:
     get:
       operationId: getSLASummary
-      summary: Get SLA compliance summary
+      summary: Commvault Get SLA compliance summary
       description: >-
         Retrieves the SLA compliance summary across all protected
         workloads, showing the percentage of clients meeting their
@@ -351,7 +351,7 @@ paths:
   /V4/Storage:
     get:
       operationId: listStoragePools
-      summary: List storage pools
+      summary: Commvault List storage pools
       description: >-
         Retrieves a list of all storage pools, including cloud storage,
         disk libraries, and tape libraries, with capacity and usage
@@ -375,7 +375,7 @@ paths:
   /V4/Storage/{storagePoolId}:
     get:
       operationId: getStoragePool
-      summary: Get storage pool details
+      summary: Commvault Get storage pool details
       description: >-
         Retrieves detailed information about a specific storage pool,
         including configuration, capacity metrics, and associated
@@ -398,7 +398,7 @@ paths:
   /Reports:
     get:
       operationId: listReports
-      summary: List available reports
+      summary: Commvault List available reports
       description: >-
         Retrieves a list of all available reports, including built-in
         and custom reports for backup, storage, compliance, and
@@ -422,7 +422,7 @@ paths:
   /Reports/{reportId}:
     get:
       operationId: getReport
-      summary: Get report data
+      summary: Commvault Get report data
       description: >-
         Executes a specific report and returns the report data,
         including charts, tables, and summary statistics.

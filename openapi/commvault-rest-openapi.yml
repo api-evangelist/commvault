@@ -50,7 +50,7 @@ paths:
   /Login:
     post:
       operationId: login
-      summary: Authenticate and obtain auth token
+      summary: Commvault Authenticate and obtain auth token
       description: >-
         Authenticates a user with username and password credentials and
         returns an authentication token (QSDK token) for subsequent API
@@ -88,7 +88,7 @@ paths:
   /Logout:
     post:
       operationId: logout
-      summary: Invalidate auth token
+      summary: Commvault Invalidate auth token
       description: >-
         Logs out the current user session and invalidates the
         authentication token.
@@ -100,7 +100,7 @@ paths:
   /Client:
     get:
       operationId: listClients
-      summary: List all clients
+      summary: Commvault List all clients
       description: >-
         Retrieves a list of all clients registered in the CommServe,
         including servers, workstations, laptop clients, and virtual
@@ -124,7 +124,7 @@ paths:
   /Client/{clientId}:
     get:
       operationId: getClient
-      summary: Get client details
+      summary: Commvault Get client details
       description: >-
         Retrieves detailed properties of a specific client including
         installed agents, network configuration, and activity control
@@ -151,7 +151,7 @@ paths:
           description: Client not found
     put:
       operationId: updateClient
-      summary: Update client properties
+      summary: Commvault Update client properties
       description: >-
         Updates properties of a specific client such as display name,
         activity control, or network settings.
@@ -180,7 +180,7 @@ paths:
           description: Client not found
     delete:
       operationId: deleteClient
-      summary: Retire or delete a client
+      summary: Commvault Retire or delete a client
       description: >-
         Retires or deletes a client from the CommServe. This removes the
         client configuration but may preserve backup data based on
@@ -203,7 +203,7 @@ paths:
   /Agent:
     get:
       operationId: listAgents
-      summary: List agents for a client
+      summary: Commvault List agents for a client
       description: >-
         Retrieves a list of all agents (iDataAgents) installed on a
         specific client. Agents represent the backup module for a
@@ -234,7 +234,7 @@ paths:
   /Subclient:
     get:
       operationId: listSubclients
-      summary: List subclients
+      summary: Commvault List subclients
       description: >-
         Retrieves a list of subclients for a given client and agent.
         Subclients define the specific content (files, databases, mailboxes)
@@ -271,7 +271,7 @@ paths:
   /Subclient/{subclientId}:
     get:
       operationId: getSubclient
-      summary: Get subclient details
+      summary: Commvault Get subclient details
       description: >-
         Retrieves detailed properties of a specific subclient, including
         content paths, filters, storage policy association, and schedule
@@ -299,7 +299,7 @@ paths:
   /Job:
     get:
       operationId: listJobs
-      summary: List jobs
+      summary: Commvault List jobs
       description: >-
         Retrieves a list of jobs with optional filtering by status, type,
         client, and time range. Returns both active and completed backup,
@@ -360,7 +360,7 @@ paths:
   /Job/{jobId}:
     get:
       operationId: getJob
-      summary: Get job details
+      summary: Commvault Get job details
       description: >-
         Retrieves detailed information about a specific job, including its
         status, progress, start and end times, data transferred, and any
@@ -388,7 +388,7 @@ paths:
   /Job/{jobId}/action/kill:
     post:
       operationId: killJob
-      summary: Kill a running job
+      summary: Commvault Kill a running job
       description: >-
         Terminates a currently running or pending job. The job will be
         marked as killed and any partial data may be retained.
@@ -410,7 +410,7 @@ paths:
   /Job/{jobId}/action/suspend:
     post:
       operationId: suspendJob
-      summary: Suspend a running job
+      summary: Commvault Suspend a running job
       description: >-
         Suspends a currently running job. The job can be resumed later
         from where it was paused.
@@ -432,7 +432,7 @@ paths:
   /Job/{jobId}/action/resume:
     post:
       operationId: resumeJob
-      summary: Resume a suspended job
+      summary: Commvault Resume a suspended job
       description: >-
         Resumes a previously suspended job from where it was paused.
       tags:
@@ -453,7 +453,7 @@ paths:
   /StoragePolicy:
     get:
       operationId: listStoragePolicies
-      summary: List storage policies
+      summary: Commvault List storage policies
       description: >-
         Retrieves a list of all storage policies configured in the
         CommServe. Storage policies define where backup data is stored
@@ -478,7 +478,7 @@ paths:
   /StoragePolicy/{storagePolicyId}:
     get:
       operationId: getStoragePolicy
-      summary: Get storage policy details
+      summary: Commvault Get storage policy details
       description: >-
         Retrieves detailed configuration of a specific storage policy,
         including its copies, retention rules, deduplication settings,
@@ -501,7 +501,7 @@ paths:
   /SchedulePolicy:
     get:
       operationId: listSchedulePolicies
-      summary: List schedule policies
+      summary: Commvault List schedule policies
       description: >-
         Retrieves a list of all schedule policies defined in the CommServe.
         Schedule policies automate backup, auxiliary copy, and other
@@ -525,7 +525,7 @@ paths:
   /AlertRule:
     get:
       operationId: listAlerts
-      summary: List alert rules
+      summary: Commvault List alert rules
       description: >-
         Retrieves a list of configured alert rules. Alerts notify
         administrators of important events such as job failures, storage
@@ -549,7 +549,7 @@ paths:
   /User:
     get:
       operationId: listUsers
-      summary: List users
+      summary: Commvault List users
       description: >-
         Retrieves a list of all Commvault users, including local and
         externally authenticated users, their roles, and associated
@@ -573,7 +573,7 @@ paths:
   /User/{userId}:
     get:
       operationId: getUser
-      summary: Get user details
+      summary: Commvault Get user details
       description: >-
         Retrieves detailed properties of a specific user, including
         associated security roles, user groups, and email configuration.
@@ -595,7 +595,7 @@ paths:
   /V4/ServerPlan:
     get:
       operationId: listPlans
-      summary: List server plans
+      summary: Commvault List server plans
       description: >-
         Retrieves a list of all server plans. Plans provide a simplified
         approach to data protection by combining storage, schedule,
@@ -618,7 +618,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createPlan
-      summary: Create a server plan
+      summary: Commvault Create a server plan
       description: >-
         Creates a new server plan with specified backup destinations,
         schedule, and retention settings.
@@ -644,7 +644,7 @@ paths:
   /V4/ServerPlan/{planId}:
     get:
       operationId: getPlan
-      summary: Get server plan details
+      summary: Commvault Get server plan details
       description: >-
         Retrieves the detailed configuration of a specific server plan,
         including its backup destinations, RPO schedules, and retention
@@ -666,7 +666,7 @@ paths:
           description: Plan not found
     put:
       operationId: updatePlan
-      summary: Update a server plan
+      summary: Commvault Update a server plan
       description: >-
         Updates the configuration of an existing server plan.
       tags:
@@ -694,7 +694,7 @@ paths:
           description: Plan not found
     delete:
       operationId: deletePlan
-      summary: Delete a server plan
+      summary: Commvault Delete a server plan
       description: >-
         Deletes an existing server plan. Plans that are associated with
         active subclients cannot be deleted.
@@ -716,7 +716,7 @@ paths:
   /CreateTask:
     post:
       operationId: createBackupTask
-      summary: Run a backup job
+      summary: Commvault Run a backup job
       description: >-
         Initiates a backup job for a specified subclient. Supports full,
         incremental, differential, and synthetic full backup levels.
@@ -748,7 +748,7 @@ paths:
   /retrieveToClient:
     post:
       operationId: createRestoreTask
-      summary: Run a restore job
+      summary: Commvault Run a restore job
       description: >-
         Initiates a restore operation to recover backed-up data to the
         original or an alternate location. Supports in-place restore,

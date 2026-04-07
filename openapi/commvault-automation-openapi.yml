@@ -38,7 +38,7 @@ paths:
   /Workflow:
     get:
       operationId: listWorkflows
-      summary: List all workflows
+      summary: Commvault List all workflows
       description: >-
         Retrieves a list of all workflows defined in the CommServe,
         including built-in and custom workflows. Workflows automate
@@ -63,7 +63,7 @@ paths:
   /Workflow/{workflowId}:
     get:
       operationId: getWorkflow
-      summary: Get workflow details
+      summary: Commvault Get workflow details
       description: >-
         Retrieves the detailed definition of a specific workflow,
         including its activities, inputs, conditions, and execution
@@ -85,7 +85,7 @@ paths:
           description: Workflow not found
     delete:
       operationId: deleteWorkflow
-      summary: Delete a workflow
+      summary: Commvault Delete a workflow
       description: >-
         Deletes a custom workflow from the CommServe. Built-in workflows
         cannot be deleted.
@@ -107,7 +107,7 @@ paths:
   /Workflow/{workflowName}/Action/Execute:
     post:
       operationId: executeWorkflow
-      summary: Execute a workflow
+      summary: Commvault Execute a workflow
       description: >-
         Triggers the execution of a workflow by name. Input parameters
         can be provided in the request body to customize the workflow
@@ -151,7 +151,7 @@ paths:
   /Workflow/Deploy:
     post:
       operationId: deployWorkflow
-      summary: Deploy a workflow definition
+      summary: Commvault Deploy a workflow definition
       description: >-
         Deploys a new workflow or updates an existing workflow definition
         in the CommServe. The workflow XML definition is provided in the
@@ -179,7 +179,7 @@ paths:
   /Task:
     get:
       operationId: listSchedules
-      summary: List all schedules
+      summary: Commvault List all schedules
       description: >-
         Retrieves a list of all scheduled tasks configured in the
         CommServe, including backup schedules, auxiliary copy schedules,
@@ -216,7 +216,7 @@ paths:
   /Task/{taskId}:
     get:
       operationId: getSchedule
-      summary: Get schedule details
+      summary: Commvault Get schedule details
       description: >-
         Retrieves detailed configuration of a specific scheduled task,
         including its schedule pattern, associated entities, and
@@ -238,7 +238,7 @@ paths:
           description: Scheduled task not found
     put:
       operationId: updateSchedule
-      summary: Update a schedule
+      summary: Commvault Update a schedule
       description: >-
         Updates the configuration of an existing scheduled task,
         including its schedule pattern, enabled state, and execution
@@ -268,7 +268,7 @@ paths:
           description: Scheduled task not found
     delete:
       operationId: deleteSchedule
-      summary: Delete a schedule
+      summary: Commvault Delete a schedule
       description: >-
         Deletes a scheduled task from the CommServe.
       tags:
@@ -289,7 +289,7 @@ paths:
   /Task/{taskId}/Action/Enable:
     post:
       operationId: enableSchedule
-      summary: Enable a schedule
+      summary: Commvault Enable a schedule
       description: Enables a previously disabled scheduled task.
       tags:
         - Schedules
@@ -309,7 +309,7 @@ paths:
   /Task/{taskId}/Action/Disable:
     post:
       operationId: disableSchedule
-      summary: Disable a schedule
+      summary: Commvault Disable a schedule
       description: >-
         Disables a scheduled task, preventing it from executing until
         re-enabled.
@@ -331,7 +331,7 @@ paths:
   /V4/CommcellGlobalFilter:
     get:
       operationId: getGlobalFilters
-      summary: Get global data protection filters
+      summary: Commvault Get global data protection filters
       description: >-
         Retrieves the global exclusion filters applied to all backup
         operations, such as temporary file patterns, operating system
@@ -361,7 +361,7 @@ paths:
           description: Unauthorized
     put:
       operationId: updateGlobalFilters
-      summary: Update global data protection filters
+      summary: Commvault Update global data protection filters
       description: Updates the global exclusion filters for backup operations.
       tags:
         - Policies
@@ -397,7 +397,7 @@ paths:
   /QCommand/qoperation:
     post:
       operationId: executeQCommand
-      summary: Execute a qcommand operation
+      summary: Commvault Execute a qcommand operation
       description: >-
         Executes an arbitrary Commvault command-line (qcommand)
         operation through the REST API. This provides programmatic
@@ -425,7 +425,7 @@ paths:
   /Script:
     get:
       operationId: listScripts
-      summary: List automation scripts
+      summary: Commvault List automation scripts
       description: >-
         Retrieves a list of all automation scripts registered in the
         CommServe, including pre/post backup scripts and custom
@@ -449,7 +449,7 @@ paths:
   /Script/{scriptId}:
     get:
       operationId: getScript
-      summary: Get script details
+      summary: Commvault Get script details
       description: >-
         Retrieves the details of a specific automation script, including
         its content, associated triggers, and execution history.
@@ -471,7 +471,7 @@ paths:
   /Script/{scriptId}/Action/Execute:
     post:
       operationId: executeScript
-      summary: Execute an automation script
+      summary: Commvault Execute an automation script
       description: >-
         Triggers the execution of an automation script with optional
         input parameters.
