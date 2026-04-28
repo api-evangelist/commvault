@@ -1,0 +1,159 @@
+# Naftiko capabilities profile for Commvault.
+# Capabilities map verbs against the Commvault REST API and Command Center
+# operations exposed at https://webserver.commvault.com/webconsole/api.
+# Each capability links back to the canonical OpenAPI definitions in this repo.
+provider: commvault
+name: Commvault
+description: >-
+  Commvault is a data protection, backup, and cyber recovery platform.
+  These capabilities cover authenticating to the CommServe, managing
+  clients and subclients, triggering backup and restore jobs, and
+  inspecting job status and reporting.
+capabilities:
+  - id: commvault.auth.login
+    name: Authenticate
+    description: Authenticate to the CommServe and obtain a QSDK token.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Login/post
+    inputs:
+      - username
+      - password
+    outputs:
+      - token
+      - userGUID
+
+  - id: commvault.auth.logout
+    name: Logout
+    description: Invalidate the active authentication token.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Logout/post
+    inputs: []
+    outputs:
+      - status
+
+  - id: commvault.clients.list
+    name: List clients
+    description: Retrieve all clients registered in the CommServe.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Client/get
+    inputs: []
+    outputs:
+      - clientProperties
+
+  - id: commvault.clients.get
+    name: Get client
+    description: Retrieve the properties of a specific client.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Client~1{clientId}/get
+    inputs:
+      - clientId
+    outputs:
+      - clientProperties
+
+  - id: commvault.clients.update
+    name: Update client
+    description: Update the properties of an existing client.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Client~1{clientId}/put
+    inputs:
+      - clientId
+      - clientProperties
+    outputs:
+      - response
+
+  - id: commvault.clients.delete
+    name: Retire client
+    description: Retire or delete a client from the CommServe.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Client~1{clientId}/delete
+    inputs:
+      - clientId
+    outputs:
+      - response
+
+  - id: commvault.agents.list
+    name: List agents
+    description: List all installed iDataAgents on a client.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Agent/get
+    inputs:
+      - clientId
+    outputs:
+      - agentProperties
+
+  - id: commvault.subclients.list
+    name: List subclients
+    description: List subclients for a client and agent.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Subclient/get
+    inputs:
+      - clientId
+      - applicationId
+    outputs:
+      - subClientProperties
+
+  - id: commvault.backup.run
+    name: Trigger backup
+    description: Trigger a backup job for a subclient.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Subclient~1{subclientId}~1action~1backup/post
+    inputs:
+      - subclientId
+      - backupLevel
+    outputs:
+      - jobId
+      - taskId
+
+  - id: commvault.restore.run
+    name: Trigger restore
+    description: Trigger a restore job for a subclient.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Subclient~1{subclientId}~1action~1restore/post
+    inputs:
+      - subclientId
+      - destinationPath
+      - destinationClient
+    outputs:
+      - jobId
+      - taskId
+
+  - id: commvault.jobs.list
+    name: List jobs
+    description: List backup, restore, and admin jobs in the CommServe.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Job/get
+    inputs:
+      - jobFilter
+      - clientId
+    outputs:
+      - jobs
+
+  - id: commvault.jobs.get
+    name: Get job
+    description: Retrieve detailed status for a specific job.
+    api: commvault:rest-api
+    operationRef: openapi/commvault-rest-openapi.yml#/paths/~1Job~1{jobId}/get
+    inputs:
+      - jobId
+    outputs:
+      - jobs
+
+  - id: commvault.commandcenter.dashboard
+    name: Get Command Center dashboard
+    description: Retrieve aggregated dashboard data from the Command Center.
+    api: commvault:command-center-api
+    operationRef: openapi/commvault-command-center-openapi.yml#/paths/~1Dashboard/get
+    inputs: []
+    outputs:
+      - dashboard
+
+  - id: commvault.automation.workflow.run
+    name: Run automation workflow
+    description: Execute a Commvault Workflow used for orchestration.
+    api: commvault:automation-api
+    operationRef: openapi/commvault-automation-openapi.yml#/paths/~1wapi~1{workflowName}/post
+    inputs:
+      - workflowName
+      - inputs
+    outputs:
+      - jobId
