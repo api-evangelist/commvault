@@ -23,7 +23,7 @@ tags:
 created: '2025-01-20'
 modified: '2026-04-28'
 specificationVersion: '0.19'
-x-type: company
+kind: company
 apis:
   - aid: commvault:rest-api
     name: Commvault REST API
@@ -51,7 +51,7 @@ apis:
         url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
       - type: Postman Collection
         url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
-      - type: API Reference
+      - type: APIReference
         url: https://api.commvault.com/swagger/
       - type: OpenAPI
         url: openapi/commvault-rest-openapi.yml
@@ -102,7 +102,7 @@ apis:
     properties:
       - type: Documentation
         url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
-      - type: API Reference
+      - type: APIReference
         url: https://api.commvault.com/
       - type: OpenAPI
         url: openapi/commvault-command-center-openapi.yml
@@ -167,17 +167,17 @@ common:
     url: https://www.commvault.com/support
   - type: Login
     url: https://login.commvault.com/
-  - type: Status
+  - type: StatusPage
     url: https://status.commvault.com/
   - type: Blog
     url: https://www.commvault.com/blogs
   - type: Contact
     url: https://www.commvault.com/contact-us
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.commvault.com/privacy-policy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.commvault.com/terms-of-use
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/commvault-context.jsonld
   - type: JSONSchema
     url: json-schema/commvault-backup-job-schema.json
