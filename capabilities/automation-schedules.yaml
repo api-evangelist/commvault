@@ -1,0 +1,237 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault Automation API — Schedules
+  description: 'Commvault Automation API — Schedules. 6 operations. Lead operation: Commvault List all schedules. Self-contained
+    Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Schedules
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: automation-schedules
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault Automation API — Schedules business capability. Self-contained, no shared references.
+    resources:
+    - name: Task
+      path: /Task
+      operations:
+      - name: listschedules
+        method: GET
+        description: Commvault List all schedules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: taskType
+          in: query
+          type: string
+          description: Filter by task type
+    - name: Task-taskId
+      path: /Task/{taskId}
+      operations:
+      - name: getschedule
+        method: GET
+        description: Commvault Get schedule details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateschedule
+        method: PUT
+        description: Commvault Update a schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteschedule
+        method: DELETE
+        description: Commvault Delete a schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Task-taskId-Action-Disable
+      path: /Task/{taskId}/Action/Disable
+      operations:
+      - name: disableschedule
+        method: POST
+        description: Commvault Disable a schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Task-taskId-Action-Enable
+      path: /Task/{taskId}/Action/Enable
+      operations:
+      - name: enableschedule
+        method: POST
+        description: Commvault Enable a schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: automation-schedules-rest
+    port: 8080
+    description: REST adapter for Commvault Automation API — Schedules. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/task
+      name: task
+      description: REST surface for Task.
+      operations:
+      - method: GET
+        name: listschedules
+        description: Commvault List all schedules
+        call: automation-schedules.listschedules
+        with:
+          taskType: rest.taskType
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/task/{taskid}
+      name: task-taskid
+      description: REST surface for Task-taskId.
+      operations:
+      - method: GET
+        name: getschedule
+        description: Commvault Get schedule details
+        call: automation-schedules.getschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateschedule
+        description: Commvault Update a schedule
+        call: automation-schedules.updateschedule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteschedule
+        description: Commvault Delete a schedule
+        call: automation-schedules.deleteschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/task/{taskid}/action/disable
+      name: task-taskid-action-disable
+      description: REST surface for Task-taskId-Action-Disable.
+      operations:
+      - method: POST
+        name: disableschedule
+        description: Commvault Disable a schedule
+        call: automation-schedules.disableschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/task/{taskid}/action/enable
+      name: task-taskid-action-enable
+      description: REST surface for Task-taskId-Action-Enable.
+      operations:
+      - method: POST
+        name: enableschedule
+        description: Commvault Enable a schedule
+        call: automation-schedules.enableschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: automation-schedules-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault Automation API — Schedules. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-list-all-schedules
+      description: Commvault List all schedules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: automation-schedules.listschedules
+      with:
+        taskType: tools.taskType
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-get-schedule-details
+      description: Commvault Get schedule details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: automation-schedules.getschedule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-update-schedule
+      description: Commvault Update a schedule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: automation-schedules.updateschedule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-delete-schedule
+      description: Commvault Delete a schedule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: automation-schedules.deleteschedule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-disable-schedule
+      description: Commvault Disable a schedule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: automation-schedules.disableschedule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-enable-schedule
+      description: Commvault Enable a schedule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: automation-schedules.enableschedule
+      outputParameters:
+      - type: object
+        mapping: $.

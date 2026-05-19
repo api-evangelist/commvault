@@ -1,0 +1,146 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault Automation API — Scripts
+  description: 'Commvault Automation API — Scripts. 3 operations. Lead operation: Commvault List automation scripts. Self-contained
+    Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Scripts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: automation-scripts
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault Automation API — Scripts business capability. Self-contained, no shared references.
+    resources:
+    - name: Script
+      path: /Script
+      operations:
+      - name: listscripts
+        method: GET
+        description: Commvault List automation scripts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Script-scriptId
+      path: /Script/{scriptId}
+      operations:
+      - name: getscript
+        method: GET
+        description: Commvault Get script details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Script-scriptId-Action-Execute
+      path: /Script/{scriptId}/Action/Execute
+      operations:
+      - name: executescript
+        method: POST
+        description: Commvault Execute an automation script
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: automation-scripts-rest
+    port: 8080
+    description: REST adapter for Commvault Automation API — Scripts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/script
+      name: script
+      description: REST surface for Script.
+      operations:
+      - method: GET
+        name: listscripts
+        description: Commvault List automation scripts
+        call: automation-scripts.listscripts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/script/{scriptid}
+      name: script-scriptid
+      description: REST surface for Script-scriptId.
+      operations:
+      - method: GET
+        name: getscript
+        description: Commvault Get script details
+        call: automation-scripts.getscript
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/script/{scriptid}/action/execute
+      name: script-scriptid-action-execute
+      description: REST surface for Script-scriptId-Action-Execute.
+      operations:
+      - method: POST
+        name: executescript
+        description: Commvault Execute an automation script
+        call: automation-scripts.executescript
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: automation-scripts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault Automation API — Scripts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-list-automation-scripts
+      description: Commvault List automation scripts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: automation-scripts.listscripts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-get-script-details
+      description: Commvault Get script details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: automation-scripts.getscript
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-execute-automation-script
+      description: Commvault Execute an automation script
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: automation-scripts.executescript
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault REST API — Storage Policies
+  description: 'Commvault REST API — Storage Policies. 2 operations. Lead operation: Commvault List storage policies. Self-contained
+    Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Storage Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-storage-policies
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault REST API — Storage Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: StoragePolicy
+      path: /StoragePolicy
+      operations:
+      - name: liststoragepolicies
+        method: GET
+        description: Commvault List storage policies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: StoragePolicy-storagePolicyId
+      path: /StoragePolicy/{storagePolicyId}
+      operations:
+      - name: getstoragepolicy
+        method: GET
+        description: Commvault Get storage policy details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-storage-policies-rest
+    port: 8080
+    description: REST adapter for Commvault REST API — Storage Policies. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/storagepolicy
+      name: storagepolicy
+      description: REST surface for StoragePolicy.
+      operations:
+      - method: GET
+        name: liststoragepolicies
+        description: Commvault List storage policies
+        call: rest-storage-policies.liststoragepolicies
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/storagepolicy/{storagepolicyid}
+      name: storagepolicy-storagepolicyid
+      description: REST surface for StoragePolicy-storagePolicyId.
+      operations:
+      - method: GET
+        name: getstoragepolicy
+        description: Commvault Get storage policy details
+        call: rest-storage-policies.getstoragepolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-storage-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault REST API — Storage Policies. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-list-storage-policies
+      description: Commvault List storage policies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-storage-policies.liststoragepolicies
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-get-storage-policy-details
+      description: Commvault Get storage policy details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-storage-policies.getstoragepolicy
+      outputParameters:
+      - type: object
+        mapping: $.

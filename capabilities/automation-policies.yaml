@@ -1,0 +1,107 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault Automation API — Policies
+  description: 'Commvault Automation API — Policies. 2 operations. Lead operation: Commvault Get global data protection filters.
+    Self-contained Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Policies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: automation-policies
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault Automation API — Policies business capability. Self-contained, no shared references.
+    resources:
+    - name: V4-CommcellGlobalFilter
+      path: /V4/CommcellGlobalFilter
+      operations:
+      - name: getglobalfilters
+        method: GET
+        description: Commvault Get global data protection filters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateglobalfilters
+        method: PUT
+        description: Commvault Update global data protection filters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: automation-policies-rest
+    port: 8080
+    description: REST adapter for Commvault Automation API — Policies. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v4/commcellglobalfilter
+      name: v4-commcellglobalfilter
+      description: REST surface for V4-CommcellGlobalFilter.
+      operations:
+      - method: GET
+        name: getglobalfilters
+        description: Commvault Get global data protection filters
+        call: automation-policies.getglobalfilters
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateglobalfilters
+        description: Commvault Update global data protection filters
+        call: automation-policies.updateglobalfilters
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: automation-policies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault Automation API — Policies. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-get-global-data-protection
+      description: Commvault Get global data protection filters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: automation-policies.getglobalfilters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-update-global-data-protection
+      description: Commvault Update global data protection filters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: automation-policies.updateglobalfilters
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

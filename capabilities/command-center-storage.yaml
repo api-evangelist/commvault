@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault Command Center API — Storage
+  description: 'Commvault Command Center API — Storage. 2 operations. Lead operation: Commvault List storage pools. Self-contained
+    Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Storage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: command-center-storage
+    baseUri: https://{commandcenter}/commandcenter/api
+    description: Commvault Command Center API — Storage business capability. Self-contained, no shared references.
+    resources:
+    - name: V4-Storage
+      path: /V4/Storage
+      operations:
+      - name: liststoragepools
+        method: GET
+        description: Commvault List storage pools
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: V4-Storage-storagePoolId
+      path: /V4/Storage/{storagePoolId}
+      operations:
+      - name: getstoragepool
+        method: GET
+        description: Commvault Get storage pool details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: command-center-storage-rest
+    port: 8080
+    description: REST adapter for Commvault Command Center API — Storage. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v4/storage
+      name: v4-storage
+      description: REST surface for V4-Storage.
+      operations:
+      - method: GET
+        name: liststoragepools
+        description: Commvault List storage pools
+        call: command-center-storage.liststoragepools
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v4/storage/{storagepoolid}
+      name: v4-storage-storagepoolid
+      description: REST surface for V4-Storage-storagePoolId.
+      operations:
+      - method: GET
+        name: getstoragepool
+        description: Commvault Get storage pool details
+        call: command-center-storage.getstoragepool
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: command-center-storage-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault Command Center API — Storage. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-list-storage-pools
+      description: Commvault List storage pools
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: command-center-storage.liststoragepools
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-get-storage-pool-details
+      description: Commvault Get storage pool details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: command-center-storage.getstoragepool
+      outputParameters:
+      - type: object
+        mapping: $.

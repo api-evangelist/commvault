@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault Command Center API — File Servers
+  description: 'Commvault Command Center API — File Servers. 1 operations. Lead operation: Commvault List file servers. Self-contained
+    Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - File Servers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: command-center-file-servers
+    baseUri: https://{commandcenter}/commandcenter/api
+    description: Commvault Command Center API — File Servers business capability. Self-contained, no shared references.
+    resources:
+    - name: V4-FileServers
+      path: /V4/FileServers
+      operations:
+      - name: listfileservers
+        method: GET
+        description: Commvault List file servers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: command-center-file-servers-rest
+    port: 8080
+    description: REST adapter for Commvault Command Center API — File Servers. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v4/fileservers
+      name: v4-fileservers
+      description: REST surface for V4-FileServers.
+      operations:
+      - method: GET
+        name: listfileservers
+        description: Commvault List file servers
+        call: command-center-file-servers.listfileservers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: command-center-file-servers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault Command Center API — File Servers. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: commvault-list-file-servers
+      description: Commvault List file servers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: command-center-file-servers.listfileservers
+      outputParameters:
+      - type: object
+        mapping: $.

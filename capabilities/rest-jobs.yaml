@@ -1,0 +1,311 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault REST API — Jobs
+  description: 'Commvault REST API — Jobs. 7 operations. Lead operation: Commvault Run a backup job. Self-contained Naftiko
+    capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Jobs
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-jobs
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault REST API — Jobs business capability. Self-contained, no shared references.
+    resources:
+    - name: CreateTask
+      path: /CreateTask
+      operations:
+      - name: createbackuptask
+        method: POST
+        description: Commvault Run a backup job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Job
+      path: /Job
+      operations:
+      - name: listjobs
+        method: GET
+        description: Commvault List jobs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: clientId
+          in: query
+          type: integer
+          description: Filter jobs by client ID
+        - name: jobFilter
+          in: query
+          type: string
+          description: Filter by job status (e.g., Running, Completed, Failed)
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of jobs to return
+        - name: lookupTime
+          in: query
+          type: integer
+          description: Time range in hours to look back for jobs
+    - name: Job-jobId
+      path: /Job/{jobId}
+      operations:
+      - name: getjob
+        method: GET
+        description: Commvault Get job details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Job-jobId-action-kill
+      path: /Job/{jobId}/action/kill
+      operations:
+      - name: killjob
+        method: POST
+        description: Commvault Kill a running job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Job-jobId-action-resume
+      path: /Job/{jobId}/action/resume
+      operations:
+      - name: resumejob
+        method: POST
+        description: Commvault Resume a suspended job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: Job-jobId-action-suspend
+      path: /Job/{jobId}/action/suspend
+      operations:
+      - name: suspendjob
+        method: POST
+        description: Commvault Suspend a running job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: retrieveToClient
+      path: /retrieveToClient
+      operations:
+      - name: createrestoretask
+        method: POST
+        description: Commvault Run a restore job
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-jobs-rest
+    port: 8080
+    description: REST adapter for Commvault REST API — Jobs. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/createtask
+      name: createtask
+      description: REST surface for CreateTask.
+      operations:
+      - method: POST
+        name: createbackuptask
+        description: Commvault Run a backup job
+        call: rest-jobs.createbackuptask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job
+      name: job
+      description: REST surface for Job.
+      operations:
+      - method: GET
+        name: listjobs
+        description: Commvault List jobs
+        call: rest-jobs.listjobs
+        with:
+          clientId: rest.clientId
+          jobFilter: rest.jobFilter
+          limit: rest.limit
+          lookupTime: rest.lookupTime
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{jobid}
+      name: job-jobid
+      description: REST surface for Job-jobId.
+      operations:
+      - method: GET
+        name: getjob
+        description: Commvault Get job details
+        call: rest-jobs.getjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{jobid}/action/kill
+      name: job-jobid-action-kill
+      description: REST surface for Job-jobId-action-kill.
+      operations:
+      - method: POST
+        name: killjob
+        description: Commvault Kill a running job
+        call: rest-jobs.killjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{jobid}/action/resume
+      name: job-jobid-action-resume
+      description: REST surface for Job-jobId-action-resume.
+      operations:
+      - method: POST
+        name: resumejob
+        description: Commvault Resume a suspended job
+        call: rest-jobs.resumejob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/job/{jobid}/action/suspend
+      name: job-jobid-action-suspend
+      description: REST surface for Job-jobId-action-suspend.
+      operations:
+      - method: POST
+        name: suspendjob
+        description: Commvault Suspend a running job
+        call: rest-jobs.suspendjob
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/retrievetoclient
+      name: retrievetoclient
+      description: REST surface for retrieveToClient.
+      operations:
+      - method: POST
+        name: createrestoretask
+        description: Commvault Run a restore job
+        call: rest-jobs.createrestoretask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-jobs-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault REST API — Jobs. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: commvault-run-backup-job
+      description: Commvault Run a backup job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jobs.createbackuptask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-list-jobs
+      description: Commvault List jobs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.listjobs
+      with:
+        clientId: tools.clientId
+        jobFilter: tools.jobFilter
+        limit: tools.limit
+        lookupTime: tools.lookupTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-get-job-details
+      description: Commvault Get job details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-jobs.getjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-kill-running-job
+      description: Commvault Kill a running job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jobs.killjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-resume-suspended-job
+      description: Commvault Resume a suspended job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jobs.resumejob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-suspend-running-job
+      description: Commvault Suspend a running job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jobs.suspendjob
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-run-restore-job
+      description: Commvault Run a restore job
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-jobs.createrestoretask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

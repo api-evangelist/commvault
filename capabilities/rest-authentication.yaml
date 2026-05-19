@@ -1,0 +1,114 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Commvault REST API — Authentication
+  description: 'Commvault REST API — Authentication. 2 operations. Lead operation: Commvault Authenticate and obtain auth
+    token. Self-contained Naftiko capability covering one Commvault business surface.'
+  tags:
+  - Commvault
+  - Authentication
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    COMMVAULT_API_KEY: COMMVAULT_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-authentication
+    baseUri: https://{webserver}/webconsole/api
+    description: Commvault REST API — Authentication business capability. Self-contained, no shared references.
+    resources:
+    - name: Login
+      path: /Login
+      operations:
+      - name: login
+        method: POST
+        description: Commvault Authenticate and obtain auth token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: Logout
+      path: /Logout
+      operations:
+      - name: logout
+        method: POST
+        description: Commvault Invalidate auth token
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: Authtoken
+      value: '{{env.COMMVAULT_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-authentication-rest
+    port: 8080
+    description: REST adapter for Commvault REST API — Authentication. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/login
+      name: login
+      description: REST surface for Login.
+      operations:
+      - method: POST
+        name: login
+        description: Commvault Authenticate and obtain auth token
+        call: rest-authentication.login
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/logout
+      name: logout
+      description: REST surface for Logout.
+      operations:
+      - method: POST
+        name: logout
+        description: Commvault Invalidate auth token
+        call: rest-authentication.logout
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-authentication-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Commvault REST API — Authentication. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: commvault-authenticate-and-obtain-auth
+      description: Commvault Authenticate and obtain auth token
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-authentication.login
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commvault-invalidate-auth-token
+      description: Commvault Invalidate auth token
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rest-authentication.logout
+      outputParameters:
+      - type: object
+        mapping: $.
