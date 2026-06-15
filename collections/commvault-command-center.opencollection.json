@@ -1,0 +1,350 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Command Center API",
+    "version": "v4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Get dashboard summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/Dashboard"
+          },
+          "docs": "Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Server Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List server groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/ServerGroup"
+          },
+          "docs": "Retrieves a list of all server groups. Server groups organize clients into logical collections for bulk management, policy assignment, and reporting."
+        },
+        {
+          "info": {
+            "name": "Commvault Create a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{commandcenter}/commandcenter/api/V4/ServerGroup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new server group for organizing clients."
+        },
+        {
+          "info": {
+            "name": "Commvault Get server group details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a server group, including associated clients and applied policies."
+        },
+        {
+          "info": {
+            "name": "Commvault Update a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{commandcenter}/commandcenter/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing server group configuration, including associated clients and policies."
+        },
+        {
+          "info": {
+            "name": "Commvault Delete a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{commandcenter}/commandcenter/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ]
+          },
+          "docs": "Deletes a server group by its unique identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Virtual Machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/VM",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by protection status"
+              },
+              {
+                "name": "hypervisorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by hypervisor client ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all virtual machines registered for protection, including their backup status, hypervisor association, and SLA compliance."
+        },
+        {
+          "info": {
+            "name": "Commvault Get virtual machine details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/VM/:vmUUID",
+            "params": [
+              {
+                "name": "vmUUID",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the virtual machine"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific virtual machine, including backup history, recovery points, and configuration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Laptops",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List laptop clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/Laptop"
+          },
+          "docs": "Retrieves a list of all laptop clients enrolled for endpoint backup, including their protection status, last backup time, and data usage."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "File Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List file servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/FileServers"
+          },
+          "docs": "Retrieves a list of all file servers configured for protection, including NAS devices, Windows file servers, and Linux file servers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List database servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/DatabaseServers"
+          },
+          "docs": "Retrieves a list of all database servers configured for backup, including SQL Server, Oracle, SAP HANA, and other database platforms."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SLA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Get SLA compliance summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/SLASummary",
+            "params": [
+              {
+                "name": "timeRange",
+                "value": "",
+                "type": "query",
+                "description": "Time range for SLA calculation"
+              }
+            ]
+          },
+          "docs": "Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List storage pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/Storage"
+          },
+          "docs": "Retrieves a list of all storage pools, including cloud storage, disk libraries, and tape libraries, with capacity and usage information."
+        },
+        {
+          "info": {
+            "name": "Commvault Get storage pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/V4/Storage/:storagePoolId",
+            "params": [
+              {
+                "name": "storagePoolId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the storage pool"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific storage pool, including configuration, capacity metrics, and associated media agents."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List available reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/Reports"
+          },
+          "docs": "Retrieves a list of all available reports, including built-in and custom reports for backup, storage, compliance, and operational analytics."
+        },
+        {
+          "info": {
+            "name": "Commvault Get report data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{commandcenter}/commandcenter/api/Reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the report"
+              },
+              {
+                "name": "timeRange",
+                "value": "",
+                "type": "query",
+                "description": "Time range for the report"
+              }
+            ]
+          },
+          "docs": "Executes a specific report and returns the report data, including charts, tables, and summary statistics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

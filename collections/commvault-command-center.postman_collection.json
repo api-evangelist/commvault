@@ -1,0 +1,3107 @@
+{
+  "item": [
+    {
+      "id": "1cfcb3ff-75df-4f1e-bc83-b20e808e2377",
+      "name": "Dashboard",
+      "description": {
+        "content": "Dashboard summary and health monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a56d5f4-bb03-4c83-9902-5c62121c9405",
+          "name": "Commvault Get dashboard summary",
+          "request": {
+            "name": "Commvault Get dashboard summary",
+            "description": {
+              "content": "Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Dashboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d41621af-36a7-4aae-b5bf-7e10300d3f2e",
+              "name": "Dashboard summary data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sla\": {\n    \"percentCompliant\": 532.5513505503832,\n    \"totalProtected\": 9165,\n    \"totalNotProtected\": 730\n  },\n  \"jobs\": {\n    \"running\": 1176,\n    \"completed\": 1280,\n    \"failed\": 1875,\n    \"pending\": 8288\n  },\n  \"storage\": {\n    \"totalCapacityGB\": 4162.352816278841,\n    \"usedCapacityGB\": 9667.825445381917,\n    \"freeCapacityGB\": 7812.329065420969,\n    \"deduplicationRatio\": 8478.915696974225\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31086724-a069-4388-abc3-f8d03f1b34e7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "afdf6048-5a0a-4070-a149-2fbdc9320d9e",
+      "name": "Databases",
+      "description": {
+        "content": "Manage database protection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d44bbd62-9ae1-4501-8326-b7a1cae6dc00",
+          "name": "Commvault List database servers",
+          "request": {
+            "name": "Commvault List database servers",
+            "description": {
+              "content": "Retrieves a list of all database servers configured for backup, including SQL Server, Oracle, SAP HANA, and other database platforms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "DatabaseServers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd23aa5c-58ee-4b23-a497-a12187cddd47",
+              "name": "List of database servers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "DatabaseServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"databaseServers\": [\n    {\n      \"clientId\": 9351,\n      \"clientName\": \"string\",\n      \"databaseType\": \"SAP_HANA\",\n      \"instanceName\": \"string\",\n      \"protectionStatus\": \"string\",\n      \"lastBackupTime\": 4606\n    },\n    {\n      \"clientId\": 7342,\n      \"clientName\": \"string\",\n      \"databaseType\": \"MySQL\",\n      \"instanceName\": \"string\",\n      \"protectionStatus\": \"string\",\n      \"lastBackupTime\": 7035\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f19b4d7-c1de-4d15-a5ca-d21d14db09e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "DatabaseServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "db1dd3dc-2c2a-41cd-809d-721a0a5a4fda",
+      "name": "File Servers",
+      "description": {
+        "content": "Manage file server protection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad30b6bf-60d4-45c6-b3d1-80cc43e9b978",
+          "name": "Commvault List file servers",
+          "request": {
+            "name": "Commvault List file servers",
+            "description": {
+              "content": "Retrieves a list of all file servers configured for protection, including NAS devices, Windows file servers, and Linux file servers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "FileServers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0421bbb4-53bc-4833-bb2b-4d1a158b80ba",
+              "name": "List of file servers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "FileServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"fileServers\": [\n    {\n      \"clientId\": 3418,\n      \"clientName\": \"string\",\n      \"serverType\": \"Isilon\",\n      \"protectionStatus\": \"string\",\n      \"planName\": \"string\"\n    },\n    {\n      \"clientId\": 6823,\n      \"clientName\": \"string\",\n      \"serverType\": \"NetApp\",\n      \"protectionStatus\": \"string\",\n      \"planName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a155aff9-42f8-47d5-a1ce-fbab37261c21",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "FileServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5ae31b5d-b128-46ac-bbb8-c24e8c275f89",
+      "name": "Laptops",
+      "description": {
+        "content": "Manage laptop backup operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1f21a200-22ea-4ade-9fe0-5dafe219e366",
+          "name": "Commvault List laptop clients",
+          "request": {
+            "name": "Commvault List laptop clients",
+            "description": {
+              "content": "Retrieves a list of all laptop clients enrolled for endpoint backup, including their protection status, last backup time, and data usage.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Laptop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d871b515-86c4-44b4-93bb-9b59c05d0c30",
+              "name": "List of laptop clients",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Laptop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"laptopList\": [\n    {\n      \"clientId\": 8172,\n      \"clientName\": \"string\",\n      \"userName\": \"string\",\n      \"osType\": \"Windows\",\n      \"backupStatus\": \"string\",\n      \"lastBackupTime\": 8535,\n      \"dataBackedUpGB\": 1728.402915039925\n    },\n    {\n      \"clientId\": 6906,\n      \"clientName\": \"string\",\n      \"userName\": \"string\",\n      \"osType\": \"Windows\",\n      \"backupStatus\": \"string\",\n      \"lastBackupTime\": 1004,\n      \"dataBackedUpGB\": 8298.75581532934\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "649e21d1-0924-4863-bf68-a90c9b709c8d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Laptop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7a67371b-86ad-4a93-9119-8afb83085780",
+      "name": "Reports",
+      "description": {
+        "content": "Reporting and analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "358984f0-a2f9-499e-8682-2ff82abf0ed1",
+          "name": "Commvault List available reports",
+          "request": {
+            "name": "Commvault List available reports",
+            "description": {
+              "content": "Retrieves a list of all available reports, including built-in and custom reports for backup, storage, compliance, and operational analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d0922abf-2fd7-4469-ae81-52a682de5a58",
+              "name": "List of reports",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reports\": [\n    {\n      \"reportId\": 3825,\n      \"reportName\": \"string\",\n      \"reportCategory\": \"Backup\",\n      \"description\": \"string\"\n    },\n    {\n      \"reportId\": 5625,\n      \"reportName\": \"string\",\n      \"reportCategory\": \"Backup\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "655459b2-1922-4e78-9a63-5a9209a611b5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e56e08d8-3986-4655-92c3-7a273c1fef26",
+          "name": "Commvault Get report data",
+          "request": {
+            "name": "Commvault Get report data",
+            "description": {
+              "content": "Executes a specific report and returns the report data, including charts, tables, and summary statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Reports",
+                ":reportId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRange",
+                  "value": "<string>",
+                  "description": "Time range for the report"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportId",
+                  "description": "(Required) Unique identifier for the report"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4b5df1b-3cd9-41d6-9bc1-0782a1c40b76",
+              "name": "Report data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportId\": 7862,\n  \"reportName\": \"string\",\n  \"reportCategory\": \"Operational\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6535d1e6-1fe3-4309-b726-57e52abd00e0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dcab96dc-aead-4594-a6d1-9b827b13aa0b",
+              "name": "Report not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "64ef6b48-fd7b-4f87-9ba8-20bd7f4e798b",
+      "name": "Server Groups",
+      "description": {
+        "content": "Manage server groups for organizing protected infrastructure",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe2ecd33-4661-4ada-a0b5-2415887f1879",
+          "name": "Commvault List server groups",
+          "request": {
+            "name": "Commvault List server groups",
+            "description": {
+              "content": "Retrieves a list of all server groups. Server groups organize clients into logical collections for bulk management, policy assignment, and reporting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "ServerGroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b736005f-6c3e-449f-8396-1a3298045739",
+              "name": "List of server groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serverGroups\": [\n    {\n      \"serverGroupId\": 8433,\n      \"serverGroupName\": \"string\",\n      \"description\": \"string\",\n      \"associatedClients\": [\n        {\n          \"clientId\": 2481,\n          \"clientName\": \"string\"\n        },\n        {\n          \"clientId\": 1048,\n          \"clientName\": \"string\"\n        }\n      ],\n      \"planName\": \"string\"\n    },\n    {\n      \"serverGroupId\": 1388,\n      \"serverGroupName\": \"string\",\n      \"description\": \"string\",\n      \"associatedClients\": [\n        {\n          \"clientId\": 1070,\n          \"clientName\": \"string\"\n        },\n        {\n          \"clientId\": 6250,\n          \"clientName\": \"string\"\n        }\n      ],\n      \"planName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3ba16ad-dd64-45cc-bf93-540197b4eaf1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2273567-0f56-4e57-bb9f-94bb51e66651",
+          "name": "Commvault Create a server group",
+          "request": {
+            "name": "Commvault Create a server group",
+            "description": {
+              "content": "Creates a new server group for organizing clients.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "ServerGroup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9bac061-73a8-4a9f-991b-4fa5a45eecde",
+              "name": "Server group created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 1789,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4775b1c-b48d-416a-9b4d-52324446df33",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "84f48656-93b0-44fb-b8f9-e58b2d88b1c7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e6cfca4-2aa2-4d19-8419-46c9b6bc05fc",
+          "name": "Commvault Get server group details",
+          "request": {
+            "name": "Commvault Get server group details",
+            "description": {
+              "content": "Retrieves detailed information about a server group, including associated clients and applied policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "ServerGroup",
+                ":serverGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "serverGroupId",
+                  "description": "(Required) Unique identifier for the server group"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd6c3595-33ef-4ea2-998e-556ba846a616",
+              "name": "Server group details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"serverGroupId\": 8691,\n  \"serverGroupName\": \"string\",\n  \"description\": \"string\",\n  \"associatedClients\": [\n    {\n      \"clientId\": 9297,\n      \"clientName\": \"string\"\n    },\n    {\n      \"clientId\": 8417,\n      \"clientName\": \"string\"\n    }\n  ],\n  \"planName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed90e8ae-5e95-44de-be40-a6890a455c92",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "23c674f7-94cd-423a-8c89-5c4f3dbeacab",
+              "name": "Server group not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ab5e470-a063-4f6c-be6f-34a0e3f45b6b",
+          "name": "Commvault Update a server group",
+          "request": {
+            "name": "Commvault Update a server group",
+            "description": {
+              "content": "Updates an existing server group configuration, including associated clients and policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "ServerGroup",
+                ":serverGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "serverGroupId",
+                  "description": "(Required) Unique identifier for the server group"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2fc5393d-bd3d-40af-8486-8b0d6325218a",
+              "name": "Server group updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 1789,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49fccfa6-02c5-4cfb-9a77-2106c0394c7d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d60b051d-3088-4ec3-b6b5-b75b6c779246",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5b7506cc-0af0-449c-8a33-93f4513f7860",
+              "name": "Server group not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"serverGroupName\": \"<string>\",\n  \"description\": \"<string>\",\n  \"clientIds\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d7c218d-9db2-40ef-bab9-f8ddb69495ea",
+          "name": "Commvault Delete a server group",
+          "request": {
+            "name": "Commvault Delete a server group",
+            "description": {
+              "content": "Deletes a server group by its unique identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "ServerGroup",
+                ":serverGroupId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "serverGroupId",
+                  "description": "(Required) Unique identifier for the server group"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66a92de2-b9f2-4d4a-a64f-274d1220d0a3",
+              "name": "Server group deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 1789,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c076917e-03d9-4f94-9f77-d70760f84f59",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee427811-804c-4f82-a301-c03439d317d1",
+              "name": "Server group not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "ServerGroup",
+                    ":serverGroupId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "serverGroupId",
+                      "description": "(Required) Unique identifier for the server group"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b243d0ad-e281-4645-a723-e3b7ac493b4b",
+      "name": "SLA",
+      "description": {
+        "content": "Service Level Agreement compliance monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aadc548b-e2c8-43c5-8969-3ad5c80e541e",
+          "name": "Commvault Get SLA compliance summary",
+          "request": {
+            "name": "Commvault Get SLA compliance summary",
+            "description": {
+              "content": "Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SLASummary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRange",
+                  "value": "<string>",
+                  "description": "Time range for SLA calculation"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38c4acd5-48bb-4112-8ebf-66ff13696e1c",
+              "name": "SLA compliance summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"overallCompliance\": 7239.443010576564,\n  \"totalEntities\": 5045,\n  \"metSLA\": 7329,\n  \"missedSLA\": 1034,\n  \"excluded\": 6946,\n  \"breakdownByType\": [\n    {\n      \"workloadType\": \"string\",\n      \"compliance\": 5592.094515369995,\n      \"total\": 7831,\n      \"met\": 6071,\n      \"missed\": 8990\n    },\n    {\n      \"workloadType\": \"string\",\n      \"compliance\": 148.73993067655132,\n      \"total\": 4092,\n      \"met\": 2608,\n      \"missed\": 7709\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3279f176-a313-482f-a779-84e6c4424f87",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e563c985-4396-4a4f-88dc-425ff5838eb8",
+      "name": "Storage",
+      "description": {
+        "content": "Storage pool and library management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20292138-edfc-40dd-988e-e5f33fa27b77",
+          "name": "Commvault List storage pools",
+          "request": {
+            "name": "Commvault List storage pools",
+            "description": {
+              "content": "Retrieves a list of all storage pools, including cloud storage, disk libraries, and tape libraries, with capacity and usage information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "Storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "007834f3-9bf8-4335-a4ad-83a4516e7de8",
+              "name": "List of storage pools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storagePools\": [\n    {\n      \"storagePoolId\": 363,\n      \"storagePoolName\": \"string\",\n      \"storageType\": \"DeduplicationStore\",\n      \"totalCapacityGB\": 7684.046059342777,\n      \"usedCapacityGB\": 9195.166873966027,\n      \"freeCapacityGB\": 4908.989863861658,\n      \"mediaAgents\": [\n        {\n          \"mediaAgentId\": 6117,\n          \"mediaAgentName\": \"string\"\n        },\n        {\n          \"mediaAgentId\": 5849,\n          \"mediaAgentName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"storagePoolId\": 6044,\n      \"storagePoolName\": \"string\",\n      \"storageType\": \"Cloud\",\n      \"totalCapacityGB\": 7907.5253091104405,\n      \"usedCapacityGB\": 2933.6898873942864,\n      \"freeCapacityGB\": 3847.1532180854006,\n      \"mediaAgents\": [\n        {\n          \"mediaAgentId\": 3078,\n          \"mediaAgentName\": \"string\"\n        },\n        {\n          \"mediaAgentId\": 4046,\n          \"mediaAgentName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c0b2e79-8053-4e17-ba9f-ca785ad784ce",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31899740-1c01-4bed-b9cd-0d9d7af294ae",
+          "name": "Commvault Get storage pool details",
+          "request": {
+            "name": "Commvault Get storage pool details",
+            "description": {
+              "content": "Retrieves detailed information about a specific storage pool, including configuration, capacity metrics, and associated media agents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "Storage",
+                ":storagePoolId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "storagePoolId",
+                  "description": "(Required) Unique identifier for the storage pool"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "854f654f-2433-49ae-9c90-d7a03bef563f",
+              "name": "Storage pool details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storagePoolId\": 2827,\n  \"storagePoolName\": \"string\",\n  \"storageType\": \"DeduplicationStore\",\n  \"totalCapacityGB\": 3110.9664676501893,\n  \"usedCapacityGB\": 848.8048420764782,\n  \"freeCapacityGB\": 2709.569423769207,\n  \"mediaAgents\": [\n    {\n      \"mediaAgentId\": 9612,\n      \"mediaAgentName\": \"string\"\n    },\n    {\n      \"mediaAgentId\": 1374,\n      \"mediaAgentName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9e8c30a-16ae-42bb-9b10-415c8aa9a8d4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "47901358-5209-43b9-a76a-c500c013506b",
+              "name": "Storage pool not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9205fd14-89d6-4ec5-bce7-0cd35c0c3818",
+      "name": "Virtual Machines",
+      "description": {
+        "content": "Manage virtual machine backup and recovery",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3522d47-625d-45ae-9eb6-aa8f8c063fa7",
+          "name": "Commvault List virtual machines",
+          "request": {
+            "name": "Commvault List virtual machines",
+            "description": {
+              "content": "Retrieves a list of all virtual machines registered for protection, including their backup status, hypervisor association, and SLA compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VM"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by protection status"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisorId",
+                  "value": "<integer>",
+                  "description": "Filter by hypervisor client ID"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b3706b5-45ff-4d04-8ed9-6d14fd295e34",
+              "name": "List of virtual machines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisorId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vmStatusInfoList\": [\n    {\n      \"vmUUID\": \"string\",\n      \"vmName\": \"string\",\n      \"vmStatus\": \"Protected\",\n      \"hypervisor\": {\n        \"clientId\": 4419,\n        \"clientName\": \"string\"\n      },\n      \"vmSize\": 1079,\n      \"lastBackupTime\": 4049,\n      \"lastBackupJobId\": 9829,\n      \"planName\": \"string\"\n    },\n    {\n      \"vmUUID\": \"string\",\n      \"vmName\": \"string\",\n      \"vmStatus\": \"NeverBackedUp\",\n      \"hypervisor\": {\n        \"clientId\": 7190,\n        \"clientName\": \"string\"\n      },\n      \"vmSize\": 5625,\n      \"lastBackupTime\": 2060,\n      \"lastBackupJobId\": 9521,\n      \"planName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efbc721d-5127-4cca-b513-e1ec2383187b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisorId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e36511d6-d651-4bd8-b1fb-d1755f90050e",
+          "name": "Commvault Get virtual machine details",
+          "request": {
+            "name": "Commvault Get virtual machine details",
+            "description": {
+              "content": "Retrieves detailed information about a specific virtual machine, including backup history, recovery points, and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VM",
+                ":vmUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vmUUID",
+                  "description": "(Required) UUID of the virtual machine"
+                },
+                {
+                  "description": "Hostname of the Commvault Command Center",
+                  "type": "any",
+                  "value": "{{commandcenter}}",
+                  "key": "commandcenter"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6202547-0363-4f18-b765-868d94969308",
+              "name": "Virtual machine details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vmUUID\": \"string\",\n  \"vmName\": \"string\",\n  \"vmStatus\": \"Protected\",\n  \"hypervisor\": {\n    \"clientId\": 1094,\n    \"clientName\": \"string\"\n  },\n  \"vmSize\": 8103,\n  \"lastBackupTime\": 7585,\n  \"lastBackupJobId\": 651,\n  \"planName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1bd5249-b496-40e9-a002-7c950a20df61",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8178d499-a1b1-4426-a2ed-3054771e0e11",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Command Center",
+                      "type": "any",
+                      "value": "{{commandcenter}}",
+                      "key": "commandcenter"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Command Center",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "commandcenter.example.com",
+      "key": "commandcenter"
+    },
+    {
+      "type": "string",
+      "value": "https://{{commandcenter}}/commandcenter/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "887ca33e-deeb-4003-aee3-b685df716e41",
+    "name": "Commvault Command Center API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "APIs for managing Commvault Command Center operations, providing centralized management and monitoring capabilities for data protection infrastructure. The Command Center API enables dashboard access, server group management, virtual machine operations, and compliance monitoring across the Commvault environment.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}
