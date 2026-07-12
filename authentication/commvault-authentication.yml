@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/commvault-automation-openapi.yml, openapi/commvault-command-center-openapi.yml,
+  openapi/commvault-rest-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: authToken
+  type: apiKey
+  in: header
+  parameter: Authtoken
+  description: QSDK authentication token obtained from the Login endpoint.
+  sources:
+  - openapi/commvault-automation-openapi.yml
+  - openapi/commvault-command-center-openapi.yml
+  - openapi/commvault-rest-openapi.yml

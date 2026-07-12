@@ -147,6 +147,10 @@ apis:
       - title: Self-Service Automation
         description: Expose curated Workflows to tenants and application teams for self-service operations.
 common:
+  - type: DomainSecurity
+    url: security/commvault-domain-security.yml
+  - type: Authentication
+    url: authentication/commvault-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/Commvault
   - type: LinkedIn
