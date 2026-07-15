@@ -1,0 +1,771 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/commvault-automation-openapi.yml, openapi/commvault-command-center-openapi.yml,
+  openapi/commvault-rest-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 60
+  by_action_class:
+    connected: 35
+    acting: 25
+  by_consequence:
+    read: 35
+    write: 22
+    physical: 1
+    safety-critical: 2
+  human_in_the_loop_required: 2
+operations:
+- path: /Workflow
+  method: get
+  operationId: listWorkflows
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Workflow/{workflowId}
+  method: get
+  operationId: getWorkflow
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Workflow/{workflowId}
+  method: delete
+  operationId: deleteWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Workflow/{workflowName}/Action/Execute
+  method: post
+  operationId: executeWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Workflow/Deploy
+  method: post
+  operationId: deployWorkflow
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Task
+  method: get
+  operationId: listSchedules
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Task/{taskId}
+  method: get
+  operationId: getSchedule
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Task/{taskId}
+  method: put
+  operationId: updateSchedule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Task/{taskId}
+  method: delete
+  operationId: deleteSchedule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Task/{taskId}/Action/Enable
+  method: post
+  operationId: enableSchedule
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Task/{taskId}/Action/Disable
+  method: post
+  operationId: disableSchedule
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /V4/CommcellGlobalFilter
+  method: get
+  operationId: getGlobalFilters
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/CommcellGlobalFilter
+  method: put
+  operationId: updateGlobalFilters
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /QCommand/qoperation
+  method: post
+  operationId: executeQCommand
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Script
+  method: get
+  operationId: listScripts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Script/{scriptId}
+  method: get
+  operationId: getScript
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Script/{scriptId}/Action/Execute
+  method: post
+  operationId: executeScript
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Dashboard
+  method: get
+  operationId: getDashboard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerGroup
+  method: get
+  operationId: listServerGroups
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerGroup
+  method: post
+  operationId: createServerGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /V4/ServerGroup/{serverGroupId}
+  method: get
+  operationId: getServerGroup
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerGroup/{serverGroupId}
+  method: put
+  operationId: updateServerGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /V4/ServerGroup/{serverGroupId}
+  method: delete
+  operationId: deleteServerGroup
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /VM
+  method: get
+  operationId: listVirtualMachines
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /VM/{vmUUID}
+  method: get
+  operationId: getVirtualMachine
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Laptop
+  method: get
+  operationId: listLaptops
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/FileServers
+  method: get
+  operationId: listFileServers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/DatabaseServers
+  method: get
+  operationId: listDatabaseServers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /SLASummary
+  method: get
+  operationId: getSLASummary
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/Storage
+  method: get
+  operationId: listStoragePools
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/Storage/{storagePoolId}
+  method: get
+  operationId: getStoragePool
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Reports
+  method: get
+  operationId: listReports
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Reports/{reportId}
+  method: get
+  operationId: getReport
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Login
+  method: post
+  operationId: login
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Logout
+  method: post
+  operationId: logout
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Client
+  method: get
+  operationId: listClients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Client/{clientId}
+  method: get
+  operationId: getClient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Client/{clientId}
+  method: put
+  operationId: updateClient
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Client/{clientId}
+  method: delete
+  operationId: deleteClient
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Agent
+  method: get
+  operationId: listAgents
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Subclient
+  method: get
+  operationId: listSubclients
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Subclient/{subclientId}
+  method: get
+  operationId: getSubclient
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Job
+  method: get
+  operationId: listJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Job/{jobId}
+  method: get
+  operationId: getJob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /Job/{jobId}/action/kill
+  method: post
+  operationId: killJob
+  x-agentic-access:
+    action-class: acting
+    consequence: safety-critical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 120
+      exchange: true
+      purpose-required: true
+      proof-of-possession: true
+    escalation:
+      human-in-the-loop: required
+    audit: required
+- path: /Job/{jobId}/action/suspend
+  method: post
+  operationId: suspendJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /Job/{jobId}/action/resume
+  method: post
+  operationId: resumeJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /StoragePolicy
+  method: get
+  operationId: listStoragePolicies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /StoragePolicy/{storagePolicyId}
+  method: get
+  operationId: getStoragePolicy
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /SchedulePolicy
+  method: get
+  operationId: listSchedulePolicies
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /AlertRule
+  method: get
+  operationId: listAlerts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /User
+  method: get
+  operationId: listUsers
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /User/{userId}
+  method: get
+  operationId: getUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerPlan
+  method: get
+  operationId: listPlans
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerPlan
+  method: post
+  operationId: createPlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /V4/ServerPlan/{planId}
+  method: get
+  operationId: getPlan
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /V4/ServerPlan/{planId}
+  method: put
+  operationId: updatePlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /V4/ServerPlan/{planId}
+  method: delete
+  operationId: deletePlan
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /CreateTask
+  method: post
+  operationId: createBackupTask
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /retrieveToClient
+  method: post
+  operationId: createRestoreTask
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
