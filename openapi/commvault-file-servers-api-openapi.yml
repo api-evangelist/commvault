@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents File Servers API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: File Servers
+  description: Manage file server protection
+paths:
+  /V4/FileServers:
+    get:
+      operationId: listFileServers
+      summary: Commvault List file servers
+      description: Retrieves a list of all file servers configured for protection, including NAS devices, Windows file servers, and Linux file servers.
+      tags:
+      - File Servers
+      responses:
+        '200':
+          description: List of file servers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fileServers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FileServer'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    FileServer:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          description: Unique client identifier
+        clientName:
+          type: string
+          description: File server name
+        serverType:
+          type: string
+          description: Type of file server
+          enum:
+          - WindowsFileServer
+          - LinuxFileServer
+          - NAS
+          - NetApp
+          - Isilon
+        protectionStatus:
+          type: string
+          description: Protection status
+        planName:
+          type: string
+          description: Associated protection plan name
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

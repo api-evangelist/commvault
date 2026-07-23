@@ -1,0 +1,137 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Virtual Machines API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Virtual Machines
+  description: Manage virtual machine backup and recovery
+paths:
+  /VM:
+    get:
+      operationId: listVirtualMachines
+      summary: Commvault List virtual machines
+      description: Retrieves a list of all virtual machines registered for protection, including their backup status, hypervisor association, and SLA compliance.
+      tags:
+      - Virtual Machines
+      parameters:
+      - name: status
+        in: query
+        required: false
+        description: Filter by protection status
+        schema:
+          type: string
+          enum:
+          - Protected
+          - NotProtected
+          - NeverBackedUp
+          - Pending
+      - name: hypervisorId
+        in: query
+        required: false
+        description: Filter by hypervisor client ID
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of virtual machines
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vmStatusInfoList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/VirtualMachine'
+        '401':
+          description: Unauthorized
+  /VM/{vmUUID}:
+    get:
+      operationId: getVirtualMachine
+      summary: Commvault Get virtual machine details
+      description: Retrieves detailed information about a specific virtual machine, including backup history, recovery points, and configuration.
+      tags:
+      - Virtual Machines
+      parameters:
+      - $ref: '#/components/parameters/vmUUID'
+      responses:
+        '200':
+          description: Virtual machine details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VirtualMachine'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Virtual machine not found
+components:
+  parameters:
+    vmUUID:
+      name: vmUUID
+      in: path
+      required: true
+      description: UUID of the virtual machine
+      schema:
+        type: string
+  schemas:
+    VirtualMachine:
+      type: object
+      properties:
+        vmUUID:
+          type: string
+          description: Unique UUID of the virtual machine
+        vmName:
+          type: string
+          description: Name of the virtual machine
+        vmStatus:
+          type: string
+          description: Protection status
+          enum:
+          - Protected
+          - NotProtected
+          - NeverBackedUp
+          - Pending
+        hypervisor:
+          type: object
+          properties:
+            clientId:
+              type: integer
+            clientName:
+              type: string
+              description: Hypervisor name (vCenter, Hyper-V host, etc.)
+        vmSize:
+          type: integer
+          description: Total VM size in bytes
+        lastBackupTime:
+          type: integer
+          description: Unix timestamp of last successful backup
+        lastBackupJobId:
+          type: integer
+          description: Job ID of the last backup
+        planName:
+          type: string
+          description: Associated protection plan name
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

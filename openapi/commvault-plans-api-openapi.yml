@@ -1,0 +1,210 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Plans API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Plans
+  description: Manage server plans for data protection
+paths:
+  /V4/ServerPlan:
+    get:
+      operationId: listPlans
+      summary: Commvault List server plans
+      description: Retrieves a list of all server plans. Plans provide a simplified approach to data protection by combining storage, schedule, and retention settings into a single configuration entity.
+      tags:
+      - Plans
+      responses:
+        '200':
+          description: List of server plans
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plans:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Plan'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createPlan
+      summary: Commvault Create a server plan
+      description: Creates a new server plan with specified backup destinations, schedule, and retention settings.
+      tags:
+      - Plans
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: Plan created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /V4/ServerPlan/{planId}:
+    get:
+      operationId: getPlan
+      summary: Commvault Get server plan details
+      description: Retrieves the detailed configuration of a specific server plan, including its backup destinations, RPO schedules, and retention rules.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planId'
+      responses:
+        '200':
+          description: Plan details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Plan'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Plan not found
+    put:
+      operationId: updatePlan
+      summary: Commvault Update a server plan
+      description: Updates the configuration of an existing server plan.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlanRequest'
+      responses:
+        '200':
+          description: Plan updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Plan not found
+    delete:
+      operationId: deletePlan
+      summary: Commvault Delete a server plan
+      description: Deletes an existing server plan. Plans that are associated with active subclients cannot be deleted.
+      tags:
+      - Plans
+      parameters:
+      - $ref: '#/components/parameters/planId'
+      responses:
+        '200':
+          description: Plan deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Plan not found
+components:
+  schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+    Plan:
+      type: object
+      properties:
+        plan:
+          type: object
+          properties:
+            planId:
+              type: integer
+              description: Unique plan identifier
+            planName:
+              type: string
+              description: Name of the server plan
+        storage:
+          type: object
+          properties:
+            storagePolicyName:
+              type: string
+              description: Associated storage policy name
+        schedule:
+          type: object
+          properties:
+            rpoInMinutes:
+              type: integer
+              description: Recovery Point Objective in minutes
+        retention:
+          type: object
+          properties:
+            retainBackupDataForDays:
+              type: integer
+              description: Days to retain backup data
+    CreatePlanRequest:
+      type: object
+      required:
+      - planName
+      properties:
+        planName:
+          type: string
+          description: Name for the new server plan
+        backupDestinations:
+          type: array
+          items:
+            type: object
+            properties:
+              backupDestinationName:
+                type: string
+              storagePolicyName:
+                type: string
+        rpoInMinutes:
+          type: integer
+          description: Recovery Point Objective in minutes
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Unique identifier for the server plan
+      schema:
+        type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

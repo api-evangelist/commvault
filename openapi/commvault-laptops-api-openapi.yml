@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Laptops API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Laptops
+  description: Manage laptop backup operations
+paths:
+  /Laptop:
+    get:
+      operationId: listLaptops
+      summary: Commvault List laptop clients
+      description: Retrieves a list of all laptop clients enrolled for endpoint backup, including their protection status, last backup time, and data usage.
+      tags:
+      - Laptops
+      responses:
+        '200':
+          description: List of laptop clients
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  laptopList:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LaptopClient'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    LaptopClient:
+      type: object
+      properties:
+        clientId:
+          type: integer
+          description: Unique client identifier
+        clientName:
+          type: string
+          description: Laptop hostname
+        userName:
+          type: string
+          description: Laptop owner username
+        osType:
+          type: string
+          description: Operating system type
+          enum:
+          - Windows
+          - macOS
+          - Linux
+        backupStatus:
+          type: string
+          description: Current backup status
+        lastBackupTime:
+          type: integer
+          description: Unix timestamp of last successful backup
+        dataBackedUpGB:
+          type: number
+          format: float
+          description: Total data backed up in GB
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

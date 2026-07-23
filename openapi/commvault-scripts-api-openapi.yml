@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Scripts API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Scripts
+  description: Manage and execute automation scripts
+paths:
+  /Script:
+    get:
+      operationId: listScripts
+      summary: Commvault List automation scripts
+      description: Retrieves a list of all automation scripts registered in the CommServe, including pre/post backup scripts and custom automation scripts.
+      tags:
+      - Scripts
+      responses:
+        '200':
+          description: List of scripts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  scripts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Script'
+        '401':
+          description: Unauthorized
+  /Script/{scriptId}:
+    get:
+      operationId: getScript
+      summary: Commvault Get script details
+      description: Retrieves the details of a specific automation script, including its content, associated triggers, and execution history.
+      tags:
+      - Scripts
+      parameters:
+      - $ref: '#/components/parameters/scriptId'
+      responses:
+        '200':
+          description: Script details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Script'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Script not found
+  /Script/{scriptId}/Action/Execute:
+    post:
+      operationId: executeScript
+      summary: Commvault Execute an automation script
+      description: Triggers the execution of an automation script with optional input parameters.
+      tags:
+      - Scripts
+      parameters:
+      - $ref: '#/components/parameters/scriptId'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                inputParameters:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: Key-value pairs of input parameters
+      responses:
+        '200':
+          description: Script execution started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: integer
+                    description: Job ID tracking the script execution
+                  errorCode:
+                    type: integer
+                  errorMessage:
+                    type: string
+        '400':
+          description: Invalid input parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Script not found
+components:
+  schemas:
+    Script:
+      type: object
+      properties:
+        scriptId:
+          type: integer
+          description: Unique script identifier
+        scriptName:
+          type: string
+          description: Name of the script
+        description:
+          type: string
+          description: Description of the script
+        scriptType:
+          type: string
+          description: Script language type
+          enum:
+          - Python
+          - PowerShell
+          - Shell
+          - Batch
+        content:
+          type: string
+          description: Script content/source code
+        enabled:
+          type: boolean
+          description: Whether the script is enabled
+  parameters:
+    scriptId:
+      name: scriptId
+      in: path
+      required: true
+      description: Unique identifier for the automation script
+      schema:
+        type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

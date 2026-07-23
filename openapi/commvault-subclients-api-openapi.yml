@@ -1,0 +1,133 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Subclients API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Subclients
+  description: Manage subclients that define backup content
+paths:
+  /Subclient:
+    get:
+      operationId: listSubclients
+      summary: Commvault List subclients
+      description: Retrieves a list of subclients for a given client and agent. Subclients define the specific content (files, databases, mailboxes) to be backed up and their associated storage and schedule policies.
+      tags:
+      - Subclients
+      parameters:
+      - name: clientId
+        in: query
+        required: true
+        description: Client ID
+        schema:
+          type: integer
+      - name: applicationId
+        in: query
+        required: false
+        description: Application/agent type ID
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of subclients
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subClientProperties:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subclient'
+        '401':
+          description: Unauthorized
+  /Subclient/{subclientId}:
+    get:
+      operationId: getSubclient
+      summary: Commvault Get subclient details
+      description: Retrieves detailed properties of a specific subclient, including content paths, filters, storage policy association, and schedule configuration.
+      tags:
+      - Subclients
+      parameters:
+      - $ref: '#/components/parameters/subclientId'
+      responses:
+        '200':
+          description: Subclient details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subClientProperties:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Subclient'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Subclient not found
+components:
+  parameters:
+    subclientId:
+      name: subclientId
+      in: path
+      required: true
+      description: Unique identifier for the subclient
+      schema:
+        type: integer
+  schemas:
+    Subclient:
+      type: object
+      properties:
+        subClientEntity:
+          type: object
+          properties:
+            subclientId:
+              type: integer
+              description: Unique subclient identifier
+            subclientName:
+              type: string
+              description: Name of the subclient
+            clientId:
+              type: integer
+              description: Parent client ID
+            clientName:
+              type: string
+              description: Parent client name
+            appName:
+              type: string
+              description: Agent/application name
+        commonProperties:
+          type: object
+          properties:
+            storageDevice:
+              type: object
+              properties:
+                dataBackupStoragePolicy:
+                  type: object
+                  properties:
+                    storagePolicyName:
+                      type: string
+                      description: Associated storage policy name
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

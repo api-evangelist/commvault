@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Server Groups API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Server Groups
+  description: Manage server groups for organizing protected infrastructure
+paths:
+  /V4/ServerGroup:
+    get:
+      operationId: listServerGroups
+      summary: Commvault List server groups
+      description: Retrieves a list of all server groups. Server groups organize clients into logical collections for bulk management, policy assignment, and reporting.
+      tags:
+      - Server Groups
+      responses:
+        '200':
+          description: List of server groups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  serverGroups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ServerGroup'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createServerGroup
+      summary: Commvault Create a server group
+      description: Creates a new server group for organizing clients.
+      tags:
+      - Server Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServerGroupRequest'
+      responses:
+        '200':
+          description: Server group created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /V4/ServerGroup/{serverGroupId}:
+    get:
+      operationId: getServerGroup
+      summary: Commvault Get server group details
+      description: Retrieves detailed information about a server group, including associated clients and applied policies.
+      tags:
+      - Server Groups
+      parameters:
+      - $ref: '#/components/parameters/serverGroupId'
+      responses:
+        '200':
+          description: Server group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerGroup'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+    put:
+      operationId: updateServerGroup
+      summary: Commvault Update a server group
+      description: Updates an existing server group configuration, including associated clients and policies.
+      tags:
+      - Server Groups
+      parameters:
+      - $ref: '#/components/parameters/serverGroupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServerGroupRequest'
+      responses:
+        '200':
+          description: Server group updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+    delete:
+      operationId: deleteServerGroup
+      summary: Commvault Delete a server group
+      description: Deletes a server group by its unique identifier.
+      tags:
+      - Server Groups
+      parameters:
+      - $ref: '#/components/parameters/serverGroupId'
+      responses:
+        '200':
+          description: Server group deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Server group not found
+components:
+  schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+    CreateServerGroupRequest:
+      type: object
+      required:
+      - serverGroupName
+      properties:
+        serverGroupName:
+          type: string
+          description: Name for the server group
+        description:
+          type: string
+          description: Description of the server group
+        clientIds:
+          type: array
+          items:
+            type: integer
+          description: Client IDs to include in the group
+    ServerGroup:
+      type: object
+      properties:
+        serverGroupId:
+          type: integer
+          description: Unique server group identifier
+        serverGroupName:
+          type: string
+          description: Name of the server group
+        description:
+          type: string
+          description: Description of the server group
+        associatedClients:
+          type: array
+          items:
+            type: object
+            properties:
+              clientId:
+                type: integer
+              clientName:
+                type: string
+        planName:
+          type: string
+          description: Associated server plan name
+  parameters:
+    serverGroupId:
+      name: serverGroupId
+      in: path
+      required: true
+      description: Unique identifier for the server group
+      schema:
+        type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

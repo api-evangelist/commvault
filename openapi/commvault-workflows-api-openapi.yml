@@ -1,0 +1,242 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Workflows API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Workflows
+  description: Create, manage, and execute automation workflows
+paths:
+  /Workflow:
+    get:
+      operationId: listWorkflows
+      summary: Commvault List all workflows
+      description: Retrieves a list of all workflows defined in the CommServe, including built-in and custom workflows. Workflows automate multi-step processes such as provisioning, disaster recovery drills, and data migration.
+      tags:
+      - Workflows
+      responses:
+        '200':
+          description: List of workflows
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  container:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Workflow'
+        '401':
+          description: Unauthorized
+  /Workflow/{workflowId}:
+    get:
+      operationId: getWorkflow
+      summary: Commvault Get workflow details
+      description: Retrieves the detailed definition of a specific workflow, including its activities, inputs, conditions, and execution history.
+      tags:
+      - Workflows
+      parameters:
+      - $ref: '#/components/parameters/workflowId'
+      responses:
+        '200':
+          description: Workflow details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workflow'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Workflow not found
+    delete:
+      operationId: deleteWorkflow
+      summary: Commvault Delete a workflow
+      description: Deletes a custom workflow from the CommServe. Built-in workflows cannot be deleted.
+      tags:
+      - Workflows
+      parameters:
+      - $ref: '#/components/parameters/workflowId'
+      responses:
+        '200':
+          description: Workflow deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Workflow not found
+  /Workflow/{workflowName}/Action/Execute:
+    post:
+      operationId: executeWorkflow
+      summary: Commvault Execute a workflow
+      description: Triggers the execution of a workflow by name. Input parameters can be provided in the request body to customize the workflow execution. Returns a job ID for tracking the execution.
+      tags:
+      - Workflows
+      parameters:
+      - name: workflowName
+        in: path
+        required: true
+        description: Name of the workflow to execute
+        schema:
+          type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkflowExecuteRequest'
+      responses:
+        '200':
+          description: Workflow execution started
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobId:
+                    type: integer
+                    description: Job ID tracking the workflow execution
+                  errorCode:
+                    type: integer
+                  errorMessage:
+                    type: string
+        '400':
+          description: Invalid input parameters
+        '401':
+          description: Unauthorized
+        '404':
+          description: Workflow not found
+  /Workflow/Deploy:
+    post:
+      operationId: deployWorkflow
+      summary: Commvault Deploy a workflow definition
+      description: Deploys a new workflow or updates an existing workflow definition in the CommServe. The workflow XML definition is provided in the request body.
+      tags:
+      - Workflows
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              type: string
+              description: Workflow XML definition
+      responses:
+        '200':
+          description: Workflow deployed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '400':
+          description: Invalid workflow definition
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    workflowId:
+      name: workflowId
+      in: path
+      required: true
+      description: Unique identifier for the workflow
+      schema:
+        type: integer
+  schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+    Workflow:
+      type: object
+      properties:
+        workflowId:
+          type: integer
+          description: Unique workflow identifier
+        workflowName:
+          type: string
+          description: Name of the workflow
+        description:
+          type: string
+          description: Description of the workflow
+        enabled:
+          type: boolean
+          description: Whether the workflow is enabled
+        workflowType:
+          type: string
+          description: Type of workflow
+          enum:
+          - BuiltIn
+          - Custom
+        activities:
+          type: array
+          items:
+            type: object
+            properties:
+              activityName:
+                type: string
+                description: Name of the activity
+              activityType:
+                type: string
+                description: Type of activity
+              sequence:
+                type: integer
+                description: Execution order
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              inputName:
+                type: string
+                description: Name of the input parameter
+              inputType:
+                type: string
+                description: Data type of the input
+              required:
+                type: boolean
+                description: Whether the input is required
+              defaultValue:
+                type: string
+                description: Default value if not provided
+    WorkflowExecuteRequest:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              inputName:
+                type: string
+                description: Name of the input parameter
+              inputValue:
+                type: string
+                description: Value for the input parameter
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

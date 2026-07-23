@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Dashboard API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Dashboard
+  description: Dashboard summary and health monitoring
+paths:
+  /Dashboard:
+    get:
+      operationId: getDashboard
+      summary: Commvault Get dashboard summary
+      description: Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments.
+      tags:
+      - Dashboard
+      responses:
+        '200':
+          description: Dashboard summary data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardSummary'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    DashboardSummary:
+      type: object
+      properties:
+        sla:
+          type: object
+          properties:
+            percentCompliant:
+              type: number
+              format: float
+              description: Overall SLA compliance percentage
+            totalProtected:
+              type: integer
+              description: Total number of protected entities
+            totalNotProtected:
+              type: integer
+              description: Total number of unprotected entities
+        jobs:
+          type: object
+          properties:
+            running:
+              type: integer
+              description: Number of currently running jobs
+            completed:
+              type: integer
+              description: Number of completed jobs
+            failed:
+              type: integer
+              description: Number of failed jobs
+            pending:
+              type: integer
+              description: Number of pending jobs
+        storage:
+          type: object
+          properties:
+            totalCapacityGB:
+              type: number
+              format: float
+              description: Total storage capacity in GB
+            usedCapacityGB:
+              type: number
+              format: float
+              description: Used storage capacity in GB
+            freeCapacityGB:
+              type: number
+              format: float
+              description: Free storage capacity in GB
+            deduplicationRatio:
+              type: number
+              format: float
+              description: Overall deduplication savings ratio
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

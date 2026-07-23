@@ -1,0 +1,111 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Storage Policies API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Storage Policies
+  description: Manage storage policies and copies
+paths:
+  /StoragePolicy:
+    get:
+      operationId: listStoragePolicies
+      summary: Commvault List storage policies
+      description: Retrieves a list of all storage policies configured in the CommServe. Storage policies define where backup data is stored and how it is managed across primary, secondary, and tertiary storage tiers.
+      tags:
+      - Storage Policies
+      responses:
+        '200':
+          description: List of storage policies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  policies:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoragePolicy'
+        '401':
+          description: Unauthorized
+  /StoragePolicy/{storagePolicyId}:
+    get:
+      operationId: getStoragePolicy
+      summary: Commvault Get storage policy details
+      description: Retrieves detailed configuration of a specific storage policy, including its copies, retention rules, deduplication settings, and associated media agents.
+      tags:
+      - Storage Policies
+      parameters:
+      - $ref: '#/components/parameters/storagePolicyId'
+      responses:
+        '200':
+          description: Storage policy details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoragePolicy'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Storage policy not found
+components:
+  parameters:
+    storagePolicyId:
+      name: storagePolicyId
+      in: path
+      required: true
+      description: Unique identifier for the storage policy
+      schema:
+        type: integer
+  schemas:
+    StoragePolicy:
+      type: object
+      properties:
+        storagePolicyId:
+          type: integer
+          description: Unique storage policy identifier
+        storagePolicyName:
+          type: string
+          description: Name of the storage policy
+        copies:
+          type: array
+          items:
+            type: object
+            properties:
+              copyName:
+                type: string
+                description: Name of the storage policy copy
+              copyType:
+                type: string
+                description: Type of copy (Primary, Secondary, etc.)
+              retentionRules:
+                type: object
+                properties:
+                  retainBackupDataForDays:
+                    type: integer
+                    description: Number of days to retain backup data
+                  retainBackupDataForCycles:
+                    type: integer
+                    description: Number of cycles to retain backup data
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

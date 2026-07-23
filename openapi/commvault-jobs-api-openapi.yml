@@ -1,0 +1,389 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Jobs API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Jobs
+  description: View and manage backup, restore, and administrative jobs
+paths:
+  /Job:
+    get:
+      operationId: listJobs
+      summary: Commvault List jobs
+      description: Retrieves a list of jobs with optional filtering by status, type, client, and time range. Returns both active and completed backup, restore, and administrative jobs.
+      tags:
+      - Jobs
+      parameters:
+      - name: clientId
+        in: query
+        required: false
+        description: Filter jobs by client ID
+        schema:
+          type: integer
+      - name: jobFilter
+        in: query
+        required: false
+        description: Filter by job status (e.g., Running, Completed, Failed)
+        schema:
+          type: string
+          enum:
+          - Running
+          - Waiting
+          - Pending
+          - Completed
+          - Failed
+          - Killed
+          - Suspended
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of jobs to return
+        schema:
+          type: integer
+          default: 100
+      - name: lookupTime
+        in: query
+        required: false
+        description: Time range in hours to look back for jobs
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+                  totalRecordsWithoutPaging:
+                    type: integer
+                    description: Total number of matching jobs
+        '401':
+          description: Unauthorized
+  /Job/{jobId}:
+    get:
+      operationId: getJob
+      summary: Commvault Get job details
+      description: Retrieves detailed information about a specific job, including its status, progress, start and end times, data transferred, and any failure reasons.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Job'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /Job/{jobId}/action/kill:
+    post:
+      operationId: killJob
+      summary: Commvault Kill a running job
+      description: Terminates a currently running or pending job. The job will be marked as killed and any partial data may be retained.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job killed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /Job/{jobId}/action/suspend:
+    post:
+      operationId: suspendJob
+      summary: Commvault Suspend a running job
+      description: Suspends a currently running job. The job can be resumed later from where it was paused.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job suspended successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /Job/{jobId}/action/resume:
+    post:
+      operationId: resumeJob
+      summary: Commvault Resume a suspended job
+      description: Resumes a previously suspended job from where it was paused.
+      tags:
+      - Jobs
+      parameters:
+      - $ref: '#/components/parameters/jobId'
+      responses:
+        '200':
+          description: Job resumed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Job not found
+  /CreateTask:
+    post:
+      operationId: createBackupTask
+      summary: Commvault Run a backup job
+      description: Initiates a backup job for a specified subclient. Supports full, incremental, differential, and synthetic full backup levels.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackupTaskRequest'
+      responses:
+        '200':
+          description: Backup job created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                    description: IDs of created backup jobs
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+  /retrieveToClient:
+    post:
+      operationId: createRestoreTask
+      summary: Commvault Run a restore job
+      description: Initiates a restore operation to recover backed-up data to the original or an alternate location. Supports in-place restore, out-of-place restore, and cross-platform restore.
+      tags:
+      - Jobs
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestoreTaskRequest'
+      responses:
+        '200':
+          description: Restore job created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobIds:
+                    type: array
+                    items:
+                      type: string
+                    description: IDs of created restore jobs
+        '400':
+          description: Invalid request
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Job:
+      type: object
+      properties:
+        jobSummary:
+          type: object
+          properties:
+            jobId:
+              type: integer
+              description: Unique job identifier
+            jobType:
+              type: string
+              description: Type of job (Backup, Restore, etc.)
+            status:
+              type: string
+              description: Current job status
+              enum:
+              - Running
+              - Waiting
+              - Pending
+              - Completed
+              - Completed w/ one or more errors
+              - Completed w/ one or more warnings
+              - Failed
+              - Killed
+              - Suspended
+            subclient:
+              type: object
+              properties:
+                subclientName:
+                  type: string
+                clientName:
+                  type: string
+            backupLevel:
+              type: string
+              description: Backup level (Full, Incremental, etc.)
+            percentComplete:
+              type: integer
+              description: Job completion percentage
+              minimum: 0
+              maximum: 100
+            startTime:
+              type: integer
+              description: Job start time as Unix timestamp
+            endTime:
+              type: integer
+              description: Job end time as Unix timestamp
+            sizeOfBackup:
+              type: integer
+              description: Size of backed up data in bytes
+            sizeOfMediaOnDisk:
+              type: integer
+              description: Size of data written to media
+    BackupTaskRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  subTask:
+                    type: object
+                    properties:
+                      operationType:
+                        type: string
+                        enum:
+                        - BACKUP
+                  options:
+                    type: object
+                    properties:
+                      backupOpts:
+                        type: object
+                        properties:
+                          backupLevel:
+                            type: string
+                            enum:
+                            - FULL
+                            - INCREMENTAL
+                            - DIFFERENTIAL
+                            - SYNTHETIC_FULL
+            associations:
+              type: array
+              items:
+                type: object
+                properties:
+                  subclientName:
+                    type: string
+                  clientName:
+                    type: string
+                  appName:
+                    type: string
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+    RestoreTaskRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  subTask:
+                    type: object
+                    properties:
+                      operationType:
+                        type: string
+                        enum:
+                        - RESTORE
+                  options:
+                    type: object
+                    properties:
+                      restoreOptions:
+                        type: object
+                        properties:
+                          destination:
+                            type: object
+                            properties:
+                              destClient:
+                                type: object
+                                properties:
+                                  clientName:
+                                    type: string
+                              destinationPath:
+                                type: string
+                          fileOption:
+                            type: object
+                            properties:
+                              sourceItem:
+                                type: array
+                                items:
+                                  type: string
+                                description: Paths of items to restore
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: Unique identifier for the job
+      schema:
+        type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Agents
+  description: Manage backup agents installed on clients
+paths:
+  /Agent:
+    get:
+      operationId: listAgents
+      summary: Commvault List agents for a client
+      description: Retrieves a list of all agents (iDataAgents) installed on a specific client. Agents represent the backup module for a particular application type (File System, SQL, Exchange, etc.).
+      tags:
+      - Agents
+      parameters:
+      - name: clientId
+        in: query
+        required: true
+        description: Client ID to list agents for
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of agents
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  agentProperties:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Agent'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Agent:
+      type: object
+      properties:
+        idaEntity:
+          type: object
+          properties:
+            applicationId:
+              type: integer
+              description: Application type identifier
+            applicationName:
+              type: string
+              description: Name of the agent (e.g., File System, SQL Server)
+            clientId:
+              type: integer
+              description: Parent client ID
+            clientName:
+              type: string
+              description: Parent client name
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

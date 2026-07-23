@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Storage API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Storage
+  description: Storage pool and library management
+paths:
+  /V4/Storage:
+    get:
+      operationId: listStoragePools
+      summary: Commvault List storage pools
+      description: Retrieves a list of all storage pools, including cloud storage, disk libraries, and tape libraries, with capacity and usage information.
+      tags:
+      - Storage
+      responses:
+        '200':
+          description: List of storage pools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  storagePools:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/StoragePool'
+        '401':
+          description: Unauthorized
+  /V4/Storage/{storagePoolId}:
+    get:
+      operationId: getStoragePool
+      summary: Commvault Get storage pool details
+      description: Retrieves detailed information about a specific storage pool, including configuration, capacity metrics, and associated media agents.
+      tags:
+      - Storage
+      parameters:
+      - $ref: '#/components/parameters/storagePoolId'
+      responses:
+        '200':
+          description: Storage pool details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoragePool'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Storage pool not found
+components:
+  schemas:
+    StoragePool:
+      type: object
+      properties:
+        storagePoolId:
+          type: integer
+          description: Unique storage pool identifier
+        storagePoolName:
+          type: string
+          description: Name of the storage pool
+        storageType:
+          type: string
+          description: Type of storage
+          enum:
+          - Cloud
+          - DiskLibrary
+          - TapeLibrary
+          - DeduplicationStore
+        totalCapacityGB:
+          type: number
+          format: float
+          description: Total capacity in GB
+        usedCapacityGB:
+          type: number
+          format: float
+          description: Used capacity in GB
+        freeCapacityGB:
+          type: number
+          format: float
+          description: Free capacity in GB
+        mediaAgents:
+          type: array
+          items:
+            type: object
+            properties:
+              mediaAgentId:
+                type: integer
+              mediaAgentName:
+                type: string
+  parameters:
+    storagePoolId:
+      name: storagePoolId
+      in: path
+      required: true
+      description: Unique identifier for the storage pool
+      schema:
+        type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

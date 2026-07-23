@@ -1,0 +1,96 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents SLA API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: SLA
+  description: Service Level Agreement compliance monitoring
+paths:
+  /SLASummary:
+    get:
+      operationId: getSLASummary
+      summary: Commvault Get SLA compliance summary
+      description: Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery.
+      tags:
+      - SLA
+      parameters:
+      - name: timeRange
+        in: query
+        required: false
+        description: Time range for SLA calculation
+        schema:
+          type: string
+          enum:
+          - Last24Hours
+          - Last7Days
+          - Last30Days
+      responses:
+        '200':
+          description: SLA compliance summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SLASummary'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    SLASummary:
+      type: object
+      properties:
+        overallCompliance:
+          type: number
+          format: float
+          description: Overall SLA compliance percentage
+        totalEntities:
+          type: integer
+          description: Total number of entities tracked
+        metSLA:
+          type: integer
+          description: Number of entities meeting SLA
+        missedSLA:
+          type: integer
+          description: Number of entities missing SLA
+        excluded:
+          type: integer
+          description: Number of entities excluded from SLA
+        breakdownByType:
+          type: array
+          items:
+            type: object
+            properties:
+              workloadType:
+                type: string
+                description: Workload type (VM, File Server, Database, etc.)
+              compliance:
+                type: number
+                format: float
+              total:
+                type: integer
+              met:
+                type: integer
+              missed:
+                type: integer
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html

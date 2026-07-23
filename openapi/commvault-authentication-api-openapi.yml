@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Commvault Automation Agents Authentication API
+  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
+  version: v2
+  contact:
+    name: Commvault Support
+    url: https://www.commvault.com/support
+  termsOfService: https://www.commvault.com/terms-of-use
+servers:
+- url: https://{webserver}/webconsole/api
+  description: Commvault Web Server
+  variables:
+    webserver:
+      default: webconsole.example.com
+      description: Hostname of the Commvault Web Server
+security:
+- authToken: []
+tags:
+- name: Authentication
+  description: Login and token management operations
+paths:
+  /Login:
+    post:
+      operationId: login
+      summary: Commvault Authenticate and obtain auth token
+      description: Authenticates a user with username and password credentials and returns an authentication token (QSDK token) for subsequent API requests. The token must be included in the Authtoken header of all subsequent requests.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                  description: Commvault username
+                password:
+                  type: string
+                  description: Base64-encoded password
+                  format: password
+      responses:
+        '200':
+          description: Authentication successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Invalid credentials
+      security: []
+  /Logout:
+    post:
+      operationId: logout
+      summary: Commvault Invalidate auth token
+      description: Logs out the current user session and invalidates the authentication token.
+      tags:
+      - Authentication
+      responses:
+        '200':
+          description: Logout successful
+components:
+  schemas:
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Authentication token for subsequent API requests
+        userId:
+          type: integer
+          description: ID of the authenticated user
+        userName:
+          type: string
+          description: Username of the authenticated user
+        aliasName:
+          type: string
+          description: Alias name of the authenticated user
+        loginAttempts:
+          type: integer
+          description: Number of login attempts remaining
+        remainingLockTime:
+          type: integer
+          description: Time remaining before account lockout expires
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: Authtoken
+      description: QSDK authentication token obtained from the Login endpoint.
+externalDocs:
+  description: Commvault Automation API Documentation
+  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
