@@ -6,9 +6,22 @@ description: >-
   restore, replication, threat scan, reporting, and orchestration capabilities across enterprise workloads spanning
   on-premises, virtual machines, and cloud applications.
 type: Index
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/commvault.png
 url: https://raw.githubusercontent.com/api-evangelist/commvault/refs/heads/main/apis.yml
 tags:
   - Backup
@@ -23,130 +36,633 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 kind: company
 apis:
-  - aid: commvault:rest-api
-    name: Commvault REST API
-    description: >-
-      The Commvault REST API provides programmatic access to Commvault data protection and management operations
-      including authentication, clients, agents, subclients, backup and restore jobs, schedules, storage policies, and
-      reporting. Authentication is token-based using a QSDK token issued by the Login operation, sent in the Authtoken
-      header on subsequent calls.
-    image: https://www.commvault.com/wp-content/themes/commvault/assets/images/commvault-logo.svg
-    humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
-    baseURL: https://webserver.commvault.com/webconsole/api
-    tags:
-      - Backup
-      - Clients
-      - Data Management
-      - Jobs
-      - REST API
-      - Restore
-      - Subclients
-    properties:
-      - type: Documentation
-        url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
-      - type: Authentication
-        url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
-      - type: PostmanCollection
-        url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
-      - type: APIReference
-        url: https://api.commvault.com/swagger/
-      - type: OpenAPI
-        url: openapi/commvault-rest-openapi.yml
-      - type: SpectralRules
-        url: rules/commvault-rules.yml
-    features:
-      - title: Token-based Authentication
-        description: QSDK token authentication via Login/Logout endpoints with token sent in Authtoken header.
-      - title: Client Lifecycle
-        description: Register, retrieve, update, and retire client servers, workstations, and VM proxies.
-      - title: Subclient Management
-        description: Create and configure subclients that define backup content, schedules, and storage policies.
-      - title: Backup and Restore Jobs
-        description: Trigger backups (full, incremental, differential, synthetic full) and restore jobs with targeted destinations.
-      - title: Job Monitoring
-        description: List and inspect backup, restore, and administrative jobs with status, progress, and failure details.
-      - title: Storage Policy Management
-        description: Manage storage policies and copies that govern retention, deduplication, and replication.
-      - title: Schedule Policies
-        description: Define schedule policies that automate backup operations across clients.
-      - title: Alerts and Reporting
-        description: Configure alerts and access reporting endpoints for compliance and operational visibility.
-    useCases:
-      - title: Automated Backup Orchestration
-        description: Trigger and monitor backup jobs across thousands of clients from CI/CD or orchestration pipelines.
-      - title: Disaster Recovery
-        description: Initiate restore operations to alternate destinations as part of disaster recovery runbooks.
-      - title: Cyber Recovery
-        description: Integrate with SOC tooling to recover clean copies of data after a ransomware event.
-      - title: Compliance Reporting
-        description: Pull job and storage data into governance dashboards for retention and SLA reporting.
-  - aid: commvault:command-center-api
-    name: Commvault Command Center API
-    description: >-
-      The Commvault Command Center API exposes the operations behind the modern web-based Command Center UI, providing
-      centralized management, monitoring, dashboards, server group control, and workflow execution for Commvault
-      environments.
-    humanURL: https://documentation.commvault.com/2024/essential/command_center_overview.html
-    baseURL: https://commandcenter.commvault.com/commandcenter/api
-    tags:
-      - Command Center
-      - Dashboards
-      - Management
-      - Monitoring
-    properties:
-      - type: Documentation
-        url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
-      - type: APIReference
-        url: https://api.commvault.com/
-      - type: OpenAPI
-        url: openapi/commvault-command-center-openapi.yml
-      - type: SpectralRules
-        url: rules/commvault-rules.yml
-    features:
-      - title: Centralized Dashboards
-        description: Aggregate environment health, job, and storage metrics across CommCells.
-      - title: Server Group Management
-        description: Manage server groups, plans, and policy assignments from a unified surface.
-      - title: Workflow Execution
-        description: Run pre-built and custom workflows for routine operations and approvals.
-    useCases:
-      - title: Multi-CommCell Operations
-        description: Manage data protection across multiple CommCells from a single Command Center.
-      - title: Operational Monitoring
-        description: Surface dashboard data into NOC and observability tools.
-  - aid: commvault:automation-api
-    name: Commvault Automation API
-    description: >-
-      The Commvault Automation API provides endpoints for executing Commvault Workflows, managing job scheduling, and
-      orchestrating policy-driven operations across the protected estate. Workflows are reusable automation packages
-      that combine REST calls, decision logic, and approvals.
-    humanURL: https://documentation.commvault.com/v11/essential/automation_overview.html
-    baseURL: https://webserver.commvault.com/webconsole/api
-    tags:
-      - Automation
-      - Orchestration
-      - Scheduling
-      - Workflows
-    properties:
-      - type: Documentation
-        url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
-      - type: OpenAPI
-        url: openapi/commvault-automation-openapi.yml
-      - type: SpectralRules
-        url: rules/commvault-rules.yml
-    features:
-      - title: Workflow Execution
-        description: Execute custom and Commvault-shipped Workflows with structured inputs.
-      - title: Job Scheduling
-        description: Programmatically create, update, and remove schedule policies and individual schedules.
-      - title: Policy Management
-        description: Manage storage and schedule policies that govern protection behavior.
-    useCases:
-      - title: Run Books
-        description: Encode operational run books as Workflows triggered by external events.
-      - title: Self-Service Automation
-        description: Expose curated Workflows to tenants and application teams for self-service operations.
+- aid: commvault:commvault-agents-api
+  name: Commvault Agents API
+  description: Manage backup agents installed on clients
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Agents
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-agents-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-alerts-api
+  name: Commvault Alerts API
+  description: Manage alerts and notification configurations
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-authentication-api
+  name: Commvault Authentication API
+  description: Login and token management operations
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-clients-api
+  name: Commvault Clients API
+  description: Manage clients (servers, workstations, virtual machines)
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-clients-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-dashboard-api
+  name: Commvault Dashboard API
+  description: Dashboard summary and health monitoring
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Dashboard
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-dashboard-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-databases-api
+  name: Commvault Databases API
+  description: Manage database protection
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Databases
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-databases-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-file-servers-api
+  name: Commvault File Servers API
+  description: Manage file server protection
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - File Servers
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-file-servers-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-jobs-api
+  name: Commvault Jobs API
+  description: View and manage backup, restore, and administrative jobs
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-laptops-api
+  name: Commvault Laptops API
+  description: Manage laptop backup operations
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Laptops
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-laptops-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-operations-api
+  name: Commvault Operations API
+  description: Trigger and monitor automated operations
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-operations-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-plans-api
+  name: Commvault Plans API
+  description: Manage server plans for data protection
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Plans
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-plans-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-policies-api
+  name: Commvault Policies API
+  description: Manage data protection policies
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-policies-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-reports-api
+  name: Commvault Reports API
+  description: Reporting and analytics
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-reports-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-schedule-policies-api
+  name: Commvault Schedule Policies API
+  description: Manage schedule policies for automated operations
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Schedule Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-schedule-policies-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-schedules-api
+  name: Commvault Schedules API
+  description: Manage job schedules and schedule policies
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-schedules-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-scripts-api
+  name: Commvault Scripts API
+  description: Manage and execute automation scripts
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Scripts
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-scripts-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-server-groups-api
+  name: Commvault Server Groups API
+  description: Manage server groups for organizing protected infrastructure
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Server Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-server-groups-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-sla-api
+  name: Commvault SLA API
+  description: Service Level Agreement compliance monitoring
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - SLA
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-sla-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-storage-api
+  name: Commvault Storage API
+  description: Storage pool and library management
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Storage
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-storage-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-storage-policies-api
+  name: Commvault Storage Policies API
+  description: Manage storage policies and copies
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Storage Policies
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-storage-policies-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-subclients-api
+  name: Commvault Subclients API
+  description: Manage subclients that define backup content
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Subclients
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-subclients-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-users-api
+  name: Commvault Users API
+  description: Manage Commvault users and user groups
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-users-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-virtual-machines-api
+  name: Commvault Virtual Machines API
+  description: Manage virtual machine backup and recovery
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Virtual Machines
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-virtual-machines-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+- aid: commvault:commvault-workflows-api
+  name: Commvault Workflows API
+  description: Create, manage, and execute automation workflows
+  humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  baseURL: https://webserver.commvault.com/webconsole/api
+  tags:
+  - Workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/commvault-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_overview.html
+  - type: Authentication
+    url: https://documentation.commvault.com/v11/essential/rest_api_authentication.html
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/2046098/RW1aHzQg
+  - type: APIReference
+    url: https://api.commvault.com/swagger/
+  - type: SpectralRules
+    url: rules/commvault-rules.yml
+  - type: Documentation
+    url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
+  - type: APIReference
+    url: https://api.commvault.com/
+  - type: Documentation
+    url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/commvault/overview
   - type: AgenticAccess
     url: agentic-access/commvault-agentic-access.yml
   - type: DomainSecurity
