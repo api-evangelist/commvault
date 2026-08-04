@@ -1,0 +1,159 @@
+{
+  "info": {
+    "_postman_id": "a50125af-e564-4a07-b3ca-dc2182cc3f91",
+    "name": "Commvault Automation Agents Dashboard API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:11.000Z",
+    "updatedAt": "2026-07-28T01:25:11.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a50125af-e564-4a07-b3ca-dc2182cc3f91"
+  },
+  "item": [
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Commvault Get dashboard summary",
+          "id": "c8eea593-fe01-44a0-a56f-ec8382cac585",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Dashboard",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Dashboard"
+              ]
+            },
+            "description": "Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments."
+          },
+          "response": [
+            {
+              "id": "72d2524a-8d5a-4542-95c9-308c9ff081d8",
+              "name": "Dashboard summary data",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Dashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Dashboard"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"sla\": {\n    \"percentCompliant\": \"<float>\",\n    \"totalProtected\": \"<integer>\",\n    \"totalNotProtected\": \"<integer>\"\n  },\n  \"jobs\": {\n    \"running\": \"<integer>\",\n    \"completed\": \"<integer>\",\n    \"failed\": \"<integer>\",\n    \"pending\": \"<integer>\"\n  },\n  \"storage\": {\n    \"totalCapacityGB\": \"<float>\",\n    \"usedCapacityGB\": \"<float>\",\n    \"freeCapacityGB\": \"<float>\",\n    \"deduplicationRatio\": \"<float>\"\n  }\n}",
+              "createdAt": "2026-07-28T01:25:12.000Z",
+              "updatedAt": "2026-07-28T01:25:12.000Z",
+              "uid": "35240-72d2524a-8d5a-4542-95c9-308c9ff081d8"
+            },
+            {
+              "id": "f1c122c2-29e6-4ca3-ba62-fe85d1ae2868",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Dashboard",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Dashboard"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:12.000Z",
+              "updatedAt": "2026-07-28T01:25:12.000Z",
+              "uid": "35240-f1c122c2-29e6-4ca3-ba62-fe85d1ae2868"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:12.000Z",
+          "updatedAt": "2026-07-28T01:25:12.000Z",
+          "uid": "35240-c8eea593-fe01-44a0-a56f-ec8382cac585"
+        }
+      ],
+      "id": "9492b4d6-bedf-4f1d-868d-b08d16a30cb2",
+      "createdAt": "2026-07-28T01:25:12.000Z",
+      "updatedAt": "2026-07-28T01:25:12.000Z",
+      "uid": "35240-9492b4d6-bedf-4f1d-868d-b08d16a30cb2"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

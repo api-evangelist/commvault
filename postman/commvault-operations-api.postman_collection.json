@@ -1,0 +1,261 @@
+{
+  "info": {
+    "_postman_id": "715f7c46-d176-4918-b451-dda24e97ded0",
+    "name": "Commvault Automation Agents Operations API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:16.000Z",
+    "updatedAt": "2026-07-28T01:25:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-715f7c46-d176-4918-b451-dda24e97ded0"
+  },
+  "item": [
+    {
+      "name": "QCommand",
+      "item": [
+        {
+          "name": "qoperation",
+          "item": [
+            {
+              "name": "Commvault Execute a qcommand operation",
+              "id": "f1fc9502-264c-48b7-b4e2-1f2daa9cd314",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/xml"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "xml",
+                      "language": "xml"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/QCommand/qoperation",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "QCommand",
+                    "qoperation"
+                  ]
+                },
+                "description": "Executes an arbitrary Commvault command-line (qcommand) operation through the REST API. This provides programmatic access to operations that may not have dedicated REST endpoints."
+              },
+              "response": [
+                {
+                  "id": "55be4af3-2809-4ccb-b000-e6c2ba553518",
+                  "name": "Command executed",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/QCommand/qoperation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "QCommand",
+                        "qoperation"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:25:16.000Z",
+                  "updatedAt": "2026-07-28T01:25:16.000Z",
+                  "uid": "35240-55be4af3-2809-4ccb-b000-e6c2ba553518"
+                },
+                {
+                  "id": "12611661-bee9-418d-b680-ecea561af0d8",
+                  "name": "Invalid command",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/QCommand/qoperation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "QCommand",
+                        "qoperation"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:16.000Z",
+                  "updatedAt": "2026-07-28T01:25:16.000Z",
+                  "uid": "35240-12611661-bee9-418d-b680-ecea561af0d8"
+                },
+                {
+                  "id": "59e85314-d09e-4dae-abaf-1442f093e91e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "xml",
+                          "language": "xml"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/QCommand/qoperation",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "QCommand",
+                        "qoperation"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:16.000Z",
+                  "updatedAt": "2026-07-28T01:25:16.000Z",
+                  "uid": "35240-59e85314-d09e-4dae-abaf-1442f093e91e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:16.000Z",
+              "updatedAt": "2026-07-28T01:25:16.000Z",
+              "uid": "35240-f1fc9502-264c-48b7-b4e2-1f2daa9cd314"
+            }
+          ],
+          "id": "3cb88d46-abce-42f6-83a6-68cf377e341b",
+          "createdAt": "2026-07-28T01:25:16.000Z",
+          "updatedAt": "2026-07-28T01:25:16.000Z",
+          "uid": "35240-3cb88d46-abce-42f6-83a6-68cf377e341b"
+        }
+      ],
+      "id": "74feef81-a13f-4fc9-95dd-2bff07503d4c",
+      "createdAt": "2026-07-28T01:25:16.000Z",
+      "updatedAt": "2026-07-28T01:25:16.000Z",
+      "uid": "35240-74feef81-a13f-4fc9-95dd-2bff07503d4c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

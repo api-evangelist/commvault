@@ -1,0 +1,180 @@
+{
+  "info": {
+    "_postman_id": "98c4b94f-ae6f-442e-b4aa-40350fe21b52",
+    "name": "Commvault Automation Agents SLA API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:23.000Z",
+    "updatedAt": "2026-07-28T01:25:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-98c4b94f-ae6f-442e-b4aa-40350fe21b52"
+  },
+  "item": [
+    {
+      "name": "SLASummary",
+      "item": [
+        {
+          "name": "Commvault Get SLA compliance summary",
+          "id": "c610bc90-6249-4f66-a896-00a4ac88b7e1",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/SLASummary?timeRange=Last24Hours",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "SLASummary"
+              ],
+              "query": [
+                {
+                  "description": "Time range for SLA calculation",
+                  "key": "timeRange",
+                  "value": "Last24Hours"
+                }
+              ]
+            },
+            "description": "Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery."
+          },
+          "response": [
+            {
+              "id": "10ced4d5-76fb-4432-acb8-a0878cbf7008",
+              "name": "SLA compliance summary",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/SLASummary?timeRange=Last24Hours",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "query": [
+                    {
+                      "description": "Time range for SLA calculation",
+                      "key": "timeRange",
+                      "value": "Last24Hours"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"overallCompliance\": \"<float>\",\n  \"totalEntities\": \"<integer>\",\n  \"metSLA\": \"<integer>\",\n  \"missedSLA\": \"<integer>\",\n  \"excluded\": \"<integer>\",\n  \"breakdownByType\": [\n    {\n      \"workloadType\": \"<string>\",\n      \"compliance\": \"<float>\",\n      \"total\": \"<integer>\",\n      \"met\": \"<integer>\",\n      \"missed\": \"<integer>\"\n    },\n    {\n      \"workloadType\": \"<string>\",\n      \"compliance\": \"<float>\",\n      \"total\": \"<integer>\",\n      \"met\": \"<integer>\",\n      \"missed\": \"<integer>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:24.000Z",
+              "updatedAt": "2026-07-28T01:25:24.000Z",
+              "uid": "35240-10ced4d5-76fb-4432-acb8-a0878cbf7008"
+            },
+            {
+              "id": "08764b6c-2a01-4087-a75b-8f6adb7bf021",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/SLASummary?timeRange=Last24Hours",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "query": [
+                    {
+                      "description": "Time range for SLA calculation",
+                      "key": "timeRange",
+                      "value": "Last24Hours"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:24.000Z",
+              "updatedAt": "2026-07-28T01:25:24.000Z",
+              "uid": "35240-08764b6c-2a01-4087-a75b-8f6adb7bf021"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:24.000Z",
+          "updatedAt": "2026-07-28T01:25:24.000Z",
+          "uid": "35240-c610bc90-6249-4f66-a896-00a4ac88b7e1"
+        }
+      ],
+      "id": "40c5dc8e-c7c0-477b-9d03-2d9145b5dfab",
+      "createdAt": "2026-07-28T01:25:24.000Z",
+      "updatedAt": "2026-07-28T01:25:24.000Z",
+      "uid": "35240-40c5dc8e-c7c0-477b-9d03-2d9145b5dfab"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

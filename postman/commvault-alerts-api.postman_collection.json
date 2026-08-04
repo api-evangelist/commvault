@@ -1,0 +1,159 @@
+{
+  "info": {
+    "_postman_id": "66693db8-6275-4942-89c5-d7bbdb79de3e",
+    "name": "Commvault Automation Agents Alerts API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:09.000Z",
+    "updatedAt": "2026-07-28T01:25:09.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-66693db8-6275-4942-89c5-d7bbdb79de3e"
+  },
+  "item": [
+    {
+      "name": "AlertRule",
+      "item": [
+        {
+          "name": "Commvault List alert rules",
+          "id": "d2ac4c3c-fc15-4264-a7b7-2f065cdefb41",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/AlertRule",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "AlertRule"
+              ]
+            },
+            "description": "Retrieves a list of configured alert rules. Alerts notify administrators of important events such as job failures, storage thresholds, and security events."
+          },
+          "response": [
+            {
+              "id": "e9e34906-7986-4b9d-b0aa-5ee7a3fa5991",
+              "name": "List of alert rules",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AlertRule",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AlertRule"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"alertList\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"alertType\": \"<integer>\",\n      \"severity\": \"Critical\",\n      \"criteria\": {}\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"alertType\": \"<integer>\",\n      \"severity\": \"Warning\",\n      \"criteria\": {}\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:09.000Z",
+              "updatedAt": "2026-07-28T01:25:09.000Z",
+              "uid": "35240-e9e34906-7986-4b9d-b0aa-5ee7a3fa5991"
+            },
+            {
+              "id": "54e38a12-a2e1-4b84-aeaa-a0684bf7b6f2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/AlertRule",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "AlertRule"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:09.000Z",
+              "updatedAt": "2026-07-28T01:25:09.000Z",
+              "uid": "35240-54e38a12-a2e1-4b84-aeaa-a0684bf7b6f2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:09.000Z",
+          "updatedAt": "2026-07-28T01:25:09.000Z",
+          "uid": "35240-d2ac4c3c-fc15-4264-a7b7-2f065cdefb41"
+        }
+      ],
+      "id": "12931df8-987d-4aba-a5c3-3a7a6170edd9",
+      "createdAt": "2026-07-28T01:25:09.000Z",
+      "updatedAt": "2026-07-28T01:25:09.000Z",
+      "uid": "35240-12931df8-987d-4aba-a5c3-3a7a6170edd9"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

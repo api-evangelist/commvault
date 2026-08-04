@@ -1,0 +1,159 @@
+{
+  "info": {
+    "_postman_id": "fd321c45-1c25-4121-aa8b-eaa47bc6bfca",
+    "name": "Commvault Automation Agents Laptops API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:15.000Z",
+    "updatedAt": "2026-07-28T01:25:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fd321c45-1c25-4121-aa8b-eaa47bc6bfca"
+  },
+  "item": [
+    {
+      "name": "Laptop",
+      "item": [
+        {
+          "name": "Commvault List laptop clients",
+          "id": "0bb0d8fa-2344-467f-8ffc-27baedd0829e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Laptop",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Laptop"
+              ]
+            },
+            "description": "Retrieves a list of all laptop clients enrolled for endpoint backup, including their protection status, last backup time, and data usage."
+          },
+          "response": [
+            {
+              "id": "2bef1f4a-2ec5-4778-b105-c6161b617c3b",
+              "name": "List of laptop clients",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Laptop",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Laptop"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"laptopList\": [\n    {\n      \"clientId\": \"<integer>\",\n      \"clientName\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"osType\": \"macOS\",\n      \"backupStatus\": \"<string>\",\n      \"lastBackupTime\": \"<integer>\",\n      \"dataBackedUpGB\": \"<float>\"\n    },\n    {\n      \"clientId\": \"<integer>\",\n      \"clientName\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"osType\": \"Linux\",\n      \"backupStatus\": \"<string>\",\n      \"lastBackupTime\": \"<integer>\",\n      \"dataBackedUpGB\": \"<float>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:15.000Z",
+              "updatedAt": "2026-07-28T01:25:15.000Z",
+              "uid": "35240-2bef1f4a-2ec5-4778-b105-c6161b617c3b"
+            },
+            {
+              "id": "7c62d209-b4f6-4f79-995e-02a6374f4886",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Laptop",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Laptop"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:15.000Z",
+              "updatedAt": "2026-07-28T01:25:15.000Z",
+              "uid": "35240-7c62d209-b4f6-4f79-995e-02a6374f4886"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:15.000Z",
+          "updatedAt": "2026-07-28T01:25:15.000Z",
+          "uid": "35240-0bb0d8fa-2344-467f-8ffc-27baedd0829e"
+        }
+      ],
+      "id": "ed94f28d-782e-495f-b473-2c9dbb302135",
+      "createdAt": "2026-07-28T01:25:15.000Z",
+      "updatedAt": "2026-07-28T01:25:15.000Z",
+      "uid": "35240-ed94f28d-782e-495f-b473-2c9dbb302135"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

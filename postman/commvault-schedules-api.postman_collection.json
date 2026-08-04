@@ -1,0 +1,1171 @@
+{
+  "info": {
+    "_postman_id": "0230a193-36ad-4fbd-899f-5ab08b45483b",
+    "name": "Commvault Automation Agents Schedules API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:20.000Z",
+    "updatedAt": "2026-07-28T01:25:21.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0230a193-36ad-4fbd-899f-5ab08b45483b"
+  },
+  "item": [
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "{taskId}",
+          "item": [
+            {
+              "name": "Action",
+              "item": [
+                {
+                  "name": "Enable",
+                  "item": [
+                    {
+                      "name": "Commvault Enable a schedule",
+                      "id": "1cbaa588-8d7e-4044-91a9-05865e6bbd7a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Task/:taskId/Action/Enable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Task",
+                            ":taskId",
+                            "Action",
+                            "Enable"
+                          ],
+                          "variable": [
+                            {
+                              "id": "f47867bf-8bea-4620-bb51-ac8ee05a6dff",
+                              "key": "taskId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the scheduled task"
+                            }
+                          ]
+                        },
+                        "description": "Enables a previously disabled scheduled task."
+                      },
+                      "response": [
+                        {
+                          "id": "10082ae0-69ca-4ccc-80a4-a31fb4f12c3d",
+                          "name": "Schedule enabled",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-10082ae0-69ca-4ccc-80a4-a31fb4f12c3d"
+                        },
+                        {
+                          "id": "ab499ca6-8d11-4ea7-b062-bac38cc279cd",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-ab499ca6-8d11-4ea7-b062-bac38cc279cd"
+                        },
+                        {
+                          "id": "cbcbf6d6-20c9-489c-a039-e5e9c596f169",
+                          "name": "Scheduled task not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Enable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Enable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-cbcbf6d6-20c9-489c-a039-e5e9c596f169"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:25:21.000Z",
+                      "updatedAt": "2026-07-28T01:25:21.000Z",
+                      "uid": "35240-1cbaa588-8d7e-4044-91a9-05865e6bbd7a"
+                    }
+                  ],
+                  "id": "b88774f4-97c3-4b18-885e-b9d393e5b9c0",
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-b88774f4-97c3-4b18-885e-b9d393e5b9c0"
+                },
+                {
+                  "name": "Disable",
+                  "item": [
+                    {
+                      "name": "Commvault Disable a schedule",
+                      "id": "e6bd5511-c0c9-4b29-9224-53bcc5ce5daa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Task/:taskId/Action/Disable",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Task",
+                            ":taskId",
+                            "Action",
+                            "Disable"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3de9deae-eede-47aa-84d4-1364ba9e5253",
+                              "key": "taskId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the scheduled task"
+                            }
+                          ]
+                        },
+                        "description": "Disables a scheduled task, preventing it from executing until re-enabled."
+                      },
+                      "response": [
+                        {
+                          "id": "a614217c-6158-4e72-9123-c5d76a55e6a4",
+                          "name": "Schedule disabled",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Disable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Disable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-a614217c-6158-4e72-9123-c5d76a55e6a4"
+                        },
+                        {
+                          "id": "d25c67a5-3752-4969-88d0-ab6c662898ab",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Disable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Disable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-d25c67a5-3752-4969-88d0-ab6c662898ab"
+                        },
+                        {
+                          "id": "252eaf82-5e0f-48f1-819a-c3c24ea58c7f",
+                          "name": "Scheduled task not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Task/:taskId/Action/Disable",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Task",
+                                ":taskId",
+                                "Action",
+                                "Disable"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "taskId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:21.000Z",
+                          "updatedAt": "2026-07-28T01:25:21.000Z",
+                          "uid": "35240-252eaf82-5e0f-48f1-819a-c3c24ea58c7f"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:25:21.000Z",
+                      "updatedAt": "2026-07-28T01:25:21.000Z",
+                      "uid": "35240-e6bd5511-c0c9-4b29-9224-53bcc5ce5daa"
+                    }
+                  ],
+                  "id": "848e3234-a2f9-4067-909f-5c6d875b77d8",
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-848e3234-a2f9-4067-909f-5c6d875b77d8"
+                }
+              ],
+              "id": "fd66040d-5e11-406a-91ba-f18633eabc43",
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-fd66040d-5e11-406a-91ba-f18633eabc43"
+            },
+            {
+              "name": "Commvault Get schedule details",
+              "id": "ab584c12-6480-4ff9-a849-ed25babd2d9a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Task/:taskId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d47cac35-4b44-47a4-9b83-68e28a5aa740",
+                      "key": "taskId",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    }
+                  ]
+                },
+                "description": "Retrieves detailed configuration of a specific scheduled task, including its schedule pattern, associated entities, and execution options."
+              },
+              "response": [
+                {
+                  "id": "121118cf-b267-4770-9969-f6073c7b0329",
+                  "name": "Scheduled task details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"taskId\": \"<integer>\",\n  \"taskName\": \"<string>\",\n  \"taskType\": \"QR_RESTORE\",\n  \"enabled\": \"<boolean>\",\n  \"subTasks\": [\n    {\n      \"subTaskName\": \"<string>\",\n      \"operationType\": \"<string>\",\n      \"pattern\": {\n        \"freq_type\": \"ONE_TIME\",\n        \"active_start_time\": \"<integer>\",\n        \"active_end_time\": \"<integer>\",\n        \"freq_interval\": \"<integer>\",\n        \"freq_recurrence_factor\": \"<integer>\",\n        \"daysOfWeek\": [\n          \"Wednesday\",\n          \"Tuesday\"\n        ]\n      }\n    },\n    {\n      \"subTaskName\": \"<string>\",\n      \"operationType\": \"<string>\",\n      \"pattern\": {\n        \"freq_type\": \"AUTOMATIC\",\n        \"active_start_time\": \"<integer>\",\n        \"active_end_time\": \"<integer>\",\n        \"freq_interval\": \"<integer>\",\n        \"freq_recurrence_factor\": \"<integer>\",\n        \"daysOfWeek\": [\n          \"Saturday\",\n          \"Tuesday\"\n        ]\n      }\n    }\n  ],\n  \"associations\": [\n    {\n      \"clientName\": \"<string>\",\n      \"subclientName\": \"<string>\",\n      \"appName\": \"<string>\"\n    },\n    {\n      \"clientName\": \"<string>\",\n      \"subclientName\": \"<string>\",\n      \"appName\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-121118cf-b267-4770-9969-f6073c7b0329"
+                },
+                {
+                  "id": "6c590289-2e7d-4a1c-bcf1-7fc0ee8db782",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-6c590289-2e7d-4a1c-bcf1-7fc0ee8db782"
+                },
+                {
+                  "id": "1c563085-1cd3-4661-af68-a3eb785a87db",
+                  "name": "Scheduled task not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-1c563085-1cd3-4661-af68-a3eb785a87db"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-ab584c12-6480-4ff9-a849-ed25babd2d9a"
+            },
+            {
+              "name": "Commvault Update a schedule",
+              "id": "972930a2-ed82-4574-98e8-3583b2e84e2a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"MONTHLY\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Tuesday\",\n            \"Thursday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Sunday\",\n            \"Saturday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Task/:taskId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6f2d53b0-f295-4e44-9f02-4f618a3c2417",
+                      "key": "taskId",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    }
+                  ]
+                },
+                "description": "Updates the configuration of an existing scheduled task, including its schedule pattern, enabled state, and execution options."
+              },
+              "response": [
+                {
+                  "id": "ff243fb8-b665-421b-b58e-035aa4bec32c",
+                  "name": "Schedule updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"MONTHLY\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Tuesday\",\n            \"Thursday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Sunday\",\n            \"Saturday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-ff243fb8-b665-421b-b58e-035aa4bec32c"
+                },
+                {
+                  "id": "8f02c0b7-4496-4ced-92f5-727950ea5644",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"MONTHLY\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Tuesday\",\n            \"Thursday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Sunday\",\n            \"Saturday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-8f02c0b7-4496-4ced-92f5-727950ea5644"
+                },
+                {
+                  "id": "f4982de1-d1ec-4c37-81fe-9750926ac172",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"MONTHLY\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Tuesday\",\n            \"Thursday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Sunday\",\n            \"Saturday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-f4982de1-d1ec-4c37-81fe-9750926ac172"
+                },
+                {
+                  "id": "7c01e2a5-9c65-4c86-910f-3f7b0618c895",
+                  "name": "Scheduled task not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"MONTHLY\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Tuesday\",\n            \"Thursday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"Sunday\",\n            \"Saturday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-7c01e2a5-9c65-4c86-910f-3f7b0618c895"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-972930a2-ed82-4574-98e8-3583b2e84e2a"
+            },
+            {
+              "name": "Commvault Delete a schedule",
+              "id": "1bc4a240-6901-4679-b9e2-fecab9996baf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Task/:taskId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1327c15b-7557-4278-9439-c7cb8041a2ee",
+                      "key": "taskId",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    }
+                  ]
+                },
+                "description": "Deletes a scheduled task from the CommServe."
+              },
+              "response": [
+                {
+                  "id": "04646404-e612-4ac6-b44b-7cc15f8f9840",
+                  "name": "Schedule deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-04646404-e612-4ac6-b44b-7cc15f8f9840"
+                },
+                {
+                  "id": "38a5eb68-c140-4983-8b14-df742c1c1e64",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-38a5eb68-c140-4983-8b14-df742c1c1e64"
+                },
+                {
+                  "id": "313dd72b-ed00-4bac-8106-008657dea2e9",
+                  "name": "Scheduled task not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Task/:taskId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Task",
+                        ":taskId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "taskId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:21.000Z",
+                  "updatedAt": "2026-07-28T01:25:21.000Z",
+                  "uid": "35240-313dd72b-ed00-4bac-8106-008657dea2e9"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-1bc4a240-6901-4679-b9e2-fecab9996baf"
+            }
+          ],
+          "id": "d7468034-20fc-4362-9704-3fac7b7b4cd3",
+          "createdAt": "2026-07-28T01:25:21.000Z",
+          "updatedAt": "2026-07-28T01:25:21.000Z",
+          "uid": "35240-d7468034-20fc-4362-9704-3fac7b7b4cd3"
+        },
+        {
+          "name": "Commvault List all schedules",
+          "id": "4c4de2ea-6cc0-4b56-9b92-5432a5e63dfb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Task?taskType=QR_BACKUP",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Task"
+              ],
+              "query": [
+                {
+                  "description": "Filter by task type",
+                  "key": "taskType",
+                  "value": "QR_BACKUP"
+                }
+              ]
+            },
+            "description": "Retrieves a list of all scheduled tasks configured in the CommServe, including backup schedules, auxiliary copy schedules, and administrative operation schedules."
+          },
+          "response": [
+            {
+              "id": "291ff752-8f0c-4cc1-bd39-3fda390e94c1",
+              "name": "List of scheduled tasks",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Task?taskType=QR_BACKUP",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Task"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by task type",
+                      "key": "taskType",
+                      "value": "QR_BACKUP"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"taskDetail\": [\n    {\n      \"taskId\": \"<integer>\",\n      \"taskName\": \"<string>\",\n      \"taskType\": \"QR_AUX_COPY\",\n      \"enabled\": \"<boolean>\",\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"<string>\",\n          \"operationType\": \"<string>\",\n          \"pattern\": {\n            \"freq_type\": \"CONTINUOUS\",\n            \"active_start_time\": \"<integer>\",\n            \"active_end_time\": \"<integer>\",\n            \"freq_interval\": \"<integer>\",\n            \"freq_recurrence_factor\": \"<integer>\",\n            \"daysOfWeek\": [\n              \"Thursday\",\n              \"Saturday\"\n            ]\n          }\n        },\n        {\n          \"subTaskName\": \"<string>\",\n          \"operationType\": \"<string>\",\n          \"pattern\": {\n            \"freq_type\": \"MONTHLY\",\n            \"active_start_time\": \"<integer>\",\n            \"active_end_time\": \"<integer>\",\n            \"freq_interval\": \"<integer>\",\n            \"freq_recurrence_factor\": \"<integer>\",\n            \"daysOfWeek\": [\n              \"Monday\",\n              \"Sunday\"\n            ]\n          }\n        }\n      ],\n      \"associations\": [\n        {\n          \"clientName\": \"<string>\",\n          \"subclientName\": \"<string>\",\n          \"appName\": \"<string>\"\n        },\n        {\n          \"clientName\": \"<string>\",\n          \"subclientName\": \"<string>\",\n          \"appName\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"taskId\": \"<integer>\",\n      \"taskName\": \"<string>\",\n      \"taskType\": \"QR_DATA_AGING\",\n      \"enabled\": \"<boolean>\",\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"<string>\",\n          \"operationType\": \"<string>\",\n          \"pattern\": {\n            \"freq_type\": \"WEEKLY\",\n            \"active_start_time\": \"<integer>\",\n            \"active_end_time\": \"<integer>\",\n            \"freq_interval\": \"<integer>\",\n            \"freq_recurrence_factor\": \"<integer>\",\n            \"daysOfWeek\": [\n              \"Saturday\",\n              \"Saturday\"\n            ]\n          }\n        },\n        {\n          \"subTaskName\": \"<string>\",\n          \"operationType\": \"<string>\",\n          \"pattern\": {\n            \"freq_type\": \"CONTINUOUS\",\n            \"active_start_time\": \"<integer>\",\n            \"active_end_time\": \"<integer>\",\n            \"freq_interval\": \"<integer>\",\n            \"freq_recurrence_factor\": \"<integer>\",\n            \"daysOfWeek\": [\n              \"Monday\",\n              \"Monday\"\n            ]\n          }\n        }\n      ],\n      \"associations\": [\n        {\n          \"clientName\": \"<string>\",\n          \"subclientName\": \"<string>\",\n          \"appName\": \"<string>\"\n        },\n        {\n          \"clientName\": \"<string>\",\n          \"subclientName\": \"<string>\",\n          \"appName\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-291ff752-8f0c-4cc1-bd39-3fda390e94c1"
+            },
+            {
+              "id": "3cbacc15-491f-40ca-9f4e-37e047165e7d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Task?taskType=QR_BACKUP",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Task"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by task type",
+                      "key": "taskType",
+                      "value": "QR_BACKUP"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:21.000Z",
+              "updatedAt": "2026-07-28T01:25:21.000Z",
+              "uid": "35240-3cbacc15-491f-40ca-9f4e-37e047165e7d"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:21.000Z",
+          "updatedAt": "2026-07-28T01:25:21.000Z",
+          "uid": "35240-4c4de2ea-6cc0-4b56-9b92-5432a5e63dfb"
+        }
+      ],
+      "id": "c9ba8eab-fa22-4025-af10-0ad92b79175b",
+      "createdAt": "2026-07-28T01:25:21.000Z",
+      "updatedAt": "2026-07-28T01:25:21.000Z",
+      "uid": "35240-c9ba8eab-fa22-4025-af10-0ad92b79175b"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

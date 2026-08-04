@@ -1,0 +1,370 @@
+{
+  "info": {
+    "_postman_id": "110ae462-d58f-43e8-bf2a-bbc005e4b92d",
+    "name": "Commvault Automation Agents Policies API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:17.000Z",
+    "updatedAt": "2026-07-28T01:25:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-110ae462-d58f-43e8-bf2a-bbc005e4b92d"
+  },
+  "item": [
+    {
+      "name": "V4",
+      "item": [
+        {
+          "name": "CommcellGlobalFilter",
+          "item": [
+            {
+              "name": "Commvault Get global data protection filters",
+              "id": "6d210308-f6a7-43b6-8211-7a9fbce4de10",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ]
+                },
+                "description": "Retrieves the global exclusion filters applied to all backup operations, such as temporary file patterns, operating system cache directories, and other commonly excluded content."
+              },
+              "response": [
+                {
+                  "id": "434578fd-6363-44f4-965c-42bb104493ee",
+                  "name": "Global filters",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "CommcellGlobalFilter"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T01:25:18.000Z",
+                  "updatedAt": "2026-07-28T01:25:18.000Z",
+                  "uid": "35240-434578fd-6363-44f4-965c-42bb104493ee"
+                },
+                {
+                  "id": "a0bba544-fded-4557-b7cf-457fa094d85e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "CommcellGlobalFilter"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:18.000Z",
+                  "updatedAt": "2026-07-28T01:25:18.000Z",
+                  "uid": "35240-a0bba544-fded-4557-b7cf-457fa094d85e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:18.000Z",
+              "updatedAt": "2026-07-28T01:25:18.000Z",
+              "uid": "35240-6d210308-f6a7-43b6-8211-7a9fbce4de10"
+            },
+            {
+              "name": "Commvault Update global data protection filters",
+              "id": "67f869c6-f764-4c8a-986d-fd6dcabb6c39",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ]
+                },
+                "description": "Updates the global exclusion filters for backup operations."
+              },
+              "response": [
+                {
+                  "id": "18a3545f-f88d-46c9-aa8e-6d1216238afa",
+                  "name": "Global filters updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "CommcellGlobalFilter"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:25:18.000Z",
+                  "updatedAt": "2026-07-28T01:25:18.000Z",
+                  "uid": "35240-18a3545f-f88d-46c9-aa8e-6d1216238afa"
+                },
+                {
+                  "id": "3bb40518-4aec-4aec-91c3-0af2fa834d9a",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "CommcellGlobalFilter"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:18.000Z",
+                  "updatedAt": "2026-07-28T01:25:18.000Z",
+                  "uid": "35240-3bb40518-4aec-4aec-91c3-0af2fa834d9a"
+                },
+                {
+                  "id": "ee376735-85d2-49f1-9e0f-2f0c1eb47069",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/CommcellGlobalFilter",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "CommcellGlobalFilter"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:18.000Z",
+                  "updatedAt": "2026-07-28T01:25:18.000Z",
+                  "uid": "35240-ee376735-85d2-49f1-9e0f-2f0c1eb47069"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:18.000Z",
+              "updatedAt": "2026-07-28T01:25:18.000Z",
+              "uid": "35240-67f869c6-f764-4c8a-986d-fd6dcabb6c39"
+            }
+          ],
+          "id": "61897b84-71d0-4164-b837-5e475ff7172e",
+          "createdAt": "2026-07-28T01:25:18.000Z",
+          "updatedAt": "2026-07-28T01:25:18.000Z",
+          "uid": "35240-61897b84-71d0-4164-b837-5e475ff7172e"
+        }
+      ],
+      "id": "5dba52ad-1f58-43df-875e-d0236b7d6e8e",
+      "createdAt": "2026-07-28T01:25:18.000Z",
+      "updatedAt": "2026-07-28T01:25:18.000Z",
+      "uid": "35240-5dba52ad-1f58-43df-875e-d0236b7d6e8e"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

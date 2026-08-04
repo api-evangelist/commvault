@@ -1,0 +1,999 @@
+{
+  "info": {
+    "_postman_id": "5a183274-18a5-4f24-bfb6-6df3b892de4e",
+    "name": "Commvault Automation Agents Plans API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:17.000Z",
+    "updatedAt": "2026-07-28T01:25:17.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a183274-18a5-4f24-bfb6-6df3b892de4e"
+  },
+  "item": [
+    {
+      "name": "V4",
+      "item": [
+        {
+          "name": "ServerPlan",
+          "item": [
+            {
+              "name": "{planId}",
+              "item": [
+                {
+                  "name": "Commvault Get server plan details",
+                  "id": "a8bb72d0-7129-4e06-b88a-1e1c99708bca",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "520ce3c7-1ca3-4927-a7c7-d1e9af350017",
+                          "key": "planId",
+                          "value": "<integer>",
+                          "description": "(Required) Unique identifier for the server plan"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the detailed configuration of a specific server plan, including its backup destinations, RPO schedules, and retention rules."
+                  },
+                  "response": [
+                    {
+                      "id": "e39b3295-9e69-4b0f-b70f-a669a368d5ec",
+                      "name": "Plan details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"plan\": {\n    \"planId\": \"<integer>\",\n    \"planName\": \"<string>\"\n  },\n  \"storage\": {\n    \"storagePolicyName\": \"<string>\"\n  },\n  \"schedule\": {\n    \"rpoInMinutes\": \"<integer>\"\n  },\n  \"retention\": {\n    \"retainBackupDataForDays\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-e39b3295-9e69-4b0f-b70f-a669a368d5ec"
+                    },
+                    {
+                      "id": "17922ae0-05d0-4502-8143-4604bcbb9094",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-17922ae0-05d0-4502-8143-4604bcbb9094"
+                    },
+                    {
+                      "id": "e51b92ea-b755-4e4f-982c-fbe6172b4070",
+                      "name": "Plan not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-e51b92ea-b755-4e4f-982c-fbe6172b4070"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-a8bb72d0-7129-4e06-b88a-1e1c99708bca"
+                },
+                {
+                  "name": "Commvault Update a server plan",
+                  "id": "a77b221c-5be0-4861-b3c2-6ea905dde12a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7ea04daa-5f91-4e10-9b24-c9130c8aefbd",
+                          "key": "planId",
+                          "value": "<integer>",
+                          "description": "(Required) Unique identifier for the server plan"
+                        }
+                      ]
+                    },
+                    "description": "Updates the configuration of an existing server plan."
+                  },
+                  "response": [
+                    {
+                      "id": "44f87bc4-a025-4cb7-ab88-b3bdec1b7630",
+                      "name": "Plan updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-44f87bc4-a025-4cb7-ab88-b3bdec1b7630"
+                    },
+                    {
+                      "id": "1512fb89-c18a-48c0-99a3-7f5ed936efa1",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-1512fb89-c18a-48c0-99a3-7f5ed936efa1"
+                    },
+                    {
+                      "id": "31b71d4a-a10a-430d-9b96-9c7a2dace6a9",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-31b71d4a-a10a-430d-9b96-9c7a2dace6a9"
+                    },
+                    {
+                      "id": "1917650d-a3aa-4a43-9672-1303d8c3ac45",
+                      "name": "Plan not found",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-1917650d-a3aa-4a43-9672-1303d8c3ac45"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-a77b221c-5be0-4861-b3c2-6ea905dde12a"
+                },
+                {
+                  "name": "Commvault Delete a server plan",
+                  "id": "ba9813ba-8d4e-414c-8980-fd6d0276a489",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan",
+                        ":planId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "65605fe2-7a88-4f44-bf30-2f6e48edea39",
+                          "key": "planId",
+                          "value": "<integer>",
+                          "description": "(Required) Unique identifier for the server plan"
+                        }
+                      ]
+                    },
+                    "description": "Deletes an existing server plan. Plans that are associated with active subclients cannot be deleted."
+                  },
+                  "response": [
+                    {
+                      "id": "24d3c2bd-83b1-41dd-abc1-1963775c5062",
+                      "name": "Plan deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-24d3c2bd-83b1-41dd-abc1-1963775c5062"
+                    },
+                    {
+                      "id": "ec7428f9-f35e-4da3-aa48-1129108da8a7",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-ec7428f9-f35e-4da3-aa48-1129108da8a7"
+                    },
+                    {
+                      "id": "61ae1cb5-aed1-490c-ba9c-41f8d5f0a1fc",
+                      "name": "Plan not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authtoken",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/V4/ServerPlan/:planId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "V4",
+                            "ServerPlan",
+                            ":planId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "planId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:25:17.000Z",
+                      "updatedAt": "2026-07-28T01:25:17.000Z",
+                      "uid": "35240-61ae1cb5-aed1-490c-ba9c-41f8d5f0a1fc"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-ba9813ba-8d4e-414c-8980-fd6d0276a489"
+                }
+              ],
+              "id": "d00b8e43-ca67-4c4f-aece-2ebb5d2936d2",
+              "createdAt": "2026-07-28T01:25:17.000Z",
+              "updatedAt": "2026-07-28T01:25:17.000Z",
+              "uid": "35240-d00b8e43-ca67-4c4f-aece-2ebb5d2936d2"
+            },
+            {
+              "name": "Commvault List server plans",
+              "id": "68da101f-cbd7-4734-8384-ae72b97cee4d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/V4/ServerPlan",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "V4",
+                    "ServerPlan"
+                  ]
+                },
+                "description": "Retrieves a list of all server plans. Plans provide a simplified approach to data protection by combining storage, schedule, and retention settings into a single configuration entity."
+              },
+              "response": [
+                {
+                  "id": "917cc60c-4995-4545-b966-ba2160bba394",
+                  "name": "List of server plans",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"plans\": [\n    {\n      \"plan\": {\n        \"planId\": \"<integer>\",\n        \"planName\": \"<string>\"\n      },\n      \"storage\": {\n        \"storagePolicyName\": \"<string>\"\n      },\n      \"schedule\": {\n        \"rpoInMinutes\": \"<integer>\"\n      },\n      \"retention\": {\n        \"retainBackupDataForDays\": \"<integer>\"\n      }\n    },\n    {\n      \"plan\": {\n        \"planId\": \"<integer>\",\n        \"planName\": \"<string>\"\n      },\n      \"storage\": {\n        \"storagePolicyName\": \"<string>\"\n      },\n      \"schedule\": {\n        \"rpoInMinutes\": \"<integer>\"\n      },\n      \"retention\": {\n        \"retainBackupDataForDays\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-917cc60c-4995-4545-b966-ba2160bba394"
+                },
+                {
+                  "id": "f880c110-8832-42a4-8bc5-cd0b02631e5e",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-f880c110-8832-42a4-8bc5-cd0b02631e5e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:17.000Z",
+              "updatedAt": "2026-07-28T01:25:17.000Z",
+              "uid": "35240-68da101f-cbd7-4734-8384-ae72b97cee4d"
+            },
+            {
+              "name": "Commvault Create a server plan",
+              "id": "3c7e9a73-2eb4-473f-92da-e12ddad0fb3e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/V4/ServerPlan",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "V4",
+                    "ServerPlan"
+                  ]
+                },
+                "description": "Creates a new server plan with specified backup destinations, schedule, and retention settings."
+              },
+              "response": [
+                {
+                  "id": "cf8bccd0-9175-4b0a-8167-587163994f8c",
+                  "name": "Plan created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-cf8bccd0-9175-4b0a-8167-587163994f8c"
+                },
+                {
+                  "id": "ad5b21dd-7322-4107-8969-b87783440c60",
+                  "name": "Invalid request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-ad5b21dd-7322-4107-8969-b87783440c60"
+                },
+                {
+                  "id": "058a7e0b-93db-40c8-b30b-3a70372b9dee",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"planName\": \"<string>\",\n  \"backupDestinations\": [\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    },\n    {\n      \"backupDestinationName\": \"<string>\",\n      \"storagePolicyName\": \"<string>\"\n    }\n  ],\n  \"rpoInMinutes\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/V4/ServerPlan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "V4",
+                        "ServerPlan"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:17.000Z",
+                  "updatedAt": "2026-07-28T01:25:17.000Z",
+                  "uid": "35240-058a7e0b-93db-40c8-b30b-3a70372b9dee"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:17.000Z",
+              "updatedAt": "2026-07-28T01:25:17.000Z",
+              "uid": "35240-3c7e9a73-2eb4-473f-92da-e12ddad0fb3e"
+            }
+          ],
+          "id": "eed189a1-a0c8-4019-a875-1740ae1148c6",
+          "createdAt": "2026-07-28T01:25:17.000Z",
+          "updatedAt": "2026-07-28T01:25:17.000Z",
+          "uid": "35240-eed189a1-a0c8-4019-a875-1740ae1148c6"
+        }
+      ],
+      "id": "af6d5ff4-c231-4f71-a9e8-2b921c047fe6",
+      "createdAt": "2026-07-28T01:25:17.000Z",
+      "updatedAt": "2026-07-28T01:25:17.000Z",
+      "uid": "35240-af6d5ff4-c231-4f71-a9e8-2b921c047fe6"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}

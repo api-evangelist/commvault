@@ -1,0 +1,1366 @@
+{
+  "info": {
+    "_postman_id": "1b91f1c9-b64b-47fe-bb9e-9c076fe9e132",
+    "name": "Commvault Automation Agents Jobs API",
+    "description": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:25:14.000Z",
+    "updatedAt": "2026-07-28T01:25:14.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1b91f1c9-b64b-47fe-bb9e-9c076fe9e132"
+  },
+  "item": [
+    {
+      "name": "Job",
+      "item": [
+        {
+          "name": "{jobId}",
+          "item": [
+            {
+              "name": "action",
+              "item": [
+                {
+                  "name": "kill",
+                  "item": [
+                    {
+                      "name": "Commvault Kill a running job",
+                      "id": "f01e58df-9bb0-405c-9eca-bbc2dbb258ee",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Job/:jobId/action/kill",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Job",
+                            ":jobId",
+                            "action",
+                            "kill"
+                          ],
+                          "variable": [
+                            {
+                              "id": "544dbb0e-9e2d-4574-a43d-5290f945aa4e",
+                              "key": "jobId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the job"
+                            }
+                          ]
+                        },
+                        "description": "Terminates a currently running or pending job. The job will be marked as killed and any partial data may be retained."
+                      },
+                      "response": [
+                        {
+                          "id": "8362fe43-67a8-4de4-ab9a-9a5dd146b9e2",
+                          "name": "Job killed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/kill",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "kill"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-8362fe43-67a8-4de4-ab9a-9a5dd146b9e2"
+                        },
+                        {
+                          "id": "601a77d0-f83d-4788-8842-6b81b0af580b",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/kill",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "kill"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-601a77d0-f83d-4788-8842-6b81b0af580b"
+                        },
+                        {
+                          "id": "6c0be25e-d89a-4382-8ab2-db3792416806",
+                          "name": "Job not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/kill",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "kill"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-6c0be25e-d89a-4382-8ab2-db3792416806"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:25:14.000Z",
+                      "updatedAt": "2026-07-28T01:25:14.000Z",
+                      "uid": "35240-f01e58df-9bb0-405c-9eca-bbc2dbb258ee"
+                    }
+                  ],
+                  "id": "df693a20-c561-4cbf-b57b-18c07e29b53a",
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-df693a20-c561-4cbf-b57b-18c07e29b53a"
+                },
+                {
+                  "name": "suspend",
+                  "item": [
+                    {
+                      "name": "Commvault Suspend a running job",
+                      "id": "21fef285-d0d0-48ba-a409-25f99b9d6b9e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Job/:jobId/action/suspend",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Job",
+                            ":jobId",
+                            "action",
+                            "suspend"
+                          ],
+                          "variable": [
+                            {
+                              "id": "42b47162-b9f5-44fc-9a08-df27ebf9ee58",
+                              "key": "jobId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the job"
+                            }
+                          ]
+                        },
+                        "description": "Suspends a currently running job. The job can be resumed later from where it was paused."
+                      },
+                      "response": [
+                        {
+                          "id": "96827a36-9be9-402b-97bd-cfd8ddbe199d",
+                          "name": "Job suspended successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/suspend",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "suspend"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-96827a36-9be9-402b-97bd-cfd8ddbe199d"
+                        },
+                        {
+                          "id": "29b8d907-1599-4892-ad9e-9d91e2a4a7f3",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/suspend",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "suspend"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-29b8d907-1599-4892-ad9e-9d91e2a4a7f3"
+                        },
+                        {
+                          "id": "b7d28352-780e-4d38-a2f5-9cbe353b5650",
+                          "name": "Job not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/suspend",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "suspend"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-b7d28352-780e-4d38-a2f5-9cbe353b5650"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:25:14.000Z",
+                      "updatedAt": "2026-07-28T01:25:14.000Z",
+                      "uid": "35240-21fef285-d0d0-48ba-a409-25f99b9d6b9e"
+                    }
+                  ],
+                  "id": "fd0aaca4-0a4d-40fb-aa85-dd3f82a21879",
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-fd0aaca4-0a4d-40fb-aa85-dd3f82a21879"
+                },
+                {
+                  "name": "resume",
+                  "item": [
+                    {
+                      "name": "Commvault Resume a suspended job",
+                      "id": "02e8e42b-64c8-430d-a49b-b174ab486b74",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/Job/:jobId/action/resume",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "Job",
+                            ":jobId",
+                            "action",
+                            "resume"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0553df13-91c0-447f-a3c3-48cab2007bd5",
+                              "key": "jobId",
+                              "value": "<integer>",
+                              "description": "(Required) Unique identifier for the job"
+                            }
+                          ]
+                        },
+                        "description": "Resumes a previously suspended job from where it was paused."
+                      },
+                      "response": [
+                        {
+                          "id": "b4241cc2-7089-4339-8082-d18e7fb3d7b0",
+                          "name": "Job resumed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"errorCode\": \"<integer>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-b4241cc2-7089-4339-8082-d18e7fb3d7b0"
+                        },
+                        {
+                          "id": "5ad0534d-be84-4a1a-aade-fa58f4c54f69",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-5ad0534d-be84-4a1a-aade-fa58f4c54f69"
+                        },
+                        {
+                          "id": "e2dfb8fc-56b9-43f7-a210-34464b8d1198",
+                          "name": "Job not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authtoken",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/Job/:jobId/action/resume",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "Job",
+                                ":jobId",
+                                "action",
+                                "resume"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "jobId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:25:14.000Z",
+                          "updatedAt": "2026-07-28T01:25:14.000Z",
+                          "uid": "35240-e2dfb8fc-56b9-43f7-a210-34464b8d1198"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:25:14.000Z",
+                      "updatedAt": "2026-07-28T01:25:14.000Z",
+                      "uid": "35240-02e8e42b-64c8-430d-a49b-b174ab486b74"
+                    }
+                  ],
+                  "id": "6322c322-38ad-452b-9fc6-3ace656bb6a0",
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-6322c322-38ad-452b-9fc6-3ace656bb6a0"
+                }
+              ],
+              "id": "7529cbe6-e562-41dc-9472-74cab4edbc46",
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-7529cbe6-e562-41dc-9472-74cab4edbc46"
+            },
+            {
+              "name": "Commvault Get job details",
+              "id": "11380e90-973f-4221-bc51-a2ac2e626690",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Job/:jobId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Job",
+                    ":jobId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d08b63ff-d1e3-4630-8232-5d9d09e4c198",
+                      "key": "jobId",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the job"
+                    }
+                  ]
+                },
+                "description": "Retrieves detailed information about a specific job, including its status, progress, start and end times, data transferred, and any failure reasons."
+              },
+              "response": [
+                {
+                  "id": "a7c31e37-484f-4247-89d7-0321bd950fd6",
+                  "name": "Job details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Job/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Job",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "jobId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"jobs\": [\n    {\n      \"jobSummary\": {\n        \"jobId\": \"<integer>\",\n        \"jobType\": \"<string>\",\n        \"status\": \"Waiting\",\n        \"subclient\": {\n          \"subclientName\": \"<string>\",\n          \"clientName\": \"<string>\"\n        },\n        \"backupLevel\": \"<string>\",\n        \"percentComplete\": \"<integer>\",\n        \"startTime\": \"<integer>\",\n        \"endTime\": \"<integer>\",\n        \"sizeOfBackup\": \"<integer>\",\n        \"sizeOfMediaOnDisk\": \"<integer>\"\n      }\n    },\n    {\n      \"jobSummary\": {\n        \"jobId\": \"<integer>\",\n        \"jobType\": \"<string>\",\n        \"status\": \"Waiting\",\n        \"subclient\": {\n          \"subclientName\": \"<string>\",\n          \"clientName\": \"<string>\"\n        },\n        \"backupLevel\": \"<string>\",\n        \"percentComplete\": \"<integer>\",\n        \"startTime\": \"<integer>\",\n        \"endTime\": \"<integer>\",\n        \"sizeOfBackup\": \"<integer>\",\n        \"sizeOfMediaOnDisk\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-a7c31e37-484f-4247-89d7-0321bd950fd6"
+                },
+                {
+                  "id": "3c152490-3efd-4920-a621-4952cfbfc4a0",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Job/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Job",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "jobId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-3c152490-3efd-4920-a621-4952cfbfc4a0"
+                },
+                {
+                  "id": "4a9b9805-ebd2-4519-aa67-ce8417e27dfd",
+                  "name": "Job not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authtoken",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/Job/:jobId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Job",
+                        ":jobId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "jobId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:25:14.000Z",
+                  "updatedAt": "2026-07-28T01:25:14.000Z",
+                  "uid": "35240-4a9b9805-ebd2-4519-aa67-ce8417e27dfd"
+                }
+              ],
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-11380e90-973f-4221-bc51-a2ac2e626690"
+            }
+          ],
+          "id": "6aa7d6f7-85d9-443d-acbe-2b6873bfe95d",
+          "createdAt": "2026-07-28T01:25:14.000Z",
+          "updatedAt": "2026-07-28T01:25:14.000Z",
+          "uid": "35240-6aa7d6f7-85d9-443d-acbe-2b6873bfe95d"
+        },
+        {
+          "name": "Commvault List jobs",
+          "id": "e89a38bb-6a4e-4ae2-ba6e-bc37cec514c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Job?clientId=<integer>&jobFilter=Pending&limit=100&lookupTime=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Job"
+              ],
+              "query": [
+                {
+                  "description": "Filter jobs by client ID",
+                  "key": "clientId",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Filter by job status (e.g., Running, Completed, Failed)",
+                  "key": "jobFilter",
+                  "value": "Pending"
+                },
+                {
+                  "description": "Maximum number of jobs to return",
+                  "key": "limit",
+                  "value": "100"
+                },
+                {
+                  "description": "Time range in hours to look back for jobs",
+                  "key": "lookupTime",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Retrieves a list of jobs with optional filtering by status, type, client, and time range. Returns both active and completed backup, restore, and administrative jobs."
+          },
+          "response": [
+            {
+              "id": "66bf1e80-297c-4809-8ea2-5c6bf1b8e414",
+              "name": "List of jobs",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Job?clientId=<integer>&jobFilter=Pending&limit=100&lookupTime=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Job"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter jobs by client ID",
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by job status (e.g., Running, Completed, Failed)",
+                      "key": "jobFilter",
+                      "value": "Pending"
+                    },
+                    {
+                      "description": "Maximum number of jobs to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Time range in hours to look back for jobs",
+                      "key": "lookupTime",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jobs\": [\n    {\n      \"jobSummary\": {\n        \"jobId\": \"<integer>\",\n        \"jobType\": \"<string>\",\n        \"status\": \"Completed w/ one or more warnings\",\n        \"subclient\": {\n          \"subclientName\": \"<string>\",\n          \"clientName\": \"<string>\"\n        },\n        \"backupLevel\": \"<string>\",\n        \"percentComplete\": \"<integer>\",\n        \"startTime\": \"<integer>\",\n        \"endTime\": \"<integer>\",\n        \"sizeOfBackup\": \"<integer>\",\n        \"sizeOfMediaOnDisk\": \"<integer>\"\n      }\n    },\n    {\n      \"jobSummary\": {\n        \"jobId\": \"<integer>\",\n        \"jobType\": \"<string>\",\n        \"status\": \"Running\",\n        \"subclient\": {\n          \"subclientName\": \"<string>\",\n          \"clientName\": \"<string>\"\n        },\n        \"backupLevel\": \"<string>\",\n        \"percentComplete\": \"<integer>\",\n        \"startTime\": \"<integer>\",\n        \"endTime\": \"<integer>\",\n        \"sizeOfBackup\": \"<integer>\",\n        \"sizeOfMediaOnDisk\": \"<integer>\"\n      }\n    }\n  ],\n  \"totalRecordsWithoutPaging\": \"<integer>\"\n}",
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-66bf1e80-297c-4809-8ea2-5c6bf1b8e414"
+            },
+            {
+              "id": "ae616296-da10-4076-923c-09d212c45610",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Job?clientId=<integer>&jobFilter=Pending&limit=100&lookupTime=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Job"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter jobs by client ID",
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by job status (e.g., Running, Completed, Failed)",
+                      "key": "jobFilter",
+                      "value": "Pending"
+                    },
+                    {
+                      "description": "Maximum number of jobs to return",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Time range in hours to look back for jobs",
+                      "key": "lookupTime",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-ae616296-da10-4076-923c-09d212c45610"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:14.000Z",
+          "updatedAt": "2026-07-28T01:25:14.000Z",
+          "uid": "35240-e89a38bb-6a4e-4ae2-ba6e-bc37cec514c4"
+        }
+      ],
+      "id": "ce0bd4f4-8701-4b40-a8aa-ffa64e6d1797",
+      "createdAt": "2026-07-28T01:25:14.000Z",
+      "updatedAt": "2026-07-28T01:25:14.000Z",
+      "uid": "35240-ce0bd4f4-8701-4b40-a8aa-ffa64e6d1797"
+    },
+    {
+      "name": "CreateTask",
+      "item": [
+        {
+          "name": "Commvault Run a backup job",
+          "id": "788685df-c9d4-4874-9416-435303b4adc8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"INCREMENTAL\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"FULL\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/CreateTask",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "CreateTask"
+              ]
+            },
+            "description": "Initiates a backup job for a specified subclient. Supports full, incremental, differential, and synthetic full backup levels."
+          },
+          "response": [
+            {
+              "id": "e7d93a97-8e43-453d-94e7-83ff4b67e653",
+              "name": "Backup job created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"INCREMENTAL\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"FULL\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CreateTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CreateTask"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jobIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-e7d93a97-8e43-453d-94e7-83ff4b67e653"
+            },
+            {
+              "id": "a57c44e3-6995-465a-9658-42b12f2d49b9",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"INCREMENTAL\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"FULL\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CreateTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CreateTask"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-a57c44e3-6995-465a-9658-42b12f2d49b9"
+            },
+            {
+              "id": "62b0b32b-4556-4718-b1f6-24dae7f08c59",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"INCREMENTAL\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"BACKUP\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"FULL\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/CreateTask",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "CreateTask"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-62b0b32b-4556-4718-b1f6-24dae7f08c59"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:14.000Z",
+          "updatedAt": "2026-07-28T01:25:14.000Z",
+          "uid": "35240-788685df-c9d4-4874-9416-435303b4adc8"
+        }
+      ],
+      "id": "1f4a187c-59ea-4dc5-8b68-31f2a4dfb34e",
+      "createdAt": "2026-07-28T01:25:14.000Z",
+      "updatedAt": "2026-07-28T01:25:14.000Z",
+      "uid": "35240-1f4a187c-59ea-4dc5-8b68-31f2a4dfb34e"
+    },
+    {
+      "name": "retrieveToClient",
+      "item": [
+        {
+          "name": "Commvault Run a restore job",
+          "id": "a63da482-65d7-40f3-8f22-1bf69c97e60f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/retrieveToClient",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "retrieveToClient"
+              ]
+            },
+            "description": "Initiates a restore operation to recover backed-up data to the original or an alternate location. Supports in-place restore, out-of-place restore, and cross-platform restore."
+          },
+          "response": [
+            {
+              "id": "60c549c9-f4bc-4b59-958a-f4b841cb6d2a",
+              "name": "Restore job created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/retrieveToClient",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "retrieveToClient"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jobIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-60c549c9-f4bc-4b59-958a-f4b841cb6d2a"
+            },
+            {
+              "id": "147772da-7dcf-48af-9a31-2da59eddedc9",
+              "name": "Invalid request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/retrieveToClient",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "retrieveToClient"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-147772da-7dcf-48af-9a31-2da59eddedc9"
+            },
+            {
+              "id": "89be851f-4fd9-438a-a7e7-0c984470df77",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"RESTORE\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/retrieveToClient",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "retrieveToClient"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:25:14.000Z",
+              "updatedAt": "2026-07-28T01:25:14.000Z",
+              "uid": "35240-89be851f-4fd9-438a-a7e7-0c984470df77"
+            }
+          ],
+          "createdAt": "2026-07-28T01:25:14.000Z",
+          "updatedAt": "2026-07-28T01:25:14.000Z",
+          "uid": "35240-a63da482-65d7-40f3-8f22-1bf69c97e60f"
+        }
+      ],
+      "id": "a7e949df-1a66-411a-b650-b08e4ccd487c",
+      "createdAt": "2026-07-28T01:25:14.000Z",
+      "updatedAt": "2026-07-28T01:25:14.000Z",
+      "uid": "35240-a7e949df-1a66-411a-b650-b08e4ccd487c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "webserver",
+      "value": "webconsole.example.com"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{webserver}}/webconsole/api"
+    }
+  ]
+}
