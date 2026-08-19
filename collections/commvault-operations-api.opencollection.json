@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Operations API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Execute a qcommand operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/QCommand/qoperation"
+          },
+          "docs": "Executes an arbitrary Commvault command-line (qcommand) operation through the REST API. This provides programmatic access to operations that may not have dedicated REST endpoints."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

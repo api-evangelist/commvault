@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "f6cb18da-818a-4f50-88c7-fb1860b77ea5",
+      "name": "Dashboard",
+      "description": {
+        "content": "Dashboard summary and health monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7a98d7a2-1004-42b0-9308-6586d7b37ead",
+          "name": "Commvault Get dashboard summary",
+          "request": {
+            "name": "Commvault Get dashboard summary",
+            "description": {
+              "content": "Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Dashboard"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dedeb1e5-65bb-4c5b-8b69-1f8eeaa3a0d2",
+              "name": "Dashboard summary data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sla\": {\n    \"percentCompliant\": 5975.602480579085,\n    \"totalProtected\": 6078,\n    \"totalNotProtected\": 2604\n  },\n  \"jobs\": {\n    \"running\": 7531,\n    \"completed\": 9073,\n    \"failed\": 8572,\n    \"pending\": 7075\n  },\n  \"storage\": {\n    \"totalCapacityGB\": 2912.4031963517436,\n    \"usedCapacityGB\": 3398.1136630593123,\n    \"freeCapacityGB\": 6212.191339557631,\n    \"deduplicationRatio\": 3673.065098894733\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0b2e35c-a80c-418d-8bf8-120101dff800",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Dashboard"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b9bb291d-4dd7-460c-b142-690ebb1ac610",
+    "name": "Commvault Automation Agents Dashboard API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

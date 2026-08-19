@@ -1,0 +1,412 @@
+{
+  "item": [
+    {
+      "id": "d3556be9-c6e6-4049-bfe6-59173368a819",
+      "name": "Users",
+      "description": {
+        "content": "Manage Commvault users and user groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f049ac8-0196-4ab1-b460-d22c4a791ef7",
+          "name": "Commvault List users",
+          "request": {
+            "name": "Commvault List users",
+            "description": {
+              "content": "Retrieves a list of all Commvault users, including local and externally authenticated users, their roles, and associated user groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08229e6c-38a4-4bbf-a6ea-d3692a5a942e",
+              "name": "List of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"userEntity\": {\n        \"userId\": 3895,\n        \"userName\": \"string\"\n      },\n      \"email\": \"ECRN@vzcyGgyJLCYJnwQHUjzhbblPlWlUJWOqb.pfpu\",\n      \"description\": \"string\",\n      \"enabled\": false,\n      \"associatedUserGroups\": [\n        {\n          \"userGroupName\": \"string\"\n        },\n        {\n          \"userGroupName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"userEntity\": {\n        \"userId\": 9308,\n        \"userName\": \"string\"\n      },\n      \"email\": \"2zqjmn2@onLKtdTKuyzXFrDaSBEZgEbFGqtQShDQC.dp\",\n      \"description\": \"string\",\n      \"enabled\": false,\n      \"associatedUserGroups\": [\n        {\n          \"userGroupName\": \"string\"\n        },\n        {\n          \"userGroupName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3fde8c4-791a-4166-a745-0f81279493de",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d674db6-fc92-4731-8659-78075f982429",
+          "name": "Commvault Get user details",
+          "request": {
+            "name": "Commvault Get user details",
+            "description": {
+              "content": "Retrieves detailed properties of a specific user, including associated security roles, user groups, and email configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "User",
+                ":userId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "userId",
+                  "description": "(Required) Unique identifier for the user"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed519e21-4249-408c-a29c-475ca23ae319",
+              "name": "User details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier for the user"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"userEntity\": {\n    \"userId\": 1026,\n    \"userName\": \"string\"\n  },\n  \"email\": \"MV9BbrKVCr4xWSH@KtfKuhDEfCbHOFjhgNAcQfsGMVzwNGOnK.eshb\",\n  \"description\": \"string\",\n  \"enabled\": false,\n  \"associatedUserGroups\": [\n    {\n      \"userGroupName\": \"string\"\n    },\n    {\n      \"userGroupName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a78782a-2661-4014-b015-205906ff6e24",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier for the user"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de196f11-55e6-4522-91eb-33bac21aecb1",
+              "name": "User not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "User",
+                    ":userId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "userId",
+                      "description": "(Required) Unique identifier for the user"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d41c4942-b479-4c29-8ca8-2fa61eef2f8e",
+    "name": "Commvault Automation Agents Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

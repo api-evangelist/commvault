@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "c0096c7e-ed7a-41a6-93f7-a652b4ddc3e5",
+      "name": "Policies",
+      "description": {
+        "content": "Manage data protection policies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "910f823f-1dec-40a2-9d93-02972a420e11",
+          "name": "Commvault Get global data protection filters",
+          "request": {
+            "name": "Commvault Get global data protection filters",
+            "description": {
+              "content": "Retrieves the global exclusion filters applied to all backup operations, such as temporary file patterns, operating system cache directories, and other commonly excluded content.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "CommcellGlobalFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b14d9292-f088-4053-ac8a-2a2b5a1e7eb8",
+              "name": "Global filters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"string\",\n      \"string\"\n    ],\n    \"unixFilters\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24336119-6feb-4acb-9fbb-d0d6b5f447dd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6ca6b96-70ed-4c7a-addd-ceefaa59dbe6",
+          "name": "Commvault Update global data protection filters",
+          "request": {
+            "name": "Commvault Update global data protection filters",
+            "description": {
+              "content": "Updates the global exclusion filters for backup operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "CommcellGlobalFilter"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "67152b24-1d79-4a26-8ddc-e86dfbb85a01",
+              "name": "Global filters updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 2016,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87a52bf5-d384-4806-9274-7aa7d3688a5a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "49dfb384-4bc7-44fd-aaec-beae24a0d7dc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "CommcellGlobalFilter"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"globalFiltersInfo\": {\n    \"windowsFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"unixFilters\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2aba14c2-d0da-4975-96e7-534a00d4ed7a",
+    "name": "Commvault Automation Agents Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

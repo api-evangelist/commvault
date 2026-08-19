@@ -1,0 +1,434 @@
+{
+  "item": [
+    {
+      "id": "bbcf4a5a-6a53-4184-9f19-eeb324799e5d",
+      "name": "Reports",
+      "description": {
+        "content": "Reporting and analytics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ef80ec3-8bf4-4c34-abc2-e541c441b269",
+          "name": "Commvault List available reports",
+          "request": {
+            "name": "Commvault List available reports",
+            "description": {
+              "content": "Retrieves a list of all available reports, including built-in and custom reports for backup, storage, compliance, and operational analytics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9809c9c0-bdd3-4e06-9709-781b22ee1ba9",
+              "name": "List of reports",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reports\": [\n    {\n      \"reportId\": 8666,\n      \"reportName\": \"string\",\n      \"reportCategory\": \"SLA\",\n      \"description\": \"string\"\n    },\n    {\n      \"reportId\": 6267,\n      \"reportName\": \"string\",\n      \"reportCategory\": \"Backup\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c61b9ed4-516d-46b9-9519-c1bec6bfd987",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5dbaa4f-da6b-482a-a54f-61c8b9bd651a",
+          "name": "Commvault Get report data",
+          "request": {
+            "name": "Commvault Get report data",
+            "description": {
+              "content": "Executes a specific report and returns the report data, including charts, tables, and summary statistics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Reports",
+                ":reportId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRange",
+                  "value": "<string>",
+                  "description": "Time range for the report"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "reportId",
+                  "description": "(Required) Unique identifier for the report"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "98a81849-42e6-498f-a58d-19ba6b27bc09",
+              "name": "Report data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reportId\": 7611,\n  \"reportName\": \"string\",\n  \"reportCategory\": \"Storage\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c78f331c-63e7-4346-97d7-bb7a1b87f8b4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4ad9aba-f695-4985-bc62-a49fa9811127",
+              "name": "Report not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Reports",
+                    ":reportId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "reportId",
+                      "description": "(Required) Unique identifier for the report"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0979fe4d-7207-4aef-b95d-5e14cda7dd4b",
+    "name": "Commvault Automation Agents Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

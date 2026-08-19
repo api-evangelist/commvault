@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "c2fd5ab5-ad16-40ae-846b-1c121d73b6ee",
+      "name": "Alerts",
+      "description": {
+        "content": "Manage alerts and notification configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63829e88-d11c-4e99-a120-35169185bf91",
+          "name": "Commvault List alert rules",
+          "request": {
+            "name": "Commvault List alert rules",
+            "description": {
+              "content": "Retrieves a list of configured alert rules. Alerts notify administrators of important events such as job failures, storage thresholds, and security events.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "AlertRule"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "32c49b9a-b15f-4cf7-a435-6e00f150f27e",
+              "name": "List of alert rules",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AlertRule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alertList\": [\n    {\n      \"id\": 9718,\n      \"name\": \"string\",\n      \"alertType\": 6140,\n      \"severity\": \"Warning\",\n      \"criteria\": {}\n    },\n    {\n      \"id\": 9377,\n      \"name\": \"string\",\n      \"alertType\": 3066,\n      \"severity\": \"Information\",\n      \"criteria\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8ad62313-4f9e-46e3-ae9f-b55df64483fe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "AlertRule"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "28de6112-6c30-48a2-8e8c-dc184983023d",
+    "name": "Commvault Automation Agents Alerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

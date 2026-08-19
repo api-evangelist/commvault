@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Scripts API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scripts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List automation scripts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Script"
+          },
+          "docs": "Retrieves a list of all automation scripts registered in the CommServe, including pre/post backup scripts and custom automation scripts."
+        },
+        {
+          "info": {
+            "name": "Commvault Get script details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Script/:scriptId",
+            "params": [
+              {
+                "name": "scriptId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the automation script"
+              }
+            ]
+          },
+          "docs": "Retrieves the details of a specific automation script, including its content, associated triggers, and execution history."
+        },
+        {
+          "info": {
+            "name": "Commvault Execute an automation script",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Script/:scriptId/Action/Execute",
+            "params": [
+              {
+                "name": "scriptId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the automation script"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers the execution of an automation script with optional input parameters."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

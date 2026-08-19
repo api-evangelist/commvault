@@ -1,0 +1,98 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Clients API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List all clients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Client"
+          },
+          "docs": "Retrieves a list of all clients registered in the CommServe, including servers, workstations, laptop clients, and virtual machine proxies."
+        },
+        {
+          "info": {
+            "name": "Commvault Get client details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Client/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the client"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed properties of a specific client including installed agents, network configuration, and activity control settings."
+        },
+        {
+          "info": {
+            "name": "Commvault Update client properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{webserver}/webconsole/api/Client/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the client"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates properties of a specific client such as display name, activity control, or network settings."
+        },
+        {
+          "info": {
+            "name": "Commvault Retire or delete a client",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{webserver}/webconsole/api/Client/:clientId",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the client"
+              }
+            ]
+          },
+          "docs": "Retires or deletes a client from the CommServe. This removes the client configuration but may preserve backup data based on retention policies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents File Servers API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List file servers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/V4/FileServers"
+          },
+          "docs": "Retrieves a list of all file servers configured for protection, including NAS devices, Windows file servers, and Linux file servers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

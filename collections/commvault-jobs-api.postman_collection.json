@@ -1,0 +1,1585 @@
+{
+  "item": [
+    {
+      "id": "d1ecaf32-c010-49ba-b2b3-332c3839f50b",
+      "name": "Jobs",
+      "description": {
+        "content": "View and manage backup, restore, and administrative jobs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24829b93-d138-449b-b829-8023cf15b440",
+          "name": "Commvault List jobs",
+          "request": {
+            "name": "Commvault List jobs",
+            "description": {
+              "content": "Retrieves a list of jobs with optional filtering by status, type, client, and time range. Returns both active and completed backup, restore, and administrative jobs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Job"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<integer>",
+                  "description": "Filter jobs by client ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "jobFilter",
+                  "value": "<string>",
+                  "description": "Filter by job status (e.g., Running, Completed, Failed)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of jobs to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "lookupTime",
+                  "value": "<integer>",
+                  "description": "Time range in hours to look back for jobs"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18ac8906-f8f8-4fa4-a52e-2ad49abbbd6f",
+              "name": "List of jobs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "jobFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "lookupTime",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"jobSummary\": {\n        \"jobId\": 9779,\n        \"jobType\": \"string\",\n        \"status\": \"Running\",\n        \"subclient\": {\n          \"subclientName\": \"string\",\n          \"clientName\": \"string\"\n        },\n        \"backupLevel\": \"string\",\n        \"percentComplete\": 6,\n        \"startTime\": 1775,\n        \"endTime\": 4243,\n        \"sizeOfBackup\": 1098,\n        \"sizeOfMediaOnDisk\": 2527\n      }\n    },\n    {\n      \"jobSummary\": {\n        \"jobId\": 2205,\n        \"jobType\": \"string\",\n        \"status\": \"Completed w/ one or more errors\",\n        \"subclient\": {\n          \"subclientName\": \"string\",\n          \"clientName\": \"string\"\n        },\n        \"backupLevel\": \"string\",\n        \"percentComplete\": 45,\n        \"startTime\": 1673,\n        \"endTime\": 8036,\n        \"sizeOfBackup\": 2729,\n        \"sizeOfMediaOnDisk\": 7029\n      }\n    }\n  ],\n  \"totalRecordsWithoutPaging\": 9209\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "871d0d50-1d33-421d-8a72-aa9b0fcd580d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "jobFilter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "lookupTime",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74adcd03-1e07-4cf8-8a51-69e99c1bb6de",
+          "name": "Commvault Get job details",
+          "request": {
+            "name": "Commvault Get job details",
+            "description": {
+              "content": "Retrieves detailed information about a specific job, including its status, progress, start and end times, data transferred, and any failure reasons.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Job",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "jobId",
+                  "description": "(Required) Unique identifier for the job"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b25631d-a171-49da-8ceb-76426b1e8647",
+              "name": "Job details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobs\": [\n    {\n      \"jobSummary\": {\n        \"jobId\": 3112,\n        \"jobType\": \"string\",\n        \"status\": \"Failed\",\n        \"subclient\": {\n          \"subclientName\": \"string\",\n          \"clientName\": \"string\"\n        },\n        \"backupLevel\": \"string\",\n        \"percentComplete\": 66,\n        \"startTime\": 4674,\n        \"endTime\": 7368,\n        \"sizeOfBackup\": 340,\n        \"sizeOfMediaOnDisk\": 3292\n      }\n    },\n    {\n      \"jobSummary\": {\n        \"jobId\": 9651,\n        \"jobType\": \"string\",\n        \"status\": \"Suspended\",\n        \"subclient\": {\n          \"subclientName\": \"string\",\n          \"clientName\": \"string\"\n        },\n        \"backupLevel\": \"string\",\n        \"percentComplete\": 32,\n        \"startTime\": 782,\n        \"endTime\": 9852,\n        \"sizeOfBackup\": 9150,\n        \"sizeOfMediaOnDisk\": 3601\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c104955c-cd47-4129-bed5-e1263e908509",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9a7c9c9c-8287-45f9-ab59-590edad59212",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ed7b3b0-69a7-416a-877e-e840fe0d0838",
+          "name": "Commvault Kill a running job",
+          "request": {
+            "name": "Commvault Kill a running job",
+            "description": {
+              "content": "Terminates a currently running or pending job. The job will be marked as killed and any partial data may be retained.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Job",
+                ":jobId",
+                "action",
+                "kill"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "jobId",
+                  "description": "(Required) Unique identifier for the job"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cabbd1ee-a9f9-4ac3-81c7-5a78aac535e9",
+              "name": "Job killed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "kill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 9759,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9cddff0e-0fe4-4fcb-81ee-76b0eb603ba6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "kill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "046c482d-e912-4b85-ab23-60f59e3afe62",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "kill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "032a617b-e5ef-460a-aec7-370946dcf13e",
+          "name": "Commvault Suspend a running job",
+          "request": {
+            "name": "Commvault Suspend a running job",
+            "description": {
+              "content": "Suspends a currently running job. The job can be resumed later from where it was paused.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Job",
+                ":jobId",
+                "action",
+                "suspend"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "jobId",
+                  "description": "(Required) Unique identifier for the job"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b5ef5c03-f27f-401a-84ab-2d6d924d9cf7",
+              "name": "Job suspended successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 9759,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee827aaf-c56f-4796-998c-3594b2a01064",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd962d3e-1b90-4fab-b56a-2276f19e1ace",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "suspend"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e2392b0-0e73-4150-9e15-feb17a8eff90",
+          "name": "Commvault Resume a suspended job",
+          "request": {
+            "name": "Commvault Resume a suspended job",
+            "description": {
+              "content": "Resumes a previously suspended job from where it was paused.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Job",
+                ":jobId",
+                "action",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "jobId",
+                  "description": "(Required) Unique identifier for the job"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2377f67-4065-4aa7-8b5a-e53cb1defc69",
+              "name": "Job resumed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 9759,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b18aec9-7440-4ebf-aa2c-c5d19b25780b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "059aa239-9f10-4031-98e8-a1dd15943ec0",
+              "name": "Job not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Job",
+                    ":jobId",
+                    "action",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "jobId",
+                      "description": "(Required) Unique identifier for the job"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8c38cfa-ed5d-442a-8f8d-f3445abae997",
+          "name": "Commvault Run a backup job",
+          "request": {
+            "name": "Commvault Run a backup job",
+            "description": {
+              "content": "Initiates a backup job for a specified subclient. Supports full, incremental, differential, and synthetic full backup levels.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CreateTask"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "434383c6-ec35-49fb-a408-100780d2ba57",
+              "name": "Backup job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateTask"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d497376-e6cc-4ff5-bb47-56ba5c6c452a",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateTask"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8bee99bc-e22f-4497-8ac8-58f6feda64e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CreateTask"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"backupOpts\": {\n            \"backupLevel\": \"<string>\"\n          }\n        }\n      }\n    ],\n    \"associations\": [\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      },\n      {\n        \"subclientName\": \"<string>\",\n        \"clientName\": \"<string>\",\n        \"appName\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3cd2a9a-030c-48e4-b58c-8ba773aa92d4",
+          "name": "Commvault Run a restore job",
+          "request": {
+            "name": "Commvault Run a restore job",
+            "description": {
+              "content": "Initiates a restore operation to recover backed-up data to the original or an alternate location. Supports in-place restore, out-of-place restore, and cross-platform restore.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "retrieveToClient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fd7113e2-abbe-4528-92c6-74226d9f507c",
+              "name": "Restore job created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "retrieveToClient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobIds\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "671beadf-3387-4cf8-9cbd-5798cee056f3",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "retrieveToClient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1367d608-92db-404b-b6d3-04e6e1cd521f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "retrieveToClient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"subTasks\": [\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      },\n      {\n        \"subTask\": {\n          \"operationType\": \"<string>\"\n        },\n        \"options\": {\n          \"restoreOptions\": {\n            \"destination\": {\n              \"destClient\": {\n                \"clientName\": \"<string>\"\n              },\n              \"destinationPath\": \"<string>\"\n            },\n            \"fileOption\": {\n              \"sourceItem\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99dceccc-cf17-4fe4-b13f-dc1e82dca1ed",
+    "name": "Commvault Automation Agents Jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Virtual Machines API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Machines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List virtual machines",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/VM",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by protection status"
+              },
+              {
+                "name": "hypervisorId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by hypervisor client ID"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all virtual machines registered for protection, including their backup status, hypervisor association, and SLA compliance."
+        },
+        {
+          "info": {
+            "name": "Commvault Get virtual machine details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/VM/:vmUUID",
+            "params": [
+              {
+                "name": "vmUUID",
+                "value": "",
+                "type": "path",
+                "description": "UUID of the virtual machine"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific virtual machine, including backup history, recovery points, and configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

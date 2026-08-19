@@ -1,0 +1,412 @@
+{
+  "item": [
+    {
+      "id": "e97d3afa-068d-4b39-921d-64344812d60c",
+      "name": "Storage Policies",
+      "description": {
+        "content": "Manage storage policies and copies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f70f833-1502-4f2e-aa2f-34a31bfeb6a3",
+          "name": "Commvault List storage policies",
+          "request": {
+            "name": "Commvault List storage policies",
+            "description": {
+              "content": "Retrieves a list of all storage policies configured in the CommServe. Storage policies define where backup data is stored and how it is managed across primary, secondary, and tertiary storage tiers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "StoragePolicy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab1248b4-a2c5-434f-af05-a92005167605",
+              "name": "List of storage policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StoragePolicy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"policies\": [\n    {\n      \"storagePolicyId\": 1529,\n      \"storagePolicyName\": \"string\",\n      \"copies\": [\n        {\n          \"copyName\": \"string\",\n          \"copyType\": \"string\",\n          \"retentionRules\": {\n            \"retainBackupDataForDays\": 1630,\n            \"retainBackupDataForCycles\": 3047\n          }\n        },\n        {\n          \"copyName\": \"string\",\n          \"copyType\": \"string\",\n          \"retentionRules\": {\n            \"retainBackupDataForDays\": 8879,\n            \"retainBackupDataForCycles\": 4371\n          }\n        }\n      ]\n    },\n    {\n      \"storagePolicyId\": 5512,\n      \"storagePolicyName\": \"string\",\n      \"copies\": [\n        {\n          \"copyName\": \"string\",\n          \"copyType\": \"string\",\n          \"retentionRules\": {\n            \"retainBackupDataForDays\": 7460,\n            \"retainBackupDataForCycles\": 1396\n          }\n        },\n        {\n          \"copyName\": \"string\",\n          \"copyType\": \"string\",\n          \"retentionRules\": {\n            \"retainBackupDataForDays\": 5955,\n            \"retainBackupDataForCycles\": 7973\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "753488d4-8f60-492d-a90a-df328b2e2d06",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StoragePolicy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cf79f27-e4da-4779-99e5-5d114a9fdacb",
+          "name": "Commvault Get storage policy details",
+          "request": {
+            "name": "Commvault Get storage policy details",
+            "description": {
+              "content": "Retrieves detailed configuration of a specific storage policy, including its copies, retention rules, deduplication settings, and associated media agents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "StoragePolicy",
+                ":storagePolicyId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "storagePolicyId",
+                  "description": "(Required) Unique identifier for the storage policy"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a0677b7-1588-408e-8460-43c4dcca97e1",
+              "name": "Storage policy details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StoragePolicy",
+                    ":storagePolicyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePolicyId",
+                      "description": "(Required) Unique identifier for the storage policy"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storagePolicyId\": 4417,\n  \"storagePolicyName\": \"string\",\n  \"copies\": [\n    {\n      \"copyName\": \"string\",\n      \"copyType\": \"string\",\n      \"retentionRules\": {\n        \"retainBackupDataForDays\": 3020,\n        \"retainBackupDataForCycles\": 9296\n      }\n    },\n    {\n      \"copyName\": \"string\",\n      \"copyType\": \"string\",\n      \"retentionRules\": {\n        \"retainBackupDataForDays\": 4782,\n        \"retainBackupDataForCycles\": 7402\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c00bb7aa-f51c-433c-a9f5-db890a74ef5f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StoragePolicy",
+                    ":storagePolicyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePolicyId",
+                      "description": "(Required) Unique identifier for the storage policy"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63f14a66-f4d1-4426-ba51-ed7bca2eff14",
+              "name": "Storage policy not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "StoragePolicy",
+                    ":storagePolicyId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePolicyId",
+                      "description": "(Required) Unique identifier for the storage policy"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "37d015cd-a981-438a-b4af-a9b8809210e4",
+    "name": "Commvault Automation Agents Storage Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

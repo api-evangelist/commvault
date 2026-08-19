@@ -1,0 +1,443 @@
+{
+  "item": [
+    {
+      "id": "ba4ba3f8-640c-4e3f-aeb8-3750b08eff5a",
+      "name": "Virtual Machines",
+      "description": {
+        "content": "Manage virtual machine backup and recovery",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dcf1c3e6-7b4c-4e4b-915a-47aee04d9f5b",
+          "name": "Commvault List virtual machines",
+          "request": {
+            "name": "Commvault List virtual machines",
+            "description": {
+              "content": "Retrieves a list of all virtual machines registered for protection, including their backup status, hypervisor association, and SLA compliance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VM"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by protection status"
+                },
+                {
+                  "disabled": false,
+                  "key": "hypervisorId",
+                  "value": "<integer>",
+                  "description": "Filter by hypervisor client ID"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cf34e9ba-3a77-42ca-ae1d-cab32ee083c5",
+              "name": "List of virtual machines",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisorId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vmStatusInfoList\": [\n    {\n      \"vmUUID\": \"string\",\n      \"vmName\": \"string\",\n      \"vmStatus\": \"NotProtected\",\n      \"hypervisor\": {\n        \"clientId\": 1416,\n        \"clientName\": \"string\"\n      },\n      \"vmSize\": 2091,\n      \"lastBackupTime\": 7343,\n      \"lastBackupJobId\": 4546,\n      \"planName\": \"string\"\n    },\n    {\n      \"vmUUID\": \"string\",\n      \"vmName\": \"string\",\n      \"vmStatus\": \"Protected\",\n      \"hypervisor\": {\n        \"clientId\": 353,\n        \"clientName\": \"string\"\n      },\n      \"vmSize\": 5030,\n      \"lastBackupTime\": 9197,\n      \"lastBackupJobId\": 3939,\n      \"planName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a681d97d-fba8-45e8-a471-0d2ddb0935d8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "hypervisorId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e45ad6e-46f9-4d1e-9641-4fdbaaa60217",
+          "name": "Commvault Get virtual machine details",
+          "request": {
+            "name": "Commvault Get virtual machine details",
+            "description": {
+              "content": "Retrieves detailed information about a specific virtual machine, including backup history, recovery points, and configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "VM",
+                ":vmUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vmUUID",
+                  "description": "(Required) UUID of the virtual machine"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99d772dd-babc-4179-90e1-5616b85eede9",
+              "name": "Virtual machine details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"vmUUID\": \"string\",\n  \"vmName\": \"string\",\n  \"vmStatus\": \"Pending\",\n  \"hypervisor\": {\n    \"clientId\": 2326,\n    \"clientName\": \"string\"\n  },\n  \"vmSize\": 3551,\n  \"lastBackupTime\": 5936,\n  \"lastBackupJobId\": 6485,\n  \"planName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01e41371-fada-4861-a587-75adbc24c5b2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6c3a9131-e36e-47a2-9b71-5864324c92b4",
+              "name": "Virtual machine not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "VM",
+                    ":vmUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vmUUID",
+                      "description": "(Required) UUID of the virtual machine"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5a203641-807a-4e88-9d9a-8c3e968f34c9",
+    "name": "Commvault Automation Agents Virtual Machines API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

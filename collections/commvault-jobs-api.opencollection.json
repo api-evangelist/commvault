@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Jobs API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Job",
+            "params": [
+              {
+                "name": "clientId",
+                "value": "",
+                "type": "query",
+                "description": "Filter jobs by client ID"
+              },
+              {
+                "name": "jobFilter",
+                "value": "",
+                "type": "query",
+                "description": "Filter by job status (e.g., Running, Completed, Failed)"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of jobs to return"
+              },
+              {
+                "name": "lookupTime",
+                "value": "",
+                "type": "query",
+                "description": "Time range in hours to look back for jobs"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of jobs with optional filtering by status, type, client, and time range. Returns both active and completed backup, restore, and administrative jobs."
+        },
+        {
+          "info": {
+            "name": "Commvault Get job details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Job/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the job"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific job, including its status, progress, start and end times, data transferred, and any failure reasons."
+        },
+        {
+          "info": {
+            "name": "Commvault Kill a running job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Job/:jobId/action/kill",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the job"
+              }
+            ]
+          },
+          "docs": "Terminates a currently running or pending job. The job will be marked as killed and any partial data may be retained."
+        },
+        {
+          "info": {
+            "name": "Commvault Suspend a running job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Job/:jobId/action/suspend",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the job"
+              }
+            ]
+          },
+          "docs": "Suspends a currently running job. The job can be resumed later from where it was paused."
+        },
+        {
+          "info": {
+            "name": "Commvault Resume a suspended job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Job/:jobId/action/resume",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the job"
+              }
+            ]
+          },
+          "docs": "Resumes a previously suspended job from where it was paused."
+        },
+        {
+          "info": {
+            "name": "Commvault Run a backup job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/CreateTask",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a backup job for a specified subclient. Supports full, incremental, differential, and synthetic full backup levels."
+        },
+        {
+          "info": {
+            "name": "Commvault Run a restore job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/retrieveToClient",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initiates a restore operation to recover backed-up data to the original or an alternate location. Supports in-place restore, out-of-place restore, and cross-platform restore."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

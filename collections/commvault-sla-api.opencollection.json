@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents SLA API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "SLA",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Get SLA compliance summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/SLASummary",
+            "params": [
+              {
+                "name": "timeRange",
+                "value": "",
+                "type": "query",
+                "description": "Time range for SLA calculation"
+              }
+            ]
+          },
+          "docs": "Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

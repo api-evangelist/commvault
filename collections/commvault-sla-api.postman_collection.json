@@ -1,0 +1,213 @@
+{
+  "item": [
+    {
+      "id": "26916a6a-ce1b-494e-9285-2f374a114529",
+      "name": "SLA",
+      "description": {
+        "content": "Service Level Agreement compliance monitoring",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47f86364-f456-4024-98b9-7178caab0edd",
+          "name": "Commvault Get SLA compliance summary",
+          "request": {
+            "name": "Commvault Get SLA compliance summary",
+            "description": {
+              "content": "Retrieves the SLA compliance summary across all protected workloads, showing the percentage of clients meeting their defined service level agreements for backup and recovery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SLASummary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "timeRange",
+                  "value": "<string>",
+                  "description": "Time range for SLA calculation"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17c1e964-2e37-4e51-b192-d01c3bc86526",
+              "name": "SLA compliance summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"overallCompliance\": 1366.2404432844055,\n  \"totalEntities\": 1394,\n  \"metSLA\": 1781,\n  \"missedSLA\": 9406,\n  \"excluded\": 4618,\n  \"breakdownByType\": [\n    {\n      \"workloadType\": \"string\",\n      \"compliance\": 8651.427234539191,\n      \"total\": 3986,\n      \"met\": 7712,\n      \"missed\": 4293\n    },\n    {\n      \"workloadType\": \"string\",\n      \"compliance\": 6062.425978630147,\n      \"total\": 8051,\n      \"met\": 5096,\n      \"missed\": 6845\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22c6bd13-1b3f-4ecb-83a4-795374e1e04c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SLASummary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "timeRange",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b6889010-bf18-49b2-b895-0fcaf2ccf046",
+    "name": "Commvault Automation Agents SLA API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

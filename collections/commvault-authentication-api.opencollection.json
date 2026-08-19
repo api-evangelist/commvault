@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Authentication API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Authenticate and obtain auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Login",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Authenticates a user with username and password credentials and returns an authentication token (QSDK token) for subsequent API requests. The token must be included in the Authtoken header of all subsequent requests."
+        },
+        {
+          "info": {
+            "name": "Commvault Invalidate auth token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Logout"
+          },
+          "docs": "Logs out the current user session and invalidates the authentication token."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1408 @@
+{
+  "item": [
+    {
+      "id": "4ea527e5-73ed-484b-82ff-123c24946220",
+      "name": "Schedules",
+      "description": {
+        "content": "Manage job schedules and schedule policies",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3123be3e-2fe6-4ca3-a041-dca4e6ef8f10",
+          "name": "Commvault List all schedules",
+          "request": {
+            "name": "Commvault List all schedules",
+            "description": {
+              "content": "Retrieves a list of all scheduled tasks configured in the CommServe, including backup schedules, auxiliary copy schedules, and administrative operation schedules.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "taskType",
+                  "value": "<string>",
+                  "description": "Filter by task type"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a1be2347-c0a4-42ca-9c71-4749a5773f38",
+              "name": "List of scheduled tasks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDetail\": [\n    {\n      \"taskId\": 2223,\n      \"taskName\": \"string\",\n      \"taskType\": \"QR_DATA_AGING\",\n      \"enabled\": false,\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"AUTOMATIC\",\n            \"active_start_time\": 7929,\n            \"active_end_time\": 7540,\n            \"freq_interval\": 3462,\n            \"freq_recurrence_factor\": 2284,\n            \"daysOfWeek\": [\n              \"Wednesday\",\n              \"Friday\"\n            ]\n          }\n        },\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"WEEKLY\",\n            \"active_start_time\": 5272,\n            \"active_end_time\": 3069,\n            \"freq_interval\": 558,\n            \"freq_recurrence_factor\": 4563,\n            \"daysOfWeek\": [\n              \"Friday\",\n              \"Monday\"\n            ]\n          }\n        }\n      ],\n      \"associations\": [\n        {\n          \"clientName\": \"string\",\n          \"subclientName\": \"string\",\n          \"appName\": \"string\"\n        },\n        {\n          \"clientName\": \"string\",\n          \"subclientName\": \"string\",\n          \"appName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"taskId\": 6411,\n      \"taskName\": \"string\",\n      \"taskType\": \"QR_ADMIN\",\n      \"enabled\": true,\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"AUTOMATIC\",\n            \"active_start_time\": 1663,\n            \"active_end_time\": 2369,\n            \"freq_interval\": 6453,\n            \"freq_recurrence_factor\": 2073,\n            \"daysOfWeek\": [\n              \"Friday\",\n              \"Tuesday\"\n            ]\n          }\n        },\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"ONE_TIME\",\n            \"active_start_time\": 9424,\n            \"active_end_time\": 1327,\n            \"freq_interval\": 7372,\n            \"freq_recurrence_factor\": 1765,\n            \"daysOfWeek\": [\n              \"Friday\",\n              \"Friday\"\n            ]\n          }\n        }\n      ],\n      \"associations\": [\n        {\n          \"clientName\": \"string\",\n          \"subclientName\": \"string\",\n          \"appName\": \"string\"\n        },\n        {\n          \"clientName\": \"string\",\n          \"subclientName\": \"string\",\n          \"appName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f11c026-e9b1-43ec-bfa4-21c9ee181fdc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "taskType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc1ef289-7855-4572-a00b-7d8137e1cd64",
+          "name": "Commvault Get schedule details",
+          "request": {
+            "name": "Commvault Get schedule details",
+            "description": {
+              "content": "Retrieves detailed configuration of a specific scheduled task, including its schedule pattern, associated entities, and execution options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) Unique identifier for the scheduled task"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a491428e-3141-449e-b260-dcd6a5ea8397",
+              "name": "Scheduled task details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskId\": 2438,\n  \"taskName\": \"string\",\n  \"taskType\": \"QR_ADMIN\",\n  \"enabled\": false,\n  \"subTasks\": [\n    {\n      \"subTaskName\": \"string\",\n      \"operationType\": \"string\",\n      \"pattern\": {\n        \"freq_type\": \"MONTHLY\",\n        \"active_start_time\": 7258,\n        \"active_end_time\": 7404,\n        \"freq_interval\": 7418,\n        \"freq_recurrence_factor\": 9634,\n        \"daysOfWeek\": [\n          \"Sunday\",\n          \"Saturday\"\n        ]\n      }\n    },\n    {\n      \"subTaskName\": \"string\",\n      \"operationType\": \"string\",\n      \"pattern\": {\n        \"freq_type\": \"AUTOMATIC\",\n        \"active_start_time\": 2215,\n        \"active_end_time\": 1976,\n        \"freq_interval\": 3271,\n        \"freq_recurrence_factor\": 2036,\n        \"daysOfWeek\": [\n          \"Friday\",\n          \"Saturday\"\n        ]\n      }\n    }\n  ],\n  \"associations\": [\n    {\n      \"clientName\": \"string\",\n      \"subclientName\": \"string\",\n      \"appName\": \"string\"\n    },\n    {\n      \"clientName\": \"string\",\n      \"subclientName\": \"string\",\n      \"appName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66cb44e8-7cb9-449f-b69d-e852b7ec7606",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7624697b-74ad-45d3-83f4-6702049a875b",
+              "name": "Scheduled task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50e0f51c-cba2-4ff1-8a41-1c83478dfb09",
+          "name": "Commvault Update a schedule",
+          "request": {
+            "name": "Commvault Update a schedule",
+            "description": {
+              "content": "Updates the configuration of an existing scheduled task, including its schedule pattern, enabled state, and execution options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) Unique identifier for the scheduled task"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"<string>\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"<string>\",\n          \"active_start_time\": \"<integer>\",\n          \"active_end_time\": \"<integer>\",\n          \"freq_interval\": \"<integer>\",\n          \"freq_recurrence_factor\": \"<integer>\",\n          \"daysOfWeek\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b8c4b6c0-c6a2-4df2-82c8-f626f9102df7",
+              "name": "Schedule updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 8266,\n          \"active_end_time\": 9246,\n          \"freq_interval\": 5645,\n          \"freq_recurrence_factor\": 3335,\n          \"daysOfWeek\": [\n            \"Wednesday\",\n            \"Monday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 5119,\n          \"active_end_time\": 6379,\n          \"freq_interval\": 1489,\n          \"freq_recurrence_factor\": 3453,\n          \"daysOfWeek\": [\n            \"Monday\",\n            \"Friday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7041,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9e27add2-712a-4748-922f-c93281b2787d",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 8266,\n          \"active_end_time\": 9246,\n          \"freq_interval\": 5645,\n          \"freq_recurrence_factor\": 3335,\n          \"daysOfWeek\": [\n            \"Wednesday\",\n            \"Monday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 5119,\n          \"active_end_time\": 6379,\n          \"freq_interval\": 1489,\n          \"freq_recurrence_factor\": 3453,\n          \"daysOfWeek\": [\n            \"Monday\",\n            \"Friday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d27a035a-f0a4-4c19-bdbe-d86019388e93",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 8266,\n          \"active_end_time\": 9246,\n          \"freq_interval\": 5645,\n          \"freq_recurrence_factor\": 3335,\n          \"daysOfWeek\": [\n            \"Wednesday\",\n            \"Monday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 5119,\n          \"active_end_time\": 6379,\n          \"freq_interval\": 1489,\n          \"freq_recurrence_factor\": 3453,\n          \"daysOfWeek\": [\n            \"Monday\",\n            \"Friday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "68a65442-7fc1-415f-b191-bef90b8fbae1",
+              "name": "Scheduled task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"taskInfo\": {\n    \"taskName\": \"<string>\",\n    \"enabled\": \"<boolean>\",\n    \"subTasks\": [\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 8266,\n          \"active_end_time\": 9246,\n          \"freq_interval\": 5645,\n          \"freq_recurrence_factor\": 3335,\n          \"daysOfWeek\": [\n            \"Wednesday\",\n            \"Monday\"\n          ]\n        }\n      },\n      {\n        \"pattern\": {\n          \"freq_type\": \"AUTOMATIC\",\n          \"active_start_time\": 5119,\n          \"active_end_time\": 6379,\n          \"freq_interval\": 1489,\n          \"freq_recurrence_factor\": 3453,\n          \"daysOfWeek\": [\n            \"Monday\",\n            \"Friday\"\n          ]\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95d96b1d-17d0-4776-a8db-ecaf9be9b795",
+          "name": "Commvault Delete a schedule",
+          "request": {
+            "name": "Commvault Delete a schedule",
+            "description": {
+              "content": "Deletes a scheduled task from the CommServe.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) Unique identifier for the scheduled task"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62a6b6a9-1a29-4981-aa45-01b255bf8201",
+              "name": "Schedule deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7041,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43b93ac6-bcf2-4912-ab80-d6a496af9045",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b0ad197-ad6f-420d-bf36-abed180be108",
+              "name": "Scheduled task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c2380b3-f821-49ed-a360-06af00f22626",
+          "name": "Commvault Enable a schedule",
+          "request": {
+            "name": "Commvault Enable a schedule",
+            "description": {
+              "content": "Enables a previously disabled scheduled task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task",
+                ":taskId",
+                "Action",
+                "Enable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) Unique identifier for the scheduled task"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5989fd23-b185-42b7-9c04-617820aaa8a7",
+              "name": "Schedule enabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7041,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1debe288-dfac-4c19-a02b-ac81bb13dd3e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "25d297ac-ea25-475c-a201-4a1c2947bb7a",
+              "name": "Scheduled task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Enable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d02d3214-2a26-437c-beef-821f4eb9a97a",
+          "name": "Commvault Disable a schedule",
+          "request": {
+            "name": "Commvault Disable a schedule",
+            "description": {
+              "content": "Disables a scheduled task, preventing it from executing until re-enabled.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Task",
+                ":taskId",
+                "Action",
+                "Disable"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "taskId",
+                  "description": "(Required) Unique identifier for the scheduled task"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24c83c31-7279-4b83-92a1-3624a0193acb",
+              "name": "Schedule disabled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorCode\": 7041,\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60051808-7041-49cf-a343-ce08d87bd425",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d681d48e-4f7d-498f-9297-9756606450e6",
+              "name": "Scheduled task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Task",
+                    ":taskId",
+                    "Action",
+                    "Disable"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "taskId",
+                      "description": "(Required) Unique identifier for the scheduled task"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c348aab2-1b4d-461d-a758-a76795397c3e",
+    "name": "Commvault Automation Agents Schedules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

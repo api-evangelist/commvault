@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Dashboard API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault Get dashboard summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Dashboard"
+          },
+          "docs": "Retrieves the Command Center dashboard summary, including total protected data, SLA compliance percentages, job statistics, storage usage, and infrastructure health across all managed environments."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "5994cc29-2af0-4159-95f3-4b49c20fe3bf",
+      "name": "Schedule Policies",
+      "description": {
+        "content": "Manage schedule policies for automated operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cabeec8b-61e4-4702-9ac2-41e6b646b3ce",
+          "name": "Commvault List schedule policies",
+          "request": {
+            "name": "Commvault List schedule policies",
+            "description": {
+              "content": "Retrieves a list of all schedule policies defined in the CommServe. Schedule policies automate backup, auxiliary copy, and other operations on a recurring basis.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SchedulePolicy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a68dc9c-4ab0-40ce-a2b5-e01fec742354",
+              "name": "List of schedule policies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SchedulePolicy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"taskDetail\": [\n    {\n      \"taskId\": 3343,\n      \"taskName\": \"string\",\n      \"taskType\": \"string\",\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"string\",\n            \"active_start_time\": 4851\n          }\n        },\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"string\",\n            \"active_start_time\": 624\n          }\n        }\n      ]\n    },\n    {\n      \"taskId\": 3125,\n      \"taskName\": \"string\",\n      \"taskType\": \"string\",\n      \"subTasks\": [\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"string\",\n            \"active_start_time\": 2815\n          }\n        },\n        {\n          \"subTaskName\": \"string\",\n          \"operationType\": \"string\",\n          \"pattern\": {\n            \"freq_type\": \"string\",\n            \"active_start_time\": 5687\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85247e54-974b-4598-be83-67b4fbc9d84f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SchedulePolicy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3f942518-4938-4bca-8eae-9ecd4b376c09",
+    "name": "Commvault Automation Agents Schedule Policies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

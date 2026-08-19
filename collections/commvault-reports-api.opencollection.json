@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Reports API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List available reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Reports"
+          },
+          "docs": "Retrieves a list of all available reports, including built-in and custom reports for backup, storage, compliance, and operational analytics."
+        },
+        {
+          "info": {
+            "name": "Commvault Get report data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the report"
+              },
+              {
+                "name": "timeRange",
+                "value": "",
+                "type": "query",
+                "description": "Time range for the report"
+              }
+            ]
+          },
+          "docs": "Executes a specific report and returns the report data, including charts, tables, and summary statistics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

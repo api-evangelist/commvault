@@ -1,0 +1,419 @@
+{
+  "item": [
+    {
+      "id": "27ac93e3-40b5-4690-b43a-217e66bcad3d",
+      "name": "Storage",
+      "description": {
+        "content": "Storage pool and library management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d35d83a3-cecd-4b67-ac8e-14ddb81109ea",
+          "name": "Commvault List storage pools",
+          "request": {
+            "name": "Commvault List storage pools",
+            "description": {
+              "content": "Retrieves a list of all storage pools, including cloud storage, disk libraries, and tape libraries, with capacity and usage information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "Storage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f47eeb2c-0558-4a93-9da2-122bb1b827b9",
+              "name": "List of storage pools",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storagePools\": [\n    {\n      \"storagePoolId\": 7960,\n      \"storagePoolName\": \"string\",\n      \"storageType\": \"DiskLibrary\",\n      \"totalCapacityGB\": 1331.2330418900542,\n      \"usedCapacityGB\": 6658.268271232497,\n      \"freeCapacityGB\": 355.59235535244426,\n      \"mediaAgents\": [\n        {\n          \"mediaAgentId\": 3700,\n          \"mediaAgentName\": \"string\"\n        },\n        {\n          \"mediaAgentId\": 9600,\n          \"mediaAgentName\": \"string\"\n        }\n      ]\n    },\n    {\n      \"storagePoolId\": 5366,\n      \"storagePoolName\": \"string\",\n      \"storageType\": \"Cloud\",\n      \"totalCapacityGB\": 6091.827088122423,\n      \"usedCapacityGB\": 8917.304534355668,\n      \"freeCapacityGB\": 1941.681517470728,\n      \"mediaAgents\": [\n        {\n          \"mediaAgentId\": 9953,\n          \"mediaAgentName\": \"string\"\n        },\n        {\n          \"mediaAgentId\": 5653,\n          \"mediaAgentName\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21829618-fa3f-44db-819d-62d094bc4025",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d005d9bf-29b3-43e9-8683-026eeb8b407d",
+          "name": "Commvault Get storage pool details",
+          "request": {
+            "name": "Commvault Get storage pool details",
+            "description": {
+              "content": "Retrieves detailed information about a specific storage pool, including configuration, capacity metrics, and associated media agents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "Storage",
+                ":storagePoolId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "storagePoolId",
+                  "description": "(Required) Unique identifier for the storage pool"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2f729bdc-c3e0-4bdd-941a-e3879fd81941",
+              "name": "Storage pool details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"storagePoolId\": 8366,\n  \"storagePoolName\": \"string\",\n  \"storageType\": \"Cloud\",\n  \"totalCapacityGB\": 4187.134468983187,\n  \"usedCapacityGB\": 5538.196536323911,\n  \"freeCapacityGB\": 8949.709684103958,\n  \"mediaAgents\": [\n    {\n      \"mediaAgentId\": 480,\n      \"mediaAgentName\": \"string\"\n    },\n    {\n      \"mediaAgentId\": 6245,\n      \"mediaAgentName\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a284337-fe12-472d-a549-9dafdd787f2a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd5ecc26-7558-45d9-929b-be8124db933e",
+              "name": "Storage pool not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "Storage",
+                    ":storagePoolId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "storagePoolId",
+                      "description": "(Required) Unique identifier for the storage pool"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9c0665e3-566a-4adf-a119-77326696a8ba",
+    "name": "Commvault Automation Agents Storage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

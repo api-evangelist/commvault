@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "4388bf3e-bc0e-42e8-a7c9-a85df0596b65",
+      "name": "Databases",
+      "description": {
+        "content": "Manage database protection",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dee8e3bc-ab92-4e35-94b4-b64c08ec7ac4",
+          "name": "Commvault List database servers",
+          "request": {
+            "name": "Commvault List database servers",
+            "description": {
+              "content": "Retrieves a list of all database servers configured for backup, including SQL Server, Oracle, SAP HANA, and other database platforms.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "V4",
+                "DatabaseServers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7cba3e9a-d629-4ed1-a77f-8a468d1fddfc",
+              "name": "List of database servers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "DatabaseServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"databaseServers\": [\n    {\n      \"clientId\": 7981,\n      \"clientName\": \"string\",\n      \"databaseType\": \"MySQL\",\n      \"instanceName\": \"string\",\n      \"protectionStatus\": \"string\",\n      \"lastBackupTime\": 4601\n    },\n    {\n      \"clientId\": 1283,\n      \"clientName\": \"string\",\n      \"databaseType\": \"MySQL\",\n      \"instanceName\": \"string\",\n      \"protectionStatus\": \"string\",\n      \"lastBackupTime\": 4151\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "986aa239-0578-4873-9a21-6e7791a81179",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "V4",
+                    "DatabaseServers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ef6fc4c3-ad0f-4cf3-8a73-236b1d76ce25",
+    "name": "Commvault Automation Agents Databases API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

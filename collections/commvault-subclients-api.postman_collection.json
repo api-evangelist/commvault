@@ -1,0 +1,443 @@
+{
+  "item": [
+    {
+      "id": "78e84fed-e69a-4bf7-9912-1740726be758",
+      "name": "Subclients",
+      "description": {
+        "content": "Manage subclients that define backup content",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cc4f4204-25f6-4652-8099-c346ef2992d7",
+          "name": "Commvault List subclients",
+          "request": {
+            "name": "Commvault List subclients",
+            "description": {
+              "content": "Retrieves a list of subclients for a given client and agent. Subclients define the specific content (files, databases, mailboxes) to be backed up and their associated storage and schedule policies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Subclient"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "clientId",
+                  "value": "<integer>",
+                  "description": "(Required) Client ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "applicationId",
+                  "value": "<integer>",
+                  "description": "Application/agent type ID"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "197bf2e3-528e-47d6-ae73-6663f979dd72",
+              "name": "List of subclients",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Subclient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subClientProperties\": [\n    {\n      \"subClientEntity\": {\n        \"subclientId\": 8472,\n        \"subclientName\": \"string\",\n        \"clientId\": 8152,\n        \"clientName\": \"string\",\n        \"appName\": \"string\"\n      },\n      \"commonProperties\": {\n        \"storageDevice\": {\n          \"dataBackupStoragePolicy\": {\n            \"storagePolicyName\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"subClientEntity\": {\n        \"subclientId\": 1525,\n        \"subclientName\": \"string\",\n        \"clientId\": 4008,\n        \"clientName\": \"string\",\n        \"appName\": \"string\"\n      },\n      \"commonProperties\": {\n        \"storageDevice\": {\n          \"dataBackupStoragePolicy\": {\n            \"storagePolicyName\": \"string\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37a09060-4ff4-4d5c-a437-e2af82d0ad57",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Subclient"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "clientId",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "applicationId",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02c193e3-c443-4a68-afee-87db196d1e85",
+          "name": "Commvault Get subclient details",
+          "request": {
+            "name": "Commvault Get subclient details",
+            "description": {
+              "content": "Retrieves detailed properties of a specific subclient, including content paths, filters, storage policy association, and schedule configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Subclient",
+                ":subclientId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "subclientId",
+                  "description": "(Required) Unique identifier for the subclient"
+                },
+                {
+                  "description": "Hostname of the Commvault Web Server",
+                  "type": "any",
+                  "value": "{{webserver}}",
+                  "key": "webserver"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9aaac9e-d3c2-4eb1-b958-2095b5d22b01",
+              "name": "Subclient details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Subclient",
+                    ":subclientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "subclientId",
+                      "description": "(Required) Unique identifier for the subclient"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"subClientProperties\": [\n    {\n      \"subClientEntity\": {\n        \"subclientId\": 8472,\n        \"subclientName\": \"string\",\n        \"clientId\": 8152,\n        \"clientName\": \"string\",\n        \"appName\": \"string\"\n      },\n      \"commonProperties\": {\n        \"storageDevice\": {\n          \"dataBackupStoragePolicy\": {\n            \"storagePolicyName\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"subClientEntity\": {\n        \"subclientId\": 1525,\n        \"subclientName\": \"string\",\n        \"clientId\": 4008,\n        \"clientName\": \"string\",\n        \"appName\": \"string\"\n      },\n      \"commonProperties\": {\n        \"storageDevice\": {\n          \"dataBackupStoragePolicy\": {\n            \"storagePolicyName\": \"string\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26beeabf-19c6-44bf-9f65-095e77f913df",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Subclient",
+                    ":subclientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "subclientId",
+                      "description": "(Required) Unique identifier for the subclient"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0af5c954-51c6-41a1-ad57-6ef2e2c200cb",
+              "name": "Subclient not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Subclient",
+                    ":subclientId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "subclientId",
+                      "description": "(Required) Unique identifier for the subclient"
+                    },
+                    {
+                      "description": "Hostname of the Commvault Web Server",
+                      "type": "any",
+                      "value": "{{webserver}}",
+                      "key": "webserver"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authtoken",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname of the Commvault Web Server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "webconsole.example.com",
+      "key": "webserver"
+    },
+    {
+      "type": "string",
+      "value": "https://{{webserver}}/webconsole/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authtoken"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5bc96004-3545-4f98-ba82-7dd48a1a7b18",
+    "name": "Commvault Automation Agents Subclients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.\n\nContact Support:\n Name: Commvault Support",
+      "type": "text/plain"
+    }
+  }
+}

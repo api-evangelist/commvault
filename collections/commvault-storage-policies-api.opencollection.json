@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Storage Policies API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Storage Policies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List storage policies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/StoragePolicy"
+          },
+          "docs": "Retrieves a list of all storage policies configured in the CommServe. Storage policies define where backup data is stored and how it is managed across primary, secondary, and tertiary storage tiers."
+        },
+        {
+          "info": {
+            "name": "Commvault Get storage policy details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/StoragePolicy/:storagePolicyId",
+            "params": [
+              {
+                "name": "storagePolicyId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the storage policy"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed configuration of a specific storage policy, including its copies, retention rules, deduplication settings, and associated media agents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Schedules API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List all schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Task",
+            "params": [
+              {
+                "name": "taskType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by task type"
+              }
+            ]
+          },
+          "docs": "Retrieves a list of all scheduled tasks configured in the CommServe, including backup schedules, auxiliary copy schedules, and administrative operation schedules."
+        },
+        {
+          "info": {
+            "name": "Commvault Get schedule details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/Task/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the scheduled task"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed configuration of a specific scheduled task, including its schedule pattern, associated entities, and execution options."
+        },
+        {
+          "info": {
+            "name": "Commvault Update a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{webserver}/webconsole/api/Task/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the scheduled task"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing scheduled task, including its schedule pattern, enabled state, and execution options."
+        },
+        {
+          "info": {
+            "name": "Commvault Delete a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{webserver}/webconsole/api/Task/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the scheduled task"
+              }
+            ]
+          },
+          "docs": "Deletes a scheduled task from the CommServe."
+        },
+        {
+          "info": {
+            "name": "Commvault Enable a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Task/:taskId/Action/Enable",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the scheduled task"
+              }
+            ]
+          },
+          "docs": "Enables a previously disabled scheduled task."
+        },
+        {
+          "info": {
+            "name": "Commvault Disable a schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/Task/:taskId/Action/Disable",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the scheduled task"
+              }
+            ]
+          },
+          "docs": "Disables a scheduled task, preventing it from executing until re-enabled."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

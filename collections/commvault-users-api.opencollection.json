@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Users API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/User"
+          },
+          "docs": "Retrieves a list of all Commvault users, including local and externally authenticated users, their roles, and associated user groups."
+        },
+        {
+          "info": {
+            "name": "Commvault Get user details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/User/:userId",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the user"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed properties of a specific user, including associated security roles, user groups, and email configuration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Server Groups API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List server groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/V4/ServerGroup"
+          },
+          "docs": "Retrieves a list of all server groups. Server groups organize clients into logical collections for bulk management, policy assignment, and reporting."
+        },
+        {
+          "info": {
+            "name": "Commvault Create a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{webserver}/webconsole/api/V4/ServerGroup",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new server group for organizing clients."
+        },
+        {
+          "info": {
+            "name": "Commvault Get server group details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a server group, including associated clients and applied policies."
+        },
+        {
+          "info": {
+            "name": "Commvault Update a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{webserver}/webconsole/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing server group configuration, including associated clients and policies."
+        },
+        {
+          "info": {
+            "name": "Commvault Delete a server group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{webserver}/webconsole/api/V4/ServerGroup/:serverGroupId",
+            "params": [
+              {
+                "name": "serverGroupId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the server group"
+              }
+            ]
+          },
+          "docs": "Deletes a server group by its unique identifier."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Commvault Automation Agents Storage API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authtoken",
+      "value": "{{Authtoken}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Storage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Commvault List storage pools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/V4/Storage"
+          },
+          "docs": "Retrieves a list of all storage pools, including cloud storage, disk libraries, and tape libraries, with capacity and usage information."
+        },
+        {
+          "info": {
+            "name": "Commvault Get storage pool details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{webserver}/webconsole/api/V4/Storage/:storagePoolId",
+            "params": [
+              {
+                "name": "storagePoolId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the storage pool"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific storage pool, including configuration, capacity metrics, and associated media agents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
