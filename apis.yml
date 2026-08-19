@@ -33,7 +33,7 @@ tags:
   - Enterprise Software
 created: '2025-01-20'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 kind: company
 apis:
 - aid: commvault:commvault-agents-api
