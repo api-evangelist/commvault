@@ -224,6 +224,8 @@ apis:
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
   tags:
+  - Job
+  tags_raw:
   - Jobs
   properties:
   - type: OpenAPI
@@ -275,7 +277,8 @@ apis:
   description: Trigger and monitor automated operations
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
@@ -588,6 +591,8 @@ apis:
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
