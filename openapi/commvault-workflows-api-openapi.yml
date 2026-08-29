@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Commvault Automation Agents Workflows API
+  title: Commvault Automation Workflows API
   description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
   version: v2
   contact:
@@ -147,14 +147,6 @@ paths:
         '401':
           description: Unauthorized
 components:
-  parameters:
-    workflowId:
-      name: workflowId
-      in: path
-      required: true
-      description: Unique identifier for the workflow
-      schema:
-        type: integer
   schemas:
     GenericResponse:
       type: object
@@ -165,6 +157,20 @@ components:
         errorMessage:
           type: string
           description: Human-readable error or success message
+    WorkflowExecuteRequest:
+      type: object
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              inputName:
+                type: string
+                description: Name of the input parameter
+              inputValue:
+                type: string
+                description: Value for the input parameter
     Workflow:
       type: object
       properties:
@@ -217,20 +223,14 @@ components:
               defaultValue:
                 type: string
                 description: Default value if not provided
-    WorkflowExecuteRequest:
-      type: object
-      properties:
-        inputs:
-          type: array
-          items:
-            type: object
-            properties:
-              inputName:
-                type: string
-                description: Name of the input parameter
-              inputValue:
-                type: string
-                description: Value for the input parameter
+  parameters:
+    workflowId:
+      name: workflowId
+      in: path
+      required: true
+      description: Unique identifier for the workflow
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

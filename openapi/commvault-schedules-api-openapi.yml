@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Commvault Automation Agents Schedules API
+  title: Commvault Automation Schedules API
   description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
   version: v2
   contact:
@@ -161,15 +161,59 @@ paths:
         '404':
           description: Scheduled task not found
 components:
-  parameters:
-    taskId:
-      name: taskId
-      in: path
-      required: true
-      description: Unique identifier for the scheduled task
-      schema:
-        type: integer
   schemas:
+    ScheduledTask:
+      type: object
+      properties:
+        taskId:
+          type: integer
+          description: Unique task identifier
+        taskName:
+          type: string
+          description: Name of the scheduled task
+        taskType:
+          type: string
+          description: Type of scheduled operation
+          enum:
+          - QR_BACKUP
+          - QR_RESTORE
+          - QR_AUX_COPY
+          - QR_ADMIN
+          - QR_DATA_AGING
+        enabled:
+          type: boolean
+          description: Whether the schedule is enabled
+        subTasks:
+          type: array
+          items:
+            type: object
+            properties:
+              subTaskName:
+                type: string
+              operationType:
+                type: string
+              pattern:
+                $ref: '#/components/schemas/SchedulePattern'
+        associations:
+          type: array
+          items:
+            type: object
+            properties:
+              clientName:
+                type: string
+              subclientName:
+                type: string
+              appName:
+                type: string
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     UpdateScheduleRequest:
       type: object
       properties:
@@ -227,58 +271,14 @@ components:
             - Friday
             - Saturday
           description: Days of the week for weekly schedules
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
-    ScheduledTask:
-      type: object
-      properties:
-        taskId:
-          type: integer
-          description: Unique task identifier
-        taskName:
-          type: string
-          description: Name of the scheduled task
-        taskType:
-          type: string
-          description: Type of scheduled operation
-          enum:
-          - QR_BACKUP
-          - QR_RESTORE
-          - QR_AUX_COPY
-          - QR_ADMIN
-          - QR_DATA_AGING
-        enabled:
-          type: boolean
-          description: Whether the schedule is enabled
-        subTasks:
-          type: array
-          items:
-            type: object
-            properties:
-              subTaskName:
-                type: string
-              operationType:
-                type: string
-              pattern:
-                $ref: '#/components/schemas/SchedulePattern'
-        associations:
-          type: array
-          items:
-            type: object
-            properties:
-              clientName:
-                type: string
-              subclientName:
-                type: string
-              appName:
-                type: string
+  parameters:
+    taskId:
+      name: taskId
+      in: path
+      required: true
+      description: Unique identifier for the scheduled task
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

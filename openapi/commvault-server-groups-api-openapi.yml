@@ -1,19 +1,19 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Commvault Automation Agents Server Groups API
-  description: API for automating Commvault workflows, job scheduling, and policy management. Enables programmatic creation and execution of custom workflows, management of schedule policies, and configuration of automated operations for data protection environments.
-  version: v2
+  title: Commvault Command Center Server Groups API
+  description: APIs for managing Commvault Command Center operations, providing centralized management and monitoring capabilities for data protection infrastructure. The Command Center API enables dashboard access, server group management, virtual machine operations, and compliance monitoring across the Commvault environment.
+  version: v4
   contact:
     name: Commvault Support
     url: https://www.commvault.com/support
   termsOfService: https://www.commvault.com/terms-of-use
 servers:
-- url: https://{webserver}/webconsole/api
-  description: Commvault Web Server
+- url: https://{commandcenter}/commandcenter/api
+  description: Commvault Command Center
   variables:
-    webserver:
-      default: webconsole.example.com
-      description: Hostname of the Commvault Web Server
+    commandcenter:
+      default: commandcenter.example.com
+      description: Hostname of the Commvault Command Center
 security:
 - authToken: []
 tags:
@@ -132,15 +132,6 @@ paths:
           description: Server group not found
 components:
   schemas:
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
     CreateServerGroupRequest:
       type: object
       required:
@@ -157,6 +148,15 @@ components:
           items:
             type: integer
           description: Client IDs to include in the group
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     ServerGroup:
       type: object
       properties:
@@ -196,5 +196,5 @@ components:
       name: Authtoken
       description: QSDK authentication token obtained from the Login endpoint.
 externalDocs:
-  description: Commvault Automation API Documentation
-  url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
+  description: Commvault Command Center API Documentation
+  url: https://documentation.commvault.com/2024/essential/rest_api_command_center.html
