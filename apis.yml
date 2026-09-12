@@ -679,6 +679,8 @@ apis:
   - type: Documentation
     url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
 common:
+  - type: Website
+    url: https://www.commvault.com/
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/commvault/overview
   - type: AgenticAccess
