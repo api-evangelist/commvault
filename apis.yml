@@ -159,6 +159,8 @@ apis:
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
   tags:
+  - Dashboards
+  tags_raw:
   - Dashboard
   properties:
   - type: OpenAPI
@@ -185,6 +187,8 @@ apis:
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
   tags:
+  - Database
+  tags_raw:
   - Databases
   properties:
   - type: OpenAPI
@@ -422,6 +426,8 @@ apis:
   humanURL: https://documentation.commvault.com/v11/essential/rest_api_overview.html
   baseURL: https://webserver.commvault.com/webconsole/api
   tags:
+  - Schedule
+  tags_raw:
   - Schedules
   properties:
   - type: OpenAPI
