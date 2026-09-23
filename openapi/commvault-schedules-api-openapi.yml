@@ -162,6 +162,63 @@ paths:
           description: Scheduled task not found
 components:
   schemas:
+    SchedulePattern:
+      type: object
+      properties:
+        freq_type:
+          type: string
+          description: Frequency type
+          enum:
+          - ONE_TIME
+          - DAILY
+          - WEEKLY
+          - MONTHLY
+          - CONTINUOUS
+          - AUTOMATIC
+        active_start_time:
+          type: integer
+          description: Schedule start time in seconds since midnight
+        active_end_time:
+          type: integer
+          description: Schedule end time in seconds since midnight
+        freq_interval:
+          type: integer
+          description: Frequency interval value
+        freq_recurrence_factor:
+          type: integer
+          description: Recurrence factor (e.g., every N days/weeks)
+        daysOfWeek:
+          type: array
+          items:
+            type: string
+            enum:
+            - Sunday
+            - Monday
+            - Tuesday
+            - Wednesday
+            - Thursday
+            - Friday
+            - Saturday
+          description: Days of the week for weekly schedules
+    UpdateScheduleRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            taskName:
+              type: string
+              description: Updated task name
+            enabled:
+              type: boolean
+              description: Enable or disable the schedule
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  pattern:
+                    $ref: '#/components/schemas/SchedulePattern'
     ScheduledTask:
       type: object
       properties:
@@ -214,63 +271,6 @@ components:
         errorMessage:
           type: string
           description: Human-readable error or success message
-    UpdateScheduleRequest:
-      type: object
-      properties:
-        taskInfo:
-          type: object
-          properties:
-            taskName:
-              type: string
-              description: Updated task name
-            enabled:
-              type: boolean
-              description: Enable or disable the schedule
-            subTasks:
-              type: array
-              items:
-                type: object
-                properties:
-                  pattern:
-                    $ref: '#/components/schemas/SchedulePattern'
-    SchedulePattern:
-      type: object
-      properties:
-        freq_type:
-          type: string
-          description: Frequency type
-          enum:
-          - ONE_TIME
-          - DAILY
-          - WEEKLY
-          - MONTHLY
-          - CONTINUOUS
-          - AUTOMATIC
-        active_start_time:
-          type: integer
-          description: Schedule start time in seconds since midnight
-        active_end_time:
-          type: integer
-          description: Schedule end time in seconds since midnight
-        freq_interval:
-          type: integer
-          description: Frequency interval value
-        freq_recurrence_factor:
-          type: integer
-          description: Recurrence factor (e.g., every N days/weeks)
-        daysOfWeek:
-          type: array
-          items:
-            type: string
-            enum:
-            - Sunday
-            - Monday
-            - Tuesday
-            - Wednesday
-            - Thursday
-            - Friday
-            - Saturday
-          description: Days of the week for weekly schedules
   parameters:
     taskId:
       name: taskId

@@ -224,6 +224,14 @@ paths:
         '401':
           description: Unauthorized
 components:
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: Unique identifier for the job
+      schema:
+        type: integer
   schemas:
     BackupTaskRequest:
       type: object
@@ -267,15 +275,6 @@ components:
                     type: string
                   appName:
                     type: string
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
     Job:
       type: object
       properties:
@@ -370,14 +369,15 @@ components:
                                 items:
                                   type: string
                                 description: Paths of items to restore
-  parameters:
-    jobId:
-      name: jobId
-      in: path
-      required: true
-      description: Unique identifier for the job
-      schema:
-        type: integer
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
   securitySchemes:
     authToken:
       type: apiKey

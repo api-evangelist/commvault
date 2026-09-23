@@ -131,24 +131,27 @@ paths:
         '404':
           description: Plan not found
 components:
-  parameters:
-    planId:
-      name: planId
-      in: path
-      required: true
-      description: Unique identifier for the server plan
-      schema:
-        type: integer
   schemas:
-    GenericResponse:
+    CreatePlanRequest:
       type: object
+      required:
+      - planName
       properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
+        planName:
           type: string
-          description: Human-readable error or success message
+          description: Name for the new server plan
+        backupDestinations:
+          type: array
+          items:
+            type: object
+            properties:
+              backupDestinationName:
+                type: string
+              storagePolicyName:
+                type: string
+        rpoInMinutes:
+          type: integer
+          description: Recovery Point Objective in minutes
     Plan:
       type: object
       properties:
@@ -179,26 +182,23 @@ components:
             retainBackupDataForDays:
               type: integer
               description: Days to retain backup data
-    CreatePlanRequest:
+    GenericResponse:
       type: object
-      required:
-      - planName
       properties:
-        planName:
-          type: string
-          description: Name for the new server plan
-        backupDestinations:
-          type: array
-          items:
-            type: object
-            properties:
-              backupDestinationName:
-                type: string
-              storagePolicyName:
-                type: string
-        rpoInMinutes:
+        errorCode:
           type: integer
-          description: Recovery Point Objective in minutes
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Unique identifier for the server plan
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

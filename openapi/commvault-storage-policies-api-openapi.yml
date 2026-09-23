@@ -62,14 +62,6 @@ paths:
         '404':
           description: Storage policy not found
 components:
-  parameters:
-    storagePolicyId:
-      name: storagePolicyId
-      in: path
-      required: true
-      description: Unique identifier for the storage policy
-      schema:
-        type: integer
   schemas:
     StoragePolicy:
       type: object
@@ -100,6 +92,14 @@ components:
                   retainBackupDataForCycles:
                     type: integer
                     description: Number of cycles to retain backup data
+  parameters:
+    storagePolicyId:
+      name: storagePolicyId
+      in: path
+      required: true
+      description: Unique identifier for the storage policy
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

@@ -62,14 +62,6 @@ paths:
         '404':
           description: User not found
 components:
-  parameters:
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: Unique identifier for the user
-      schema:
-        type: integer
   schemas:
     User:
       type: object
@@ -101,6 +93,14 @@ components:
               userGroupName:
                 type: string
                 description: Name of the user group
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: Unique identifier for the user
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

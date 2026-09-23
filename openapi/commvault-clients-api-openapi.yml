@@ -114,37 +114,6 @@ paths:
           description: Client not found
 components:
   schemas:
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
-    UpdateClientRequest:
-      type: object
-      properties:
-        clientProperties:
-          type: object
-          properties:
-            client:
-              type: object
-              properties:
-                clientName:
-                  type: string
-                  description: New display name for the client
-            clientProps:
-              type: object
-              properties:
-                activityControl:
-                  type: object
-                  properties:
-                    enableBackup:
-                      type: boolean
-                    enableRestore:
-                      type: boolean
     Client:
       type: object
       properties:
@@ -178,6 +147,37 @@ components:
             contentIndexingProps:
               type: object
               description: Content indexing configuration
+    UpdateClientRequest:
+      type: object
+      properties:
+        clientProperties:
+          type: object
+          properties:
+            client:
+              type: object
+              properties:
+                clientName:
+                  type: string
+                  description: New display name for the client
+            clientProps:
+              type: object
+              properties:
+                activityControl:
+                  type: object
+                  properties:
+                    enableBackup:
+                      type: boolean
+                    enableRestore:
+                      type: boolean
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
   parameters:
     clientId:
       name: clientId
