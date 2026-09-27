@@ -131,6 +131,14 @@ paths:
         '404':
           description: Server group not found
 components:
+  parameters:
+    serverGroupId:
+      name: serverGroupId
+      in: path
+      required: true
+      description: Unique identifier for the server group
+      schema:
+        type: integer
   schemas:
     CreateServerGroupRequest:
       type: object
@@ -148,15 +156,6 @@ components:
           items:
             type: integer
           description: Client IDs to include in the group
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
     ServerGroup:
       type: object
       properties:
@@ -181,14 +180,15 @@ components:
         planName:
           type: string
           description: Associated server plan name
-  parameters:
-    serverGroupId:
-      name: serverGroupId
-      in: path
-      required: true
-      description: Unique identifier for the server group
-      schema:
-        type: integer
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
   securitySchemes:
     authToken:
       type: apiKey

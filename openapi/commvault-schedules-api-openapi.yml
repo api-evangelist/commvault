@@ -162,6 +162,15 @@ paths:
           description: Scheduled task not found
 components:
   schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     SchedulePattern:
       type: object
       properties:
@@ -262,15 +271,6 @@ components:
                 type: string
               appName:
                 type: string
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
   parameters:
     taskId:
       name: taskId

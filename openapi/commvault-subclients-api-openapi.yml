@@ -80,6 +80,14 @@ paths:
         '404':
           description: Subclient not found
 components:
+  parameters:
+    subclientId:
+      name: subclientId
+      in: path
+      required: true
+      description: Unique identifier for the subclient
+      schema:
+        type: integer
   schemas:
     Subclient:
       type: object
@@ -114,14 +122,6 @@ components:
                     storagePolicyName:
                       type: string
                       description: Associated storage policy name
-  parameters:
-    subclientId:
-      name: subclientId
-      in: path
-      required: true
-      description: Unique identifier for the subclient
-      schema:
-        type: integer
   securitySchemes:
     authToken:
       type: apiKey

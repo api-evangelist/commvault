@@ -147,24 +147,7 @@ paths:
         '401':
           description: Unauthorized
 components:
-  parameters:
-    workflowId:
-      name: workflowId
-      in: path
-      required: true
-      description: Unique identifier for the workflow
-      schema:
-        type: integer
   schemas:
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
     WorkflowExecuteRequest:
       type: object
       properties:
@@ -231,6 +214,23 @@ components:
               defaultValue:
                 type: string
                 description: Default value if not provided
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
+  parameters:
+    workflowId:
+      name: workflowId
+      in: path
+      required: true
+      description: Unique identifier for the workflow
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

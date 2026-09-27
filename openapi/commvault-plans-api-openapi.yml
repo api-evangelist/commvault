@@ -131,6 +131,14 @@ paths:
         '404':
           description: Plan not found
 components:
+  parameters:
+    planId:
+      name: planId
+      in: path
+      required: true
+      description: Unique identifier for the server plan
+      schema:
+        type: integer
   schemas:
     CreatePlanRequest:
       type: object
@@ -191,14 +199,6 @@ components:
         errorMessage:
           type: string
           description: Human-readable error or success message
-  parameters:
-    planId:
-      name: planId
-      in: path
-      required: true
-      description: Unique identifier for the server plan
-      schema:
-        type: integer
   securitySchemes:
     authToken:
       type: apiKey

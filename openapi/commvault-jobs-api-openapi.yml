@@ -224,57 +224,7 @@ paths:
         '401':
           description: Unauthorized
 components:
-  parameters:
-    jobId:
-      name: jobId
-      in: path
-      required: true
-      description: Unique identifier for the job
-      schema:
-        type: integer
   schemas:
-    BackupTaskRequest:
-      type: object
-      properties:
-        taskInfo:
-          type: object
-          properties:
-            subTasks:
-              type: array
-              items:
-                type: object
-                properties:
-                  subTask:
-                    type: object
-                    properties:
-                      operationType:
-                        type: string
-                        enum:
-                        - BACKUP
-                  options:
-                    type: object
-                    properties:
-                      backupOpts:
-                        type: object
-                        properties:
-                          backupLevel:
-                            type: string
-                            enum:
-                            - FULL
-                            - INCREMENTAL
-                            - DIFFERENTIAL
-                            - SYNTHETIC_FULL
-            associations:
-              type: array
-              items:
-                type: object
-                properties:
-                  subclientName:
-                    type: string
-                  clientName:
-                    type: string
-                  appName:
-                    type: string
     Job:
       type: object
       properties:
@@ -327,6 +277,15 @@ components:
             sizeOfMediaOnDisk:
               type: integer
               description: Size of data written to media
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     RestoreTaskRequest:
       type: object
       properties:
@@ -369,15 +328,56 @@ components:
                                 items:
                                   type: string
                                 description: Paths of items to restore
-    GenericResponse:
+    BackupTaskRequest:
       type: object
       properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
+        taskInfo:
+          type: object
+          properties:
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  subTask:
+                    type: object
+                    properties:
+                      operationType:
+                        type: string
+                        enum:
+                        - BACKUP
+                  options:
+                    type: object
+                    properties:
+                      backupOpts:
+                        type: object
+                        properties:
+                          backupLevel:
+                            type: string
+                            enum:
+                            - FULL
+                            - INCREMENTAL
+                            - DIFFERENTIAL
+                            - SYNTHETIC_FULL
+            associations:
+              type: array
+              items:
+                type: object
+                properties:
+                  subclientName:
+                    type: string
+                  clientName:
+                    type: string
+                  appName:
+                    type: string
+  parameters:
+    jobId:
+      name: jobId
+      in: path
+      required: true
+      description: Unique identifier for the job
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey
