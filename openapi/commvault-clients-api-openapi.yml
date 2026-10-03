@@ -113,6 +113,14 @@ paths:
         '404':
           description: Client not found
 components:
+  parameters:
+    clientId:
+      name: clientId
+      in: path
+      required: true
+      description: Unique identifier for the client
+      schema:
+        type: integer
   schemas:
     GenericResponse:
       type: object
@@ -178,14 +186,6 @@ components:
             contentIndexingProps:
               type: object
               description: Content indexing configuration
-  parameters:
-    clientId:
-      name: clientId
-      in: path
-      required: true
-      description: Unique identifier for the client
-      schema:
-        type: integer
   securitySchemes:
     authToken:
       type: apiKey

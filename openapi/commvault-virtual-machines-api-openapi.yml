@@ -80,6 +80,14 @@ paths:
         '404':
           description: Virtual machine not found
 components:
+  parameters:
+    vmUUID:
+      name: vmUUID
+      in: path
+      required: true
+      description: UUID of the virtual machine
+      schema:
+        type: string
   schemas:
     VirtualMachine:
       type: object
@@ -118,14 +126,6 @@ components:
         planName:
           type: string
           description: Associated protection plan name
-  parameters:
-    vmUUID:
-      name: vmUUID
-      in: path
-      required: true
-      description: UUID of the virtual machine
-      schema:
-        type: string
   securitySchemes:
     authToken:
       type: apiKey

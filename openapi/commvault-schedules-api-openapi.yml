@@ -162,6 +162,68 @@ paths:
           description: Scheduled task not found
 components:
   schemas:
+    ScheduledTask:
+      type: object
+      properties:
+        taskId:
+          type: integer
+          description: Unique task identifier
+        taskName:
+          type: string
+          description: Name of the scheduled task
+        taskType:
+          type: string
+          description: Type of scheduled operation
+          enum:
+          - QR_BACKUP
+          - QR_RESTORE
+          - QR_AUX_COPY
+          - QR_ADMIN
+          - QR_DATA_AGING
+        enabled:
+          type: boolean
+          description: Whether the schedule is enabled
+        subTasks:
+          type: array
+          items:
+            type: object
+            properties:
+              subTaskName:
+                type: string
+              operationType:
+                type: string
+              pattern:
+                $ref: '#/components/schemas/SchedulePattern'
+        associations:
+          type: array
+          items:
+            type: object
+            properties:
+              clientName:
+                type: string
+              subclientName:
+                type: string
+              appName:
+                type: string
+    UpdateScheduleRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            taskName:
+              type: string
+              description: Updated task name
+            enabled:
+              type: boolean
+              description: Enable or disable the schedule
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  pattern:
+                    $ref: '#/components/schemas/SchedulePattern'
     GenericResponse:
       type: object
       properties:
@@ -209,68 +271,6 @@ components:
             - Friday
             - Saturday
           description: Days of the week for weekly schedules
-    UpdateScheduleRequest:
-      type: object
-      properties:
-        taskInfo:
-          type: object
-          properties:
-            taskName:
-              type: string
-              description: Updated task name
-            enabled:
-              type: boolean
-              description: Enable or disable the schedule
-            subTasks:
-              type: array
-              items:
-                type: object
-                properties:
-                  pattern:
-                    $ref: '#/components/schemas/SchedulePattern'
-    ScheduledTask:
-      type: object
-      properties:
-        taskId:
-          type: integer
-          description: Unique task identifier
-        taskName:
-          type: string
-          description: Name of the scheduled task
-        taskType:
-          type: string
-          description: Type of scheduled operation
-          enum:
-          - QR_BACKUP
-          - QR_RESTORE
-          - QR_AUX_COPY
-          - QR_ADMIN
-          - QR_DATA_AGING
-        enabled:
-          type: boolean
-          description: Whether the schedule is enabled
-        subTasks:
-          type: array
-          items:
-            type: object
-            properties:
-              subTaskName:
-                type: string
-              operationType:
-                type: string
-              pattern:
-                $ref: '#/components/schemas/SchedulePattern'
-        associations:
-          type: array
-          items:
-            type: object
-            properties:
-              clientName:
-                type: string
-              subclientName:
-                type: string
-              appName:
-                type: string
   parameters:
     taskId:
       name: taskId

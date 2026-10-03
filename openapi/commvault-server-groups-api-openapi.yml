@@ -140,6 +140,15 @@ components:
       schema:
         type: integer
   schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     CreateServerGroupRequest:
       type: object
       required:
@@ -180,15 +189,6 @@ components:
         planName:
           type: string
           description: Associated server plan name
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
   securitySchemes:
     authToken:
       type: apiKey

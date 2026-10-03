@@ -277,57 +277,6 @@ components:
             sizeOfMediaOnDisk:
               type: integer
               description: Size of data written to media
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
-    RestoreTaskRequest:
-      type: object
-      properties:
-        taskInfo:
-          type: object
-          properties:
-            subTasks:
-              type: array
-              items:
-                type: object
-                properties:
-                  subTask:
-                    type: object
-                    properties:
-                      operationType:
-                        type: string
-                        enum:
-                        - RESTORE
-                  options:
-                    type: object
-                    properties:
-                      restoreOptions:
-                        type: object
-                        properties:
-                          destination:
-                            type: object
-                            properties:
-                              destClient:
-                                type: object
-                                properties:
-                                  clientName:
-                                    type: string
-                              destinationPath:
-                                type: string
-                          fileOption:
-                            type: object
-                            properties:
-                              sourceItem:
-                                type: array
-                                items:
-                                  type: string
-                                description: Paths of items to restore
     BackupTaskRequest:
       type: object
       properties:
@@ -370,6 +319,57 @@ components:
                     type: string
                   appName:
                     type: string
+    RestoreTaskRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  subTask:
+                    type: object
+                    properties:
+                      operationType:
+                        type: string
+                        enum:
+                        - RESTORE
+                  options:
+                    type: object
+                    properties:
+                      restoreOptions:
+                        type: object
+                        properties:
+                          destination:
+                            type: object
+                            properties:
+                              destClient:
+                                type: object
+                                properties:
+                                  clientName:
+                                    type: string
+                              destinationPath:
+                                type: string
+                          fileOption:
+                            type: object
+                            properties:
+                              sourceItem:
+                                type: array
+                                items:
+                                  type: string
+                                description: Paths of items to restore
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
   parameters:
     jobId:
       name: jobId
