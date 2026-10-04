@@ -104,14 +104,6 @@ paths:
         '404':
           description: Script not found
 components:
-  parameters:
-    scriptId:
-      name: scriptId
-      in: path
-      required: true
-      description: Unique identifier for the automation script
-      schema:
-        type: integer
   schemas:
     Script:
       type: object
@@ -139,6 +131,14 @@ components:
         enabled:
           type: boolean
           description: Whether the script is enabled
+  parameters:
+    scriptId:
+      name: scriptId
+      in: path
+      required: true
+      description: Unique identifier for the automation script
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey

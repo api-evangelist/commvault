@@ -225,6 +225,48 @@ paths:
           description: Unauthorized
 components:
   schemas:
+    BackupTaskRequest:
+      type: object
+      properties:
+        taskInfo:
+          type: object
+          properties:
+            subTasks:
+              type: array
+              items:
+                type: object
+                properties:
+                  subTask:
+                    type: object
+                    properties:
+                      operationType:
+                        type: string
+                        enum:
+                        - BACKUP
+                  options:
+                    type: object
+                    properties:
+                      backupOpts:
+                        type: object
+                        properties:
+                          backupLevel:
+                            type: string
+                            enum:
+                            - FULL
+                            - INCREMENTAL
+                            - DIFFERENTIAL
+                            - SYNTHETIC_FULL
+            associations:
+              type: array
+              items:
+                type: object
+                properties:
+                  subclientName:
+                    type: string
+                  clientName:
+                    type: string
+                  appName:
+                    type: string
     Job:
       type: object
       properties:
@@ -277,48 +319,6 @@ components:
             sizeOfMediaOnDisk:
               type: integer
               description: Size of data written to media
-    BackupTaskRequest:
-      type: object
-      properties:
-        taskInfo:
-          type: object
-          properties:
-            subTasks:
-              type: array
-              items:
-                type: object
-                properties:
-                  subTask:
-                    type: object
-                    properties:
-                      operationType:
-                        type: string
-                        enum:
-                        - BACKUP
-                  options:
-                    type: object
-                    properties:
-                      backupOpts:
-                        type: object
-                        properties:
-                          backupLevel:
-                            type: string
-                            enum:
-                            - FULL
-                            - INCREMENTAL
-                            - DIFFERENTIAL
-                            - SYNTHETIC_FULL
-            associations:
-              type: array
-              items:
-                type: object
-                properties:
-                  subclientName:
-                    type: string
-                  clientName:
-                    type: string
-                  appName:
-                    type: string
     RestoreTaskRequest:
       type: object
       properties:

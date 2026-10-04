@@ -132,6 +132,26 @@ paths:
           description: Plan not found
 components:
   schemas:
+    CreatePlanRequest:
+      type: object
+      required:
+      - planName
+      properties:
+        planName:
+          type: string
+          description: Name for the new server plan
+        backupDestinations:
+          type: array
+          items:
+            type: object
+            properties:
+              backupDestinationName:
+                type: string
+              storagePolicyName:
+                type: string
+        rpoInMinutes:
+          type: integer
+          description: Recovery Point Objective in minutes
     Plan:
       type: object
       properties:
@@ -171,26 +191,6 @@ components:
         errorMessage:
           type: string
           description: Human-readable error or success message
-    CreatePlanRequest:
-      type: object
-      required:
-      - planName
-      properties:
-        planName:
-          type: string
-          description: Name for the new server plan
-        backupDestinations:
-          type: array
-          items:
-            type: object
-            properties:
-              backupDestinationName:
-                type: string
-              storagePolicyName:
-                type: string
-        rpoInMinutes:
-          type: integer
-          description: Recovery Point Objective in minutes
   parameters:
     planId:
       name: planId

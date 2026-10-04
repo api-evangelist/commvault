@@ -68,14 +68,6 @@ paths:
         '404':
           description: Report not found
 components:
-  parameters:
-    reportId:
-      name: reportId
-      in: path
-      required: true
-      description: Unique identifier for the report
-      schema:
-        type: integer
   schemas:
     Report:
       type: object
@@ -99,6 +91,14 @@ components:
         description:
           type: string
           description: Description of the report
+  parameters:
+    reportId:
+      name: reportId
+      in: path
+      required: true
+      description: Unique identifier for the report
+      schema:
+        type: integer
   securitySchemes:
     authToken:
       type: apiKey
