@@ -685,6 +685,12 @@ apis:
   - type: Documentation
     url: https://documentation.commvault.com/v11/essential/rest_api_automation.html
 common:
+  - type: Plans
+    url: plans/commvault-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/commvault-rate-limits.yml
+  - type: FinOps
+    url: finops/commvault-finops.yml
   - type: Website
     url: https://www.commvault.com/
   - type: PostmanWorkspace
