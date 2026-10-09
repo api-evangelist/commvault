@@ -249,3 +249,110 @@ plans:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  - subscription
+  units:
+  - data
+  - negotiated
+  - seat
+  plans:
+  - name: SaaS — Microsoft 365 Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: SaaS — Salesforce Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: SaaS — Dynamics 365 Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: SaaS — Endpoint Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - seat
+    periods:
+    - month
+  - name: SaaS — Virtual Machine Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - other
+    periods:
+    - month
+  - name: SaaS — Kubernetes Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: SaaS — Database Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: SaaS — File & Object Backup
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: SaaS — File & Object Archive
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    periods:
+    - month
+  - name: Operational Recovery (Software)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Autonomous Recovery (Software)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
+  - name: Cyber Recovery (Software)
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
