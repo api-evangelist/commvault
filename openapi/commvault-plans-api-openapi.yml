@@ -132,6 +132,15 @@ paths:
           description: Plan not found
 components:
   schemas:
+    GenericResponse:
+      type: object
+      properties:
+        errorCode:
+          type: integer
+          description: Error code (0 indicates success)
+        errorMessage:
+          type: string
+          description: Human-readable error or success message
     CreatePlanRequest:
       type: object
       required:
@@ -182,15 +191,6 @@ components:
             retainBackupDataForDays:
               type: integer
               description: Days to retain backup data
-    GenericResponse:
-      type: object
-      properties:
-        errorCode:
-          type: integer
-          description: Error code (0 indicates success)
-        errorMessage:
-          type: string
-          description: Human-readable error or success message
   parameters:
     planId:
       name: planId
