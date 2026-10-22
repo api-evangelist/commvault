@@ -18,6 +18,9 @@ checked:
 - https://www.cisa.gov/securebydesign/pledge/secure-design-pledge-signers
 - opentofu/integrations/opentofu-integration-edges.yml
 - terraform/integrations/terraform-integration-edges.yml
+- https://www.commoncriteriaportal.org/products/certified_products-archived.csv
+- https://www.commoncriteriaportal.org/products/certified_products.csv
+- https://www.niap-ccevs.org/Product/PCL.cfm
 marketplace_apps: []
 edges:
 - partner_name: AWS Marketplace
@@ -312,6 +315,41 @@ edges:
   badges:
   - Verified publisher (Terraform partner tier)
   - Verified publisher (GitHub domain-verified organization)
+- partner_name: Common Criteria Portal (CCRA certified products)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.commoncriteriaportal.org/products/
+  category: Common Criteria (ISO/IEC 15408) product certification
+  contract_reference:
+    register: Common Criteria Portal certified products + archived certificates (commoncriteriaportal.org/products/certified_products.csv,
+      certified_products-archived.csv)
+    standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+    spec_file: null
+    role: cc-certified-manufacturer
+    registered_name: Commvault Systems Inc.
+    matched_domain: commvault.com
+    matched_by: domain
+    certified_products:
+    - product: Data Protection
+      product_type: Data Protection
+      standard: ISO/IEC 15408 Common Criteria for Information Technology Security Evaluation (CCRA)
+      lapsed: false
+      partner_tier: EAL2
+      schemes:
+      - IT
+    signal_note: 'certified_products = one entry per Common Criteria product CATEGORY held (highest EAL for that
+      category in partner_tier; a category held only among archived certificates is lapsed: true); certificate and
+      product counts are context, never counted'
+    detected_by: sweep-common-criteria-certified-products.py
+    detected: '2026-10-21'
+    identity: wikidata Q5152058 'CommVault Systems' P856 https://www.commvault.com
+    identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
+  detected_by: sweep-common-criteria-certified-products.py
+  first_seen: '2026-10-21'
 source:
 - crowdstrike/integrations/crowdstrike-integration-edges.yml
 - microsoft-sentinel/integrations/microsoft-sentinel-integration-edges.yml
