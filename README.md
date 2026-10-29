@@ -1,4 +1,4 @@
-# Commvault (commvault)
+# Commvault
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,122 +66,187 @@
 
 Commvault is a cloud-native cyber resilience platform that delivers unified data security, identity resilience, and cyber recovery. The Commvault REST API, Command Center API, and Automation API provide programmatic access to backup, restore, replication, threat scan, reporting, and orchestration capabilities across enterprise workloads spanning on-premises, virtual machines, and cloud applications.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/commvault/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/commvault/refs/heads/main/apis.yml)
+**Areas:** Backup · Cloud Storage · Cyber Recovery · Data Management · Data Protection · Disaster Recovery · Enterprise Software
 
-## Scope
+## Commvault on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Commvault is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/commvault/](https://apis.io/providers/commvault/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (24)
 
-- Backup
-- Cloud Storage
-- Cyber Recovery
-- Data Management
-- Data Protection
-- Disaster Recovery
-- Enterprise Software
+- [Commvault Agents API](https://apis.io/apis/commvault/commvault-agents-api/) — Manage backup agents installed on clients
+- [Commvault Alerts API](https://apis.io/apis/commvault/commvault-alerts-api/) — Manage alerts and notification configurations
+- [Commvault Authentication API](https://apis.io/apis/commvault/commvault-authentication-api/) — Login and token management operations
+- [Commvault Clients API](https://apis.io/apis/commvault/commvault-clients-api/) — Manage clients (servers, workstations, virtual machines)
+- [Commvault Dashboard API](https://apis.io/apis/commvault/commvault-dashboard-api/) — Dashboard summary and health monitoring
+- [Commvault Databases API](https://apis.io/apis/commvault/commvault-databases-api/) — Manage database protection
+- [Commvault File Servers API](https://apis.io/apis/commvault/commvault-file-servers-api/) — Manage file server protection
+- [Commvault Jobs API](https://apis.io/apis/commvault/commvault-jobs-api/) — View and manage backup, restore, and administrative jobs
+- [Commvault Laptops API](https://apis.io/apis/commvault/commvault-laptops-api/) — Manage laptop backup operations
+- [Commvault Operations API](https://apis.io/apis/commvault/commvault-operations-api/) — Trigger and monitor automated operations
+- [Commvault Plans API](https://apis.io/apis/commvault/commvault-plans-api/) — Manage server plans for data protection
+- [Commvault Policies API](https://apis.io/apis/commvault/commvault-policies-api/) — Manage data protection policies
+- [Commvault Reports API](https://apis.io/apis/commvault/commvault-reports-api/) — Reporting and analytics
+- [Commvault Schedule Policies API](https://apis.io/apis/commvault/commvault-schedule-policies-api/) — Manage schedule policies for automated operations
+- [Commvault Schedules API](https://apis.io/apis/commvault/commvault-schedules-api/) — Manage job schedules and schedule policies
+- [Commvault Scripts API](https://apis.io/apis/commvault/commvault-scripts-api/) — Manage and execute automation scripts
+- [Commvault Server Groups API](https://apis.io/apis/commvault/commvault-server-groups-api/) — Manage server groups for organizing protected infrastructure
+- [Commvault SLA API](https://apis.io/apis/commvault/commvault-sla-api/) — Service Level Agreement compliance monitoring
+- [Commvault Storage API](https://apis.io/apis/commvault/commvault-storage-api/) — Storage pool and library management
+- [Commvault Storage Policies API](https://apis.io/apis/commvault/commvault-storage-policies-api/) — Manage storage policies and copies
+- [Commvault Subclients API](https://apis.io/apis/commvault/commvault-subclients-api/) — Manage subclients that define backup content
+- [Commvault Users API](https://apis.io/apis/commvault/commvault-users-api/) — Manage Commvault users and user groups
+- [Commvault Virtual Machines API](https://apis.io/apis/commvault/commvault-virtual-machines-api/) — Manage virtual machine backup and recovery
+- [Commvault Workflows API](https://apis.io/apis/commvault/commvault-workflows-api/) — Create, manage, and execute automation workflows
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-20
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Commvault REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Commvault REST API provides programmatic access to Commvault data protection and management operations including authentication, clients, agents, subclients, backup and restore jobs, schedules, storage policies, and reporting. Authentication is token-based using a QSDK token issued by the Login operation, sent in the Authtoken header on subsequent calls.
+- [Commvault Agentic Access](https://apis.io/agentic-access/commvault/commvault-agentic-access/)
 
-- **Human URL:** [https://documentation.commvault.com/v11/essential/rest_api_overview.html](https://documentation.commvault.com/v11/essential/rest_api_overview.html)
-- **Base URL:** `https://webserver.commvault.com/webconsole/api`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Backup
-- Clients
-- Data Management
-- Jobs
-- REST API
-- Restore
-- Subclients
+- [Commvault Backup Job](https://apis.io/schemas/commvault/commvault-backup-job/)
+- [Commvault Client](https://apis.io/schemas/commvault/commvault-client/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://documentation.commvault.com/v11/essential/rest_api_overview.html)
-- [Authentication](https://documentation.commvault.com/v11/essential/rest_api_authentication.html)
-- [Postman  Collection](https://documenter.getpostman.com/view/2046098/RW1aHzQg)
-- [API Reference](https://api.commvault.com/swagger/)
-- [OpenAPI](openapi/commvault-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/commvault-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/commvault-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral  Rules](rules/commvault-rules.yml)
+Linked-data contexts for the provider's vocabulary.
 
-### Commvault Command Center API
+- [Commvault Context](https://apis.io/jsonld/commvault/commvault-context/)
 
-The Commvault Command Center API exposes the operations behind the modern web-based Command Center UI, providing centralized management, monitoring, dashboards, server group control, and workflow execution for Commvault environments.
+#### Collections (51)
 
-- **Human URL:** [https://documentation.commvault.com/2024/essential/command_center_overview.html](https://documentation.commvault.com/2024/essential/command_center_overview.html)
-- **Base URL:** `https://commandcenter.commvault.com/commandcenter/api`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Commvault Automation Agents API](https://apis.io/collections/commvault/open-commvault-agents-api/)
+- [Commvault Automation Agents Alerts API](https://apis.io/collections/commvault/open-commvault-alerts-api/)
+- [Commvault Automation Agents Authentication API](https://apis.io/collections/commvault/open-commvault-authentication-api/)
+- [Commvault Automation API](https://apis.io/collections/commvault/open-commvault-automation/)
+- [Commvault Automation Agents Clients API](https://apis.io/collections/commvault/open-commvault-clients-api/)
+- [Commvault Command Center API](https://apis.io/collections/commvault/open-commvault-command-center/)
+- [Commvault Automation Agents Dashboard API](https://apis.io/collections/commvault/open-commvault-dashboard-api/)
+- [Commvault Automation Agents Databases API](https://apis.io/collections/commvault/open-commvault-databases-api/)
+- [Commvault Automation Agents File Servers API](https://apis.io/collections/commvault/open-commvault-file-servers-api/)
+- [Commvault Automation Agents Jobs API](https://apis.io/collections/commvault/open-commvault-jobs-api/)
+- [Commvault Automation Agents Laptops API](https://apis.io/collections/commvault/open-commvault-laptops-api/)
+- [Commvault Automation Agents Operations API](https://apis.io/collections/commvault/open-commvault-operations-api/)
+- [Commvault Automation Agents Plans API](https://apis.io/collections/commvault/open-commvault-plans-api/)
+- [Commvault Automation Agents Policies API](https://apis.io/collections/commvault/open-commvault-policies-api/)
+- [Commvault Automation Agents Reports API](https://apis.io/collections/commvault/open-commvault-reports-api/)
+- [Commvault REST API](https://apis.io/collections/commvault/open-commvault-rest/)
+- [Commvault Automation Agents Schedule Policies API](https://apis.io/collections/commvault/open-commvault-schedule-policies-api/)
+- [Commvault Automation Agents Schedules API](https://apis.io/collections/commvault/open-commvault-schedules-api/)
+- [Commvault Automation Agents Scripts API](https://apis.io/collections/commvault/open-commvault-scripts-api/)
+- [Commvault Automation Agents Server Groups API](https://apis.io/collections/commvault/open-commvault-server-groups-api/)
+- [Commvault Automation Agents SLA API](https://apis.io/collections/commvault/open-commvault-sla-api/)
+- [Commvault Automation Agents Storage API](https://apis.io/collections/commvault/open-commvault-storage-api/)
+- [Commvault Automation Agents Storage Policies API](https://apis.io/collections/commvault/open-commvault-storage-policies-api/)
+- [Commvault Automation Agents Subclients API](https://apis.io/collections/commvault/open-commvault-subclients-api/)
+- [Commvault Automation Agents Users API](https://apis.io/collections/commvault/open-commvault-users-api/)
+- …and 26 more published on APIs.io
 
-- Command Center
-- Dashboards
-- Management
-- Monitoring
+#### Governance rules (2)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://documentation.commvault.com/2024/essential/rest_api_command_center.html)
-- [API Reference](https://api.commvault.com/)
-- [OpenAPI](openapi/commvault-command-center-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/commvault-command-center.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/commvault-command-center.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral  Rules](rules/commvault-rules.yml)
+- [Commvault — jsonschema rules](https://apis.io/rules/commvault/commvault-jsonschema-spectral-rules/)
+- [Commvault API Rules](https://apis.io/rules/commvault/commvault-rules/)
 
-### Commvault Automation API
+#### Security (2)
 
-The Commvault Automation API provides endpoints for executing Commvault Workflows, managing job scheduling, and orchestrating policy-driven operations across the protected estate. Workflows are reusable automation packages that combine REST calls, decision logic, and approvals.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://documentation.commvault.com/v11/essential/automation_overview.html](https://documentation.commvault.com/v11/essential/automation_overview.html)
-- **Base URL:** `https://webserver.commvault.com/webconsole/api`
+- [Commvault Authentication](https://apis.io/security/commvault/commvault-authentication/)
+- [Commvault Domain Security](https://apis.io/security/commvault/commvault-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Automation
-- Orchestration
-- Scheduling
-- Workflows
+Published plans, tiers and prices.
 
-#### Properties
+- [Commvault Plans Pricing](https://apis.io/plans/commvault/commvault-plans-pricing/)
 
-- [Documentation](https://documentation.commvault.com/v11/essential/rest_api_automation.html)
-- [OpenAPI](openapi/commvault-automation-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/commvault-automation.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/commvault-automation.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Spectral  Rules](rules/commvault-rules.yml)
+#### Rate limits (1)
 
-## Common Properties
+Published request limits.
 
-- [GitHub Organization](https://github.com/Commvault)
-- [LinkedIn](https://www.linkedin.com/company/commvault)
-- [Portal](https://cloud.commvault.com/)
+- [Commvault Rate Limits](https://apis.io/rate-limits/commvault/commvault-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Commvault Finops](https://apis.io/finops/commvault/commvault-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.commvault.com/)
 - [Documentation](https://documentation.commvault.com/)
 - [Support](https://www.commvault.com/support)
-- [Login](https://login.commvault.com/)
-- [Status Page](https://status.commvault.com/)
 - [Blog](https://www.commvault.com/blogs)
-- [Contact](https://www.commvault.com/contact-us)
-- [Privacy Policy](https://www.commvault.com/privacy-policy)
-- [Terms of Service](https://www.commvault.com/terms-of-use)
-- [JSON-LD](json-ld/commvault-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [JSON Schema](json-schema/commvault-backup-job-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/commvault-client-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [Terms of service](https://www.commvault.com/terms-of-use)
+- [Privacy policy](https://www.commvault.com/privacy-policy)
+- [GitHub](https://github.com/Commvault)
+- [Status](https://status.commvault.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 71.4 |
+| Contract quality | 56.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 38.1 |
+| Access clarity | 25.0 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/commvault/](https://apis.io/providers/commvault/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Commvault: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/commvault/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
